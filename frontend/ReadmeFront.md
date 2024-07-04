@@ -34,11 +34,16 @@ Dependencias
 El proyecto utiliza las siguientes dependencias:
 
 @reduxjs/toolkit: Redux toolkit para un uso eficiente de Redux.
-axios: Cliente HTTP basado en promesas para el navegador y Node.js.
+axios: Cliente HTTP basado en promesas para el navegador y Node.js. 
+
 react: Biblioteca JavaScript para construir interfaces de usuario.
+
 react-dom: Métodos específicos del DOM para React.
+
 react-redux: Enlaces oficiales de React para Redux.
+
 react-router-dom: Enlaces del DOM para React Router.
+
 Dependencias de Desarrollo
 @types/react: Definiciones de tipos TypeScript para React.
 @types/react-dom: Definiciones de tipos TypeScript para ReactDOM.
