@@ -45,9 +45,16 @@ react-redux: Enlaces oficiales de React para Redux.
 react-router-dom: Enlaces del DOM para React Router.
 
 Dependencias de Desarrollo
+
 @types/react: Definiciones de tipos TypeScript para React.
+
 @types/react-dom: Definiciones de tipos TypeScript para ReactDOM.
+
 @vitejs/plugin-react-swc: Plugin Vite para React utilizando SWC.
+
 vite: Herramienta de próxima generación para el frontend.
+
+
 Notas
+
 Este proyecto está configurado con Vite como la herramienta de construcción y soporta módulos JavaScript modernos (type: module). Asegúrate de tener una versión de Node.js >= 16.0.0 para garantizar la compatibilidad.
