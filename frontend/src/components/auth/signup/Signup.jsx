@@ -34,6 +34,7 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    validatePassword(value);
     setFormValues({
       ...formValues,
       [name]: value,
@@ -186,7 +187,7 @@ const SignUp = () => {
           <input type="checkbox" 
           required="required"  
           className={styles.check}       
-          /> <p style={{ marginLeft: "5%", color: "white"}} > I confirm the <a href="/auth/term" className={styles.link}>Terms</a></p>  
+          /> <p style={{ marginLeft: "5%"}} > I confirm the <a href="/auth/term" className={styles.link}>Terms</a></p>  
       
  
         <div className={styles.but}>
