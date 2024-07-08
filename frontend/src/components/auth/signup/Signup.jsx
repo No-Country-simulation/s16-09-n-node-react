@@ -33,7 +33,13 @@ const SignUp = () => {
   };
 
   const handleChange = (e) => {
+ 
     const { name, value } = e.target;
+    if (name === 'password' && !validatePassword(value)) {
+      setError('password', { type: 'manual', message: 'La contraseña debe tener al menos 6 caracteres y contener letras y números' });
+    } else if (name === 'email' && !validateEmail(value)) {
+      setError('email', { type: 'manual', message: 'Correo electrónico no es válido' });
+    }
     validatePassword(value);
     setFormValues({
       ...formValues,
@@ -59,6 +65,7 @@ const SignUp = () => {
           location: '',
           timezone: ''
         });
+       alert('Registro exitoso!') 
         navigate('/'); // Redirigir a la ruta principal después del registro exitoso
       } else {
         setSubmitSuccess(false);
@@ -80,7 +87,7 @@ const SignUp = () => {
             <label></label>
             <input
               type="text"
-              {...register('firstName', { required: 'Nombre es obligatorio' })}
+              {...register('firstName', { required: 'First Name is required' })}
               className={errors.firstName ? styles.errorInput : ''}
               value={formValues.firstName}
               onChange={handleChange}
@@ -93,7 +100,7 @@ const SignUp = () => {
             <input
               placeholder='Last Name'
               type="text"
-              {...register('lastName', { required: 'Apellido es obligatorio' })}
+              {...register('lastName', { required: 'Last Name is required' })}
               className={errors.lastName ? styles.errorInput : ''}
               value={formValues.lastName}
               onChange={handleChange}
@@ -105,7 +112,7 @@ const SignUp = () => {
             <input
               placeholder='Email'
               type="email"
-              {...register('email', { required: 'Correo electrónico es obligatorio', validate: validateEmail })}
+              {...register('email', { required: 'Email is required', validate: validateEmail })}
               className={errors.email ? styles.errorInput : ''}
               value={formValues.email}
               onChange={handleChange}
@@ -117,7 +124,7 @@ const SignUp = () => {
             <input
               placeholder='Password'
               type="password"
-              {...register('password', { required: 'Contraseña es obligatoria', validate: validatePassword })}
+              {...register('password', { required: 'Password is required', validate: validatePassword })}
               className={errors.password ? styles.errorInput : ''}
               value={formValues.password}
               onChange={handleChange}
@@ -129,7 +136,7 @@ const SignUp = () => {
             <input
               placeholder='Role'
               type="text"
-              {...register('role', { required: 'Rol es obligatorio' })}
+              {...register('role', { required: 'Role is required' })}
               className={errors.role ? styles.errorInput : ''}
               value={formValues.role}
               onChange={handleChange}
@@ -140,7 +147,7 @@ const SignUp = () => {
             <label></label>
             <input
               type="text"
-              {...register('technologies', { required: 'Tecnologías son obligatorias' })}
+              {...register('technologies', { required: 'Technologies is required' })}
               className={errors.technologies ? styles.errorInput : ''}
               value={formValues.technologies}
               onChange={handleChange}
@@ -152,7 +159,7 @@ const SignUp = () => {
             <label></label>
             <input
               type="text"
-              {...register('tools', { required: 'Herramientas son obligatorias' })}
+              {...register('tools', { required: 'Tools is required' })}
               className={errors.tools ? styles.errorInput : ''}
               value={formValues.tools}
               onChange={handleChange}
@@ -164,7 +171,7 @@ const SignUp = () => {
             <label></label>
             <input
               type="text"
-              {...register('location', { required: 'Ubicación es obligatoria' })}
+              {...register('location', { required: 'location is required' })}
               className={errors.location ? styles.errorInput : ''}
               value={formValues.location}
               onChange={handleChange}
@@ -177,7 +184,7 @@ const SignUp = () => {
             <input
               placeholder='Timezone'
               type="text"
-              {...register('timezone', { required: 'Zona horaria es obligatoria' })}
+              {...register('timezone', { required: 'Timezone is required' })}
               className={errors.timezone ? styles.errorInput : ''}
               value={formValues.timezone}
               onChange={handleChange}
