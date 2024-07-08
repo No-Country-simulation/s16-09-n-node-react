@@ -72,7 +72,7 @@ const SignUp = () => {
         <img src={logo} alt="Logo" className={styles.logo} />
       </div>
       <div className={styles.formContainer}>
-        <h2>Sign Up</h2>
+        <h2 className={styles.h2}> Sign Up</h2>
         <p className= {styles.subtitle} >You can easily sign up from this screen here</p>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.formGroup}>
@@ -186,7 +186,7 @@ const SignUp = () => {
           <input type="checkbox" 
           required="required"  
           className={styles.check}       
-          /> <p style={{ marginLeft: "5%"}} > I confirm the <a href="/auth/term" className={styles.link}>Terms</a></p>  
+          /> <p style={{ marginLeft: "5%", color: "white"}} > I confirm the <a href="/auth/term" className={styles.link}>Terms</a></p>  
       
  
         <div className={styles.but}>
