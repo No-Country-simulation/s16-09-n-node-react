@@ -1,4 +1,6 @@
-/* src/components/Auth/SignUp.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 .container {
     background-color: #000825;
     color: #FFFFFF;
@@ -6,7 +8,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', "Lato", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,8 +16,8 @@
   
   }
   .subtitle {
-    margin: 5%;
-    margin-left: 40%;
+    margin-top: 3%;
+    margin-left: 15%;
     font-size: large;
     font-weight: 400;
   }
@@ -43,9 +45,10 @@
     font-weight: bold;
   }
   h2{
-    margin: 10%;
-    margin-left: 40%;
-    font-weight: 600;
+    margin-top: 20%;
+    margin-bottom: 2%;
+    margin-left: 15%;
+    font-weight: 550;
     font-size: 3rem;
 
           }
@@ -58,6 +61,7 @@
     color: #FFFFFF;
     margin-left: 10%;
     font-size: large;
+    width: 90%;
   }
   
   input::placeholder {
@@ -71,11 +75,14 @@
   .errorText {
     color: #dc3545;
     margin-top: 5px;
+    margin-left: 10%;
   }
   
   .successText {
     color: #34e06f;
     margin-top: 10px;
+    margin-left: 10%;
+
   }
   
   button:hover {
@@ -99,18 +106,14 @@ p{
   font-weight: 500;
 }
   .check{
-   margin: 10%;
+   
    grid-column-start: 2;
-   width: 100%;
-   position: relative;
+   width: 60%;
+   margin: 15%;
+   border-radius: 5px;
+
    
   }
-  .check input{
-    margin: 20%;
-  }
-  .check label{
-    margin: 25%;
-}
   
 
 .but{
@@ -122,16 +125,18 @@ p{
 
 button {
 
-    margin-left: 10%;
-    padding: 5%;
+    margin-left: 5%;
+    padding: 10%;
     border: none;
     border-radius: 55px;
     background-color: #14A9FF;
     color: white;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     border: 2px solid #14A9FF;
-
+    font-weight: 500;
+    width: 110%;
+   
   }
 
   .link {
@@ -165,5 +170,32 @@ button {
     .formContainer, .logoContainer {
       width: 50%;
     }
+  }
+  @media (max-width: 376px) {
+    input {
+      width: 80%;
+    }
+    button{
+      font-size: small;
+    };
+    .container{
+      margin-left: 0
+    };
+    h2{
+      margin-left: 0;
+      font-size: small;
+      justify-content: center;
+      text-align: center;
+    }
+    input{
+      margin-left: 0;
+    }
+    .subtitle{
+      margin-left: 0;
+      font-size: small;
+      justify-content: center;
+      text-align: center;
+    }
+
   }
   
