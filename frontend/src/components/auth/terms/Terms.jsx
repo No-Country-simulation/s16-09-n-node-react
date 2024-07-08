@@ -6,42 +6,43 @@ import styles from './Terms.module.css';
 const Terms = () => {
   return (
     <div className={styles.container}>
-      <h1>Términos y Condiciones</h1>
-      <p>Última actualización: [Fecha de actualización]</p>
+      <h1>Terms and Conditions</h1>
+      <p>Welcome to our platform. Please read these terms and conditions carefully before using our services.</p>
       
-      <h2>1. Aceptación de los Términos</h2>
-      <p>Al acceder y utilizar esta aplicación, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo con alguno de los términos, no debes usar esta aplicación.</p>
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing and using our platform, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using our services, you shall be subject to any posted guidelines or rules applicable to such services.</p>
       
-      <h2>2. Registro de Usuario</h2>
-      <p>Para utilizar ciertas funcionalidades de la aplicación, deberás registrarte proporcionando información veraz y completa. Eres responsable de mantener la confidencialidad de tu cuenta y contraseña.</p>
+      <h2>2. Changes to Terms</h2>
+      <p>We reserve the right to update or modify these terms at any time without prior notice. Your continued use of the platform following any such change constitutes your agreement to follow and be bound by the terms as changed.</p>
       
-      <h2>3. Uso de la Aplicación</h2>
-      <p>Te comprometes a utilizar la aplicación de manera legal y respetuosa. No debes utilizar la aplicación para:</p>
+      <h2>3. Description of Service</h2>
+      <p>Our platform provides users with access to a rich collection of resources and tools, including various communications tools, forums, and personalized content.</p>
+      
+      <h2>4. User Responsibilities</h2>
       <ul>
-        <li>Enviar contenido ofensivo o inapropiado.</li>
-        <li>Realizar actividades ilegales o no autorizadas.</li>
-        <li>Intentar hackear o comprometer la seguridad de la aplicación.</li>
+        <li>Users must provide accurate, current, and complete information during the registration process.</li>
+        <li>Users are responsible for maintaining the confidentiality of their password and account.</li>
+        <li>Users are responsible for all activities that occur under their account.</li>
       </ul>
       
-      <h2>4. Propiedad Intelectual</h2>
-      <p>Todo el contenido de esta aplicación, incluyendo pero no limitado a textos, gráficos, logotipos e imágenes, es propiedad de [Nombre de tu Empresa] o sus licenciantes y está protegido por las leyes de propiedad intelectual.</p>
+      <h2>5. Prohibited Conduct</h2>
+      <p>Users agree not to use the platform for any unlawful purpose or any purpose prohibited by these terms. Prohibited conduct includes, but is not limited to:</p>
+      <ul>
+        <li>Harassing, abusing, or harming another person.</li>
+        <li>Transmitting any content that is offensive, inappropriate, or otherwise objectionable.</li>
+        <li>Impersonating any person or entity or falsely stating or otherwise misrepresenting your affiliation with a person or entity.</li>
+      </ul>
       
-      <h2>5. Modificaciones a los Términos</h2>
-      <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en la aplicación. Es tu responsabilidad revisar periódicamente estos términos para estar al tanto de cualquier cambio.</p>
+      <h2>6. Termination</h2>
+      <p>We may terminate or suspend access to our platform immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the terms.</p>
       
-      <h2>6. Terminación</h2>
-      <p>Podemos suspender o terminar tu acceso a la aplicación en cualquier momento y por cualquier motivo, sin previo aviso.</p>
+      <h2>7. Disclaimer of Warranties</h2>
+      <p>The platform is provided on an "as is" and "as available" basis. We make no warranty that the platform will meet your requirements or that the service will be uninterrupted, timely, secure, or error-free.</p>
       
-      <h2>7. Limitación de Responsabilidad</h2>
-      <p>No seremos responsables por cualquier daño directo, indirecto, incidental, especial o consecuente que resulte del uso o la imposibilidad de uso de la aplicación.</p>
+      <h2>8. Limitation of Liability</h2>
+      <p>In no event shall we be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenues.</p>
       
-      <h2>8. Ley Aplicable</h2>
-      <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes de [Tu País/Estado], sin dar efecto a sus disposiciones sobre conflicto de leyes.</p>
-      
-      <h2>9. Contacto</h2>
-      <p>Si tienes alguna pregunta sobre estos términos y condiciones, puedes contactarnos a través de [Información de Contacto].</p>
-      
-      <Link to="/auth/signup" className={styles.backLink}>Volver al Registro</Link>
+      <Link to="/auth/signup" className={styles.backLink}>Back to Sign Up</Link>
     </div>
   );
 };
