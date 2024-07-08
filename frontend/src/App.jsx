@@ -10,6 +10,7 @@ import Contact from './components/home/contact/Contact'
 import Auth from './views/auth/Auth';
 import Login from './components/auth/login/Login';
 import Signup from './components/auth/signup/Signup';
+import Terms from './components/auth/terms/Terms';
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +44,10 @@ function App() {
         {
           path: '/auth/signup',
           element: <Signup />
+        }, 
+        {
+          path: '/auth/term',
+          element: <Terms />
         }
       ]
     },
