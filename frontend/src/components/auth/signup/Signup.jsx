@@ -1,6 +1,6 @@
-// src/components/Auth/SignUp.jsx
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
 import styles from './SignUp.module.css';
 import logo from '../signup/logo.png';
 
@@ -20,6 +20,8 @@ const SignUp = () => {
     timezone: ''
   });
 
+  const navigate = useNavigate();// Inicializar useHistory
+
   const validatePassword = (value) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return regex.test(value) || 'La contraseña debe tener al menos 6 caracteres y contener letras y números';
@@ -27,11 +29,10 @@ const SignUp = () => {
 
   const validateEmail = (value) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(value) || 'Correo electrónico no es válid';
+    return regex.test(value) || 'Correo electrónico no es válido';
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -57,7 +58,7 @@ const SignUp = () => {
           location: '',
           timezone: ''
         });
-
+        navigate('/'); // Redirigir a la ruta principal después del registro exitoso
       } else {
         setSubmitSuccess(false);
         setSubmitError(true);
@@ -67,29 +68,29 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
-        <div className={styles.logoContainer}>
+      <div className={styles.logoContainer}>
         <img src={logo} alt="Logo" className={styles.logo} />
       </div>
       <div className={styles.formContainer}>
-        <h2 style={{margin: "5%", fontWeight: "400", fontSize: "xx-large"}}>Sign Up</h2>
-        <p style={{margin: "5%" }}>You can easily sign up from this screen here</p>
+        <h2>Sign Up</h2>
+        <p>You can easily sign up from this screen here</p>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.formGroup}>
             <label></label>
             <input
-              placeholder=' First Name'
               type="text"
               {...register('firstName', { required: 'Nombre es obligatorio' })}
               className={errors.firstName ? styles.errorInput : ''}
               value={formValues.firstName}
               onChange={handleChange}
+              placeholder='First Name'
             />
             {errors.firstName && <p className={styles.errorText}>{errors.firstName.message}</p>}
           </div>
           <div className={styles.formGroup}>
             <label></label>
             <input
-              placeholder=' Last Name'
+              placeholder='Last Name'
               type="text"
               {...register('lastName', { required: 'Apellido es obligatorio' })}
               className={errors.lastName ? styles.errorInput : ''}
@@ -101,7 +102,7 @@ const SignUp = () => {
           <div className={styles.formGroup}>
             <label></label>
             <input
-              placeholder=' Email'
+              placeholder='Email'
               type="email"
               {...register('email', { required: 'Correo electrónico es obligatorio', validate: validateEmail })}
               className={errors.email ? styles.errorInput : ''}
@@ -113,7 +114,7 @@ const SignUp = () => {
           <div className={styles.formGroup}>
             <label></label>
             <input
-              placeholder=' Password'
+              placeholder='Password'
               type="password"
               {...register('password', { required: 'Contraseña es obligatoria', validate: validatePassword })}
               className={errors.password ? styles.errorInput : ''}
@@ -125,7 +126,7 @@ const SignUp = () => {
           <div className={styles.formGroup}>
             <label></label>
             <input
-              placeholder=' Role'
+              placeholder='Role'
               type="text"
               {...register('role', { required: 'Rol es obligatorio' })}
               className={errors.role ? styles.errorInput : ''}
@@ -142,7 +143,7 @@ const SignUp = () => {
               className={errors.technologies ? styles.errorInput : ''}
               value={formValues.technologies}
               onChange={handleChange}
-              placeholder=' Technologies'
+              placeholder='Technologies'
             />
             {errors.technologies && <p className={styles.errorText}>{errors.technologies.message}</p>}
           </div>
@@ -154,7 +155,7 @@ const SignUp = () => {
               className={errors.tools ? styles.errorInput : ''}
               value={formValues.tools}
               onChange={handleChange}
-              placeholder=' Tools'
+              placeholder='Tools'
             />
             {errors.tools && <p className={styles.errorText}>{errors.tools.message}</p>}
           </div>
@@ -166,14 +167,14 @@ const SignUp = () => {
               className={errors.location ? styles.errorInput : ''}
               value={formValues.location}
               onChange={handleChange}
-              placeholder=' Location'
+              placeholder='Location'
             />
             {errors.location && <p className={styles.errorText}>{errors.location.message}</p>}
           </div>
           <div className={styles.formGroup}>
             <label></label>
             <input
-              placeholder=' Timezone'
+              placeholder='Timezone'
               type="text"
               {...register('timezone', { required: 'Zona horaria es obligatoria' })}
               className={errors.timezone ? styles.errorInput : ''}
@@ -185,12 +186,12 @@ const SignUp = () => {
           <input type="checkbox"/> 
           <p>I confirm the <a href="/auth/term">Term</a></p>  
           </div>
-        </div><button type="submit">Send Aplication</button>
+        </div>
+        <button type="submit">Send Application</button>
           {submitSuccess && <p className={styles.successText}>Registro exitoso!</p>}
           {submitError && <p className={styles.errorText}>Error al registrar. El correo electrónico ya existe.</p>}
         </form>
       </div>
-    
     </div>
   );
 };
