@@ -1,0 +1,109 @@
+/* src/components/Auth/SignUp.module.css */
+.container {
+    background-color: #000825;
+    color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .formContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #08174B;
+    border-radius: 5px;
+    color: #FFFFFF;
+  }
+  
+  input::placeholder {
+    color: #ccc;
+  }
+  
+  .errorInput {
+    border-color: #dc3545;
+  }
+  
+  .errorText {
+    color: #dc3545;
+    margin-top: 5px;
+  }
+  
+  .successText {
+    color: #34e06f;
+    margin-top: 10px;
+  }
+  
+  button {
+    margin: 5%;
+    padding: 3%;
+    margin-left: 50%;
+    width: 40%;
+    border: none;
+    align-items: left;
+    border-radius: 15px;
+    background-color: #14A9FF;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #28a745;
+  }
+  
+  .logoContainer {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo {
+    max-width: 20%;
+    height: auto;
+  }
+  
+  /* Estilos para dispositivos de escritorio */
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row-reverse;
+      width: 90%; /* Ajuste el ancho del contenedor en dispositivos de escritorio */
+    }
+  
+    .formContainer, .logoContainer {
+      width: 50%;
+    }
+  }
+  
