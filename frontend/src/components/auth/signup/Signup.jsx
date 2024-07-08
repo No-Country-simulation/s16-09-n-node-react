@@ -27,7 +27,7 @@ const SignUp = () => {
 
   const validateEmail = (value) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(value) || 'Correo electrónico no es válido';
+    return regex.test(value) || 'Correo electrónico no es válid';
   };
 
   const handleChange = (e) => {
