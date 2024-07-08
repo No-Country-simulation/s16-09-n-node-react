@@ -11,17 +11,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
   
+  }
+  .subtitle {
+    margin: 5%;
+    margin-left: 40%;
+    font-size: large;
+    font-weight: 400;
+  }
   .formContainer {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 400px;
-  }
+    width: 80%;
+     }
   
   .form {
     width: 100%;
@@ -31,25 +35,21 @@
   }
   
   .formGroup {
-    margin-bottom: 15px;
+    margin: 20px;
+    width: 100%;
   }
   
   label {
-    margin-bottom: 5px;
     font-weight: bold;
   }
   h2{
     margin: 10%;
+    margin-left: 40%;
     font-weight: 600;
     font-size: 3rem;
 
           }
-      p{
-        margin-bottom: 20px;
-        font-weight: 500;
-     font-size: 18px
-      }
-  input {
+       input {
     padding: 18px;
     border-radius: 10px 10px 10px 10px;
     border: 2px solid #ccc;
@@ -78,23 +78,70 @@
     margin-top: 10px;
   }
   
-  button {
-    margin: 5%;
-    padding: 3%;
-    margin-left: 50%;
-    width: 40%;
+  button:hover {
+    background-color: #f9fffa;
+    color:  #14A9FF;
+    border: 2px solid #14A9FF;
+  }
+
+  .foot{ 
+  margin: 5%;
+  margin-top: 10%;
+    display: grid;
+    grid-template-columns: 9fr 5 fr;
+    
+  }
+  
+p{
+  grid-column-start: 3;
+  grid-column-end: 7;
+  font-size: 18px;
+  font-weight: 500;
+}
+  .check{
+   margin: 10%;
+   grid-column-start: 2;
+   width: 100%;
+   position: relative;
+   
+  }
+  .check input{
+    margin: 20%;
+  }
+  .check label{
+    margin: 25%;
+}
+  
+
+.but{
+
+  grid-column-start: 8;
+  grid-column-end: 9;
+  width: 100%;
+}
+
+button {
+
+    margin-left: 10%;
+    padding: 5%;
     border: none;
-    align-items: left;
-    border-radius: 15px;
+    border-radius: 55px;
     background-color: #14A9FF;
     color: white;
     cursor: pointer;
+    font-size: 20px;
+    border: 2px solid #14A9FF;
+
   }
-  
-  button:hover {
-    background-color: #28a745;
-  }
-  
+
+  .link {
+    color: #14A9FF;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+
+}
+
   .logoContainer {
     flex: 1;
     width: 100%;

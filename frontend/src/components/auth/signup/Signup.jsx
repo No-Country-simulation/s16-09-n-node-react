@@ -73,7 +73,7 @@ const SignUp = () => {
       </div>
       <div className={styles.formContainer}>
         <h2>Sign Up</h2>
-        <p>You can easily sign up from this screen here</p>
+        <p className= {styles.subtitle} >You can easily sign up from this screen here</p>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.formGroup}>
             <label></label>
@@ -182,15 +182,21 @@ const SignUp = () => {
               onChange={handleChange}
             />
             {errors.timezone && <p className={styles.errorText}>{errors.timezone.message}</p>}
-            <div style={{discplay: "flex", flexDirection: "row"}}><label></label>
-          <input type="checkbox"/> 
-          <p>I confirm the <a href="/auth/term">Term</a></p>  
-          </div>
-        </div>
+            <div className={styles.foot}><label></label>
+          <input type="checkbox" 
+          required="required"  
+          className={styles.check}       
+          /> <p style={{ marginLeft: "5%"}} > I confirm the <a href="/auth/term" className={styles.link}>Terms</a></p>  
+      
+ 
+        <div className={styles.but}>
         <button type="submit">Send Application</button>
+        </div>
+        </div>
           {submitSuccess && <p className={styles.successText}>Registro exitoso!</p>}
           {submitError && <p className={styles.errorText}>Error al registrar. El correo electrónico ya existe.</p>}
-        </form>
+        
+          </div></form>
       </div>
     </div>
   );
