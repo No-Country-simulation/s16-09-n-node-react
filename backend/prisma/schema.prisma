@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String          @id @default(cuid())
+  username     String?         @unique
+  email        String          @unique
+  password     String
+  name         String
+  lastName     String
+  role         String          @default("user")
+  technologies String?
+  tools        String?
+  location     String?
+  timezone     String?
+  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  projects     Project[]
+  memberships  ProjectMember[]
+}
+
+model Project {
+  id           String          @id @default(cuid())
+  name         String
+  description  String?
+  owner        User            @relation(fields: [ownerId], references: [id])
+  ownerId      String
+  technologies String?
+  type         String?
+  duration     String?
+  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  members      ProjectMember[]
+  meetings     Meeting[]
+}
+
+model ProjectMember {
+  id        String   @id @default(cuid())
+  project   Project  @relation(fields: [projectId], references: [id])
+  projectId String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  role      String
+  joined_at DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+}
+
+model Meeting {
+  id           String   @id @default(cuid())
+  project      Project  @relation(fields: [projectId], references: [id])
+  projectId    String
+  title        String
+  meeting_date DateTime
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+}
