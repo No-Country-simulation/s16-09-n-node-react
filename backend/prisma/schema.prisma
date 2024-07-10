@@ -20,7 +20,7 @@ model User {
   password     String
   name         String
   lastName     String
-  role         String
+  role         String          @default("user")
   technologies String?
   tools        String?
   location     String?

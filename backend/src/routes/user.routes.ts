@@ -1,10 +1,8 @@
-import { PrismaClient } from '@prisma/client';
-import express from 'express';
+import { Router } from 'express';
 
-const prisma = new PrismaClient();
-export const userRouter = express.Router();
+import { createUser, getAllUsers } from '@/controllers/userController';
 
-userRouter.get('/', async (req, res) => {
-  const users = await prisma.user.findMany();
-  res.json(users);
-});
+export const userRouter = Router();
+
+userRouter.get('/getAllUsers', getAllUsers);
+userRouter.post('/createUser', createUser);
