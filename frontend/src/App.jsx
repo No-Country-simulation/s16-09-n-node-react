@@ -11,7 +11,7 @@ import Auth from './views/auth/Auth';
 import SignInPage from './components/auth/sign-in/SignIn';
 import SignUpPage  from './components/auth/sign-up/Signup';
 import Terms from './components/auth/terms/Terms';
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, SignIn } from "@clerk/clerk-react";
 
 function App() {
   const router = createBrowserRouter([
@@ -63,15 +63,14 @@ function App() {
   ])
 
   return (<> 
-    <SignInPage/>
-  <RouterProvider router={router} />
-  <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-  </>)
+    <RouterProvider router={router} />
+      <SignedIn><UserButton /></SignedIn>
+      <SignedOut><SignInButton /></SignedOut>
+      
+  </>
+  
+  
+  )
 }
 
 export default App
