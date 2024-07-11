@@ -8,8 +8,8 @@ import About from './components/home/about/About';
 import Contact from './components/home/contact/Contact'
 
 import Auth from './views/auth/Auth';
-import SignInPage from './components/auth/sign-in/Sign-In';
-import SignUpPage  from './components/auth/sign-up/Sign-up';
+import SignInPage from './components/auth/sign-in/SignIn';
+import SignUpPage  from './components/auth/sign-up/Signup';
 import Terms from './components/auth/terms/Terms';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
@@ -63,13 +63,14 @@ function App() {
   ])
 
   return (<> 
+    <SignInPage/>
   <RouterProvider router={router} />
-  <SignedIn>
-    <UserButton />
-  </SignedIn>
   <SignedOut>
-    <SignInPage />
-  </SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
   </>)
 }
 
