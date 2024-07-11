@@ -29,7 +29,21 @@ export const registerUser = async (req: Request, res: Response) => {
     const token = createToken(user.id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: 3600000 }); // 1 hora
 
-    res.status(201).json({ user });
+    const userResponse = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      name: user.name,
+      lastName: user.lastName,
+      role: user.role,
+      technologies: user.technologies,
+      tools: user.tools,
+      location: user.location,
+      timezone: user.timezone,
+      createdAt: user.createdAt,
+    };
+
+    res.status(201).json({ userResponse });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -54,7 +68,21 @@ export const loginUser = async (req: Request, res: Response) => {
     const token = createToken(user.id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: 3600000 }); // 1 hora
 
-    res.status(200).json({ user });
+    const userResponse = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      name: user.name,
+      lastName: user.lastName,
+      role: user.role,
+      technologies: user.technologies,
+      tools: user.tools,
+      location: user.location,
+      timezone: user.timezone,
+      createdAt: user.createdAt,
+    };
+
+    res.status(200).json({ userResponse });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
