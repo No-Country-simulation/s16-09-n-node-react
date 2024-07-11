@@ -7,15 +7,16 @@
 ### Autenticación
 
 - **Registro de Usuario:**
-  - **POST** `/register` - Crear una cuenta de usuario.
+  - **POST** `/auth/register` - Crear una cuenta de usuario.
 - **Login de Usuario:**
-  - **POST** `/login` - Iniciar sesión y obtener un token.
+  - **POST** `/auth/login` - Iniciar sesión y obtener un token.
 - **Logout de Usuario:**
-  - **POST** `/logout` - Cerrar sesión eliminando la cookie del token JWT.
+  - **POST** `/auth/logout` - Cerrar sesión eliminando la cookie del token JWT.
 
 ### Usuarios
 - **Obtener Todos los Usuarios:**
-  - **GET** `/users` - Obtener una lista de todos los usuarios registrados.
+  - **GET** `/users/getAllUsers` - Obtener una lista de todos los usuarios registrados.
+  - **POST** `/users/createUser` - Crear usuarios.
 
 # Estructura del Proyecto
 
