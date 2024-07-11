@@ -1,6 +1,21 @@
 # Backend Guide
 
-# Endpoints
+# Endpoints de la API
+
+## URL Base: `http://localhost:3000`
+
+### Autenticación
+
+- **Registro de Usuario:**
+  - **POST** `/register` - Crear una cuenta de usuario.
+- **Login de Usuario:**
+  - **POST** `/login` - Iniciar sesión y obtener un token.
+- **Logout de Usuario:**
+  - **POST** `/logout` - Cerrar sesión eliminando la cookie del token JWT.
+
+### Usuarios
+- **Obtener Todos los Usuarios:**
+  - **GET** `/users` - Obtener una lista de todos los usuarios registrados.
 
 # Estructura del Proyecto
 
