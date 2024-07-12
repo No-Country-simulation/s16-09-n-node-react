@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 
-import { prisma } from '@/prisma/prisma';
+import { prisma } from '@/config/prisma';
 
 import { UserInput, userSchema } from '../schemas/userSchema';
 

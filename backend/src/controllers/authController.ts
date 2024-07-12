@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { prisma } from '@/prisma/prisma';
+import { prisma } from '@/config/prisma';
 
 const createToken = (id: string) => {
   return jwt.sign({ id }, process.env.JWT_SECRET as string, {
