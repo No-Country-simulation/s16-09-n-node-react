@@ -164,15 +164,10 @@ Mantén tu CSS modularizado creando archivos CSS separados para componentes o se
 #### 5. Documentación y Comentarios
 Documenta el uso de clases personalizadas y las razones detrás de la elección de CSS puro en lugar de TailwindCSS. Esto ayuda a otros desarrolladores a entender y mantener el código.
 
-### Conclusión
-Combinar TailwindCSS con CSS puro es una estrategia poderosa que permite un desarrollo rápido y eficiente, al tiempo que proporciona la flexibilidad necesaria para personalizar componentes específicos. Siguiendo las mejores prácticas descritas, los desarrolladores pueden crear aplicaciones web modernas y mantenibles que aprovechan lo mejor de ambos mundos.
+
 
 ### Referencias
 - [TailwindCSS Documentation](https://tailwindcss.com/docs)
 - [MDN Web Docs - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-
----
-
-Este documento proporciona una guía comprensiva sobre cómo integrar y aprovechar tanto TailwindCSS como CSS puro en proyectos de desarrollo frontend. La combinación de ambos permite crear aplicaciones flexibles y eficientes, optimizando tanto el tiempo de desarrollo como la calidad del código final.
 
 
