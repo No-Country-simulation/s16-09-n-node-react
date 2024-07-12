@@ -1,15 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -25,7 +19,7 @@ model User {
   tools        String?
   location     String?
   timezone     String?
-  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdAt    DateTime        @default(now()) @map("created_at") // @db.Timestamptz(3)
   projects     Project[]
   memberships  ProjectMember[]
 }
@@ -39,7 +33,7 @@ model Project {
   technologies String?
   type         String?
   duration     String?
-  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdAt    DateTime        @default(now()) @map("created_at") // @db.Timestamptz(3)
   members      ProjectMember[]
   meetings     Meeting[]
 }
@@ -51,7 +45,7 @@ model ProjectMember {
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   role      String
-  joined_at DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  joined_at DateTime @default(now()) @map("created_at") //@db.Timestamptz(3)
 }
 
 model Meeting {
@@ -60,5 +54,5 @@ model Meeting {
   projectId    String
   title        String
   meeting_date DateTime
-  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdAt    DateTime @default(now()) @map("created_at") //@db.Timestamptz(3)
 }
