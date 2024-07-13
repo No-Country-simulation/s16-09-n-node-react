@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 
 import { mainRouter } from './routes';
 

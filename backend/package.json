@@ -19,6 +19,7 @@
     "db:seed": "NODE_ENV=development prisma db seed"
   },
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.0.14",
     "@prisma/client": "^5.16.1",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
