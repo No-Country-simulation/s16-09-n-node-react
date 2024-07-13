@@ -3,16 +3,16 @@ import { Router } from 'express';
 import {
   createUser,
   deleteUserById,
-  getAllUsers,
   getUserById,
+  getUsers,
   updateUserById,
-} from '@/controllers/userController';
-import { requireAuth } from '@/middleware/authMiddleware';
+} from '@/controllers/user.controller';
+import { requireAuth } from '@/middleware/auth.middleware';
 
 export const userRouter = Router();
 
-userRouter.post('/createUser', createUser);
-userRouter.get('/getAllUsers', getAllUsers);
+userRouter.post('/', createUser);
+userRouter.get('/', getUsers);
 userRouter.get('/:id', requireAuth, getUserById);
 userRouter.put('/:id', requireAuth, updateUserById);
 userRouter.delete('/:id', requireAuth, deleteUserById);

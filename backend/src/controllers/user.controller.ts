@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
+
 import { prisma } from '@/config/prisma';
+
 import { UserInput, userSchema } from '../schemas/userSchema';
 
 // Crear un nuevo usuario
@@ -18,7 +20,12 @@ export const createUser = async (req: Request, res: Response) => {
       },
     });
 
-    res.status(201).json({ id: result.id, email: result.email, name: result.name, lastName: result.lastName });
+    res.status(201).json({
+      id: result.id,
+      email: result.email,
+      name: result.name,
+      lastName: result.lastName,
+    });
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({ errors: error.errors });
@@ -29,7 +36,7 @@ export const createUser = async (req: Request, res: Response) => {
 };
 
 // Obtener todos los usuarios
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
   try {
     const users = await prisma.user.findMany({
       select: {
