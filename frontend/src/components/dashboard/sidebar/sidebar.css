@@ -200,3 +200,12 @@
   text-align: left;
   line-height: 28px;
 }
+.sidebar-logout-theme {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.sidebar-theme-icon {
+  width: 25px;
+  height: 25px;
+}

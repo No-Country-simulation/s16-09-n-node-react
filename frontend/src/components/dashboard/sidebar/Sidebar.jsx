@@ -95,15 +95,18 @@ const Sidebar = (props) => {
           </span>
         </div>
       </div>
-      <div className="sidebar-logout">
-        <img
-          alt="logout icon"
-          src="/assets/logout-icon.svg"
-          className="sidebar-logout-icon"
-        />
-        <span className="sidebar-text17 Heading3">
-          Cerrar Sesión
-        </span>
+      <div className="sidebar-logout-theme">
+        <div className="sidebar-logout">
+          <img
+            alt="logout icon"
+            src="/assets/logout-icon.svg"
+            className="sidebar-logout-icon"
+          />
+          <span className="sidebar-text17 Heading3">
+            Cerrar Sesión
+          </span>
+        </div>
+        <img className='sidebar-theme-icon' src="/assets/sun-icon.svg" alt="change theme icon" />
       </div>
     </div>
   )
