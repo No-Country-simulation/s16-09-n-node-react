@@ -1,0 +1,202 @@
+.sidebar-sidebar {
+  width: 20dvw;
+  height: 100%;
+  display: flex;
+  padding: 24px;
+  position: relative;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--dl-color-ours-primary-dark);
+}
+.sidebar-nav-links {
+  gap: 16px;
+  width: 215px;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  flex-direction: column;
+}
+.sidebar-home {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-home-icon {
+  width: 20px;
+  height: 22px;
+}
+.sidebar-text {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-projects {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-projects-icon {
+  width: 25px;
+  height: 18px;
+}
+.sidebar-text02 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-participants {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-participants-icon {
+  width: 22px;
+  height: 19px;
+}
+.sidebar-text04 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-tools {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-tools-icon {
+  width: 20px;
+  height: 20px;
+}
+.sidebar-text06 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-meetings {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-meetings-icon {
+  width: 20px;
+  height: 23px;
+}
+.sidebar-text08 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-calendar {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-calendar-icon {
+  width: 16px;
+  height: 18px;
+}
+.sidebar-text10 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-tasks {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-tasks-icon {
+  width: 18px;
+  height: 18px;
+}
+.sidebar-text12 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-progress {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-progress-icon {
+  width: 17px;
+  height: 17px;
+}
+.sidebar-text14 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-docs {
+  gap: 24px;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-docs-icon {
+  width: 23px;
+  height: 18px;
+}
+.sidebar-text15 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 32px;
+}
+.sidebar-logout {
+  gap: 8px;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-shrink: 1;
+}
+.sidebar-logout-icon {
+  width: 17px;
+  height: 17px;
+}
+.sidebar-text17 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 28px;
+}

@@ -1,0 +1,45 @@
+.user-user {
+  width: 20dvw;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 15px;
+  justify-content: space-between;
+  background-color: var(--dl-color-ours-primary-dark);
+}
+.user-container {
+  width: auto;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+.user-user-image {
+  width: 52px;
+  height: 52px;
+}
+.user-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.user-text {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 28px;
+}
+.user-text2 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 24px;
+}
+.user-settings-icon {
+  width: 29px;
+  height: 29px;
+}
+

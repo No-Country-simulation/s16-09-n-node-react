@@ -13,13 +13,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --dl-color-ours-light-over: #e1e1e2ff;
+ 
+  --dl-color-fondo-dark: #000;
+  --dl-color-fondo-darkhover: rgba(149, 149, 150, 1);
+ 
+  --dl-color-ours-primary-dark: #002c58ff;
+  --dl-color-ours-primary-normal: #007dfaff;
+  --dl-color-ours-primary-dark-hover: #004b96ff;
+ 
+  --dl-color-ours-secondary-normal: #34e06fff;
+
+  --dl-color-textos-light: #CCCCCC;
 }
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
