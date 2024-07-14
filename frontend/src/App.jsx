@@ -11,22 +11,9 @@ import Auth from './views/auth/Auth';
 import SignInPage from './components/auth/sign-in/SignIn';
 import SignUpPage  from './components/auth/sign-up/Signup';
 import Terms from './components/auth/terms/Terms';
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, SignIn, SignUp } from "@clerk/clerk-react";
-import { useUser } from '@clerk/clerk-react';
-import logo from './assets/logo.png'
-import iconoRueda from './assets/iconoRueda.svg'
+import Dashboard from './views/dashboard/Dashboard';
 
 function App() {
-
-
-  const { isSignedIn, user, isLoaded } = useUser();
-
-  
-  if (!isLoaded) {
-    // agregar loading o spinner
-    return null;
-  }
-  console.log (user, "user")
 
   const router = createBrowserRouter([
     {
@@ -73,36 +60,14 @@ function App() {
         RUTAS PROTEGIDAS
         */
       ]
+    },
+    {
+      path: '/dashboard',
+      element: <Dashboard/>
     }
   ])
 
-
-
-  return (<> 
-
-
-
-<SignedIn>
-  <div className=' w-100 flex flex-row p-4 border border-black rounded-[5px]'>
-  <UserButton shimmer="true" /> 
-  <div>
-  <p className='mx-1'> {user.firstName} {user.lastName} </p>
-  <p>rol</p>
-  </div>
-<img className='w-6' src={iconoRueda} alt="" />
-
-</div></SignedIn>
-      <SignedOut><SignInButton /></SignedOut>
-
-
-    <RouterProvider router={router} />
-      
-
-      
-  </>
-  
-  
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
