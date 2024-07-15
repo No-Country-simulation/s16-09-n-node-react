@@ -1,0 +1,24 @@
+.dashboard-container {
+  width: 100dvw;
+  max-width: 100dvw;
+  min-height: 100dvh;
+  display: grid;
+  align-items: flex-start;
+  justify-content: flex-start;
+  grid-gap: 16px;
+  padding: 10px;
+  grid-template-columns: auto auto;
+  background-color: var(--dl-color-fondo-dark);
+}
+/* #item1 {
+  grid-column: 1 / span 3;
+}
+#item2 {
+  grid-column: 2 /span 3;
+}
+#item3 {
+  grid-column: 1 / span 3;
+} 
+#item4 {
+  grid-column: 2 / span 2;
+}  */

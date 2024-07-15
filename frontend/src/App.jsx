@@ -8,10 +8,13 @@ import About from './components/home/about/About';
 import Contact from './components/home/contact/Contact'
 
 import Auth from './views/auth/Auth';
-import Login from './components/auth/login/Login';
-import Signup from './components/auth/signup/Signup';
+import SignInPage from './components/auth/sign-in/SignIn';
+import SignUpPage  from './components/auth/sign-up/Signup';
+import Terms from './components/auth/terms/Terms';
+import Dashboard from './views/dashboard/Dashboard';
 
 function App() {
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -37,12 +40,16 @@ function App() {
       element: <Auth />,
       children: [
         {
-          path: '/auth/login',
-          element: <Login />
+          path: '/auth/sign-in',
+          element: <SignInPage />
         },
         {
-          path: '/auth/signup',
-          element: <Signup />
+          path: '/auth/sign-up',
+          element: <SignUpPage />
+        }, 
+        {
+          path: '/auth/term',
+          element: <Terms />
         }
       ]
     },
@@ -53,6 +60,10 @@ function App() {
         RUTAS PROTEGIDAS
         */
       ]
+    },
+    {
+      path: '/dashboard',
+      element: <Dashboard/>
     }
   ])
 
