@@ -1,0 +1,104 @@
+.home-container {
+  width: 100dvw;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 50px 0px 50px;
+  background-color: #002C58;
+  position: relative;
+}
+.home-header {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-brand {
+  width: 142px;
+  height: 40px;
+}
+.home-auth-container {
+  width: auto;
+  display: flex;
+  padding: 0;
+  gap: 32px;
+}
+.home-navlinks {
+  color: var(--dl-color-textos-light);
+  width: auto;
+}
+.home-navlinks:hover {
+  color: var(--dl-color-ours-light-over);
+}
+.home-cta-link {
+  width: fit-content;
+  background-color: var(--dl-color-ours-primary-normal);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+.home-main {
+  margin: 0px 16px ;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.home-container1 {
+  position: relative;
+  padding-bottom: 24px;
+}
+.home-rocket-image{
+  width: 380px;
+  height: 380px;
+}
+.home-text-container {
+  width: 650px;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  top: 35%;
+  left: 0;
+  position: absolute;
+}
+.home-text,
+.home-text-green {
+  max-width: 29ch;
+  text-align: left;
+  height: auto;
+  font-weight: 500;
+  font-family: "Roboto";
+  font-size: 40px;
+}
+.home-text {
+  color: #fff;
+}
+.home-text-green {
+  color: var(--dl-color-ours-secondary-normal);
+}
+.home-flint  {
+  background-color: #007DFA;
+  height: 15dvh;
+  width: 100dvw;
+}
+.home-hero-images {
+  max-width: 426px;
+  max-height: 250px;
+  position: relative;
+}
+.home-mac-device-image {
+  width: 500px;
+  height: 293px;
+  
+}
+.home-device-image {
+  width: 100px;
+  height: 210px;
+  bottom: -50%;
+  right: 0px;
+  position: absolute;
+  z-index: 100;
+}
