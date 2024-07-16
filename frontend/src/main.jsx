@@ -26,10 +26,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    
    <ClerkProvider 
+afterSignOutUrl="/"
+signInFallbackRedirectUrl="/dashboard"
                    localization={esES}
                   publishableKey={PUBLISHABLE_KEY}
                   appearance={{
-                animations:true,
+            
 
                                layout: {
                                 socialButtonsPlacement: 'bottom',
