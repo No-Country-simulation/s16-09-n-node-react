@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types'
 import './user.css'
+import { UserButton } from '@clerk/clerk-react'
+import { useUser } from '@clerk/clerk-react'
 
 const User = (props) => {
+
+const user = useUser()
+console.log(user)
+
   return (
     <div className={`user-user`}>
       <div className="user-container">
-        <img
-          alt="user image"
-          src={props.userImage}
-          className="user-user-image"
-        />
+    <UserButton />
         <div className="user-container1">
           <span className="user-text Heading3">
-            {props.userName}
+          {user.user.fullName}
           </span>
           <span className="user-text2 Body2">
             {props.userRol}
