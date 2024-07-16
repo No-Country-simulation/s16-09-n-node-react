@@ -29,7 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     publishableKey={PUBLISHABLE_KEY}
                     appearance={{
                                 variables: {
-                                            fontFamily: "Sans-Serif",   },
+                                            fontFamily: "Sans-Serif",   
+                                          color: "#007DFA" },
                                   layout: {
                                             termsPageUrl: '/auth/terms',  
                                             socialButtonsPlacement: 'bottom',
