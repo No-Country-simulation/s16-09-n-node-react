@@ -11,7 +11,7 @@ export default function SignInPage() {
       <div className="flex-1 flex flex-col justify-center items-center p-10 ">
         <img src={icono} alt="Icono" className="w-1/5 h-2/5 mb-4 md:mb-0" />
         <img src={logo} alt="Logo" className="w-3/5 mt-5 md:mt-0" />
-        <b className="text-center mt-10 md:mt-20 text-lg">¡Desde el inicio hasta el lanzamiento!</b>
+        <b className="text-center mt-10 md:mt-20 text-xl">¡Desde el inicio hasta el lanzamiento!</b>
       </div>
     </div>
   );
