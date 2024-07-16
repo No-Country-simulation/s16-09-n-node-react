@@ -11,7 +11,7 @@ const Sidebar = (props) => {
             className="sidebar-home-icon"
           />
           <span className="sidebar-text">
-            Home
+            Ariel trabajando
           </span>
         </div>
         <div className="sidebar-projects">
