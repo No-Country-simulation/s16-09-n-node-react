@@ -209,3 +209,12 @@
   width: 25px;
   height: 25px;
 }
+.sidebar-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-link span:hover {
+  color: #3498db; /* Cambia este color según tu preferencia */
+  cursor: pointer;
+}

@@ -34,6 +34,7 @@ signInFallbackRedirectUrl="/dashboard"
             
 
                                layout: {
+                                termsPageUrl: '/auth/terms',  
                                 socialButtonsPlacement: 'bottom',
                               socialButtonsVariant: 'blockButton', 
                               signUpFields: [
