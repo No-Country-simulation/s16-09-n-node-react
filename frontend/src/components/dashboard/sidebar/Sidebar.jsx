@@ -1,4 +1,6 @@
-import './sidebar.css'
+import { SignOutButton } from '@clerk/clerk-react';
+import './sidebar.css';
+import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
   return (
@@ -10,19 +12,23 @@ const Sidebar = (props) => {
             src="/assets/home-icon.svg"
             className="sidebar-home-icon"
           />
-          <span className="sidebar-text">
-            Ariel trabajando
-          </span>
+          <Link to="/dashboard" className="sidebar-link">
+            <span className="sidebar-text">
+              Home
+            </span>
+          </Link>
         </div>
         <div className="sidebar-projects">
           <img
-            alt="proyects icon"
+            alt="projects icon"
             src="/assets/proyects-icon.svg"
             className="sidebar-projects-icon"
           />
-          <span className="sidebar-text02">
-            Proyectos
-          </span>
+          <Link to="/projects" className="sidebar-link">
+            <span className="sidebar-text02">
+              Proyectos
+            </span>
+          </Link>
         </div>
         <div className="sidebar-participants">
           <img
@@ -30,9 +36,11 @@ const Sidebar = (props) => {
             src="/assets/participants-icon.svg"
             className="sidebar-participants-icon"
           />
-          <span className="sidebar-text04">
-            Participantes
-          </span>
+          <Link to="/participantes" className="sidebar-link">
+            <span className="sidebar-text04">
+              Participantes
+            </span>
+          </Link>
         </div>
         <div className="sidebar-tools">
           <img
@@ -40,9 +48,11 @@ const Sidebar = (props) => {
             src="/assets/tools-icon.svg"
             className="sidebar-tools-icon"
           />
-          <span className="sidebar-text06">
-            Herramientas
-          </span>
+          <Link to="/tools" className="sidebar-link">
+            <span className="sidebar-text06">
+              Herramientas
+            </span>
+          </Link>
         </div>
         <div className="sidebar-meetings">
           <img
@@ -50,9 +60,11 @@ const Sidebar = (props) => {
             src="/assets/meetings-icon.svg"
             className="sidebar-meetings-icon"
           />
-          <span className="sidebar-text08">
-            Reuniones
-          </span>
+          <Link to="/meetings" className="sidebar-link">
+            <span className="sidebar-text08">
+              Reuniones
+            </span>
+          </Link>
         </div>
         <div className="sidebar-calendar">
           <img
@@ -60,9 +72,11 @@ const Sidebar = (props) => {
             src="/assets/calendar-icon.svg"
             className="sidebar-calendar-icon"
           />
-          <span className="sidebar-text10">
-            Calendario
-          </span>
+          <Link to="/calendar" className="sidebar-link">
+            <span className="sidebar-text10">
+              Calendario
+            </span>
+          </Link>
         </div>
         <div className="sidebar-tasks">
           <img
@@ -70,9 +84,11 @@ const Sidebar = (props) => {
             src="/assets/tasks-icon.svg"
             className="sidebar-tasks-icon"
           />
-          <span className="sidebar-text12">
-            Tareas
-          </span>
+          <Link to="/tasks" className="sidebar-link">
+            <span className="sidebar-text12">
+              Tareas
+            </span>
+          </Link>
         </div>
         <div className="sidebar-progress">
           <img
@@ -80,9 +96,11 @@ const Sidebar = (props) => {
             src="/assets/progress-icon.svg"
             className="sidebar-progress-icon"
           />
-          <span className="sidebar-text14">
-            Progreso
-          </span>
+          <Link to="/progress" className="sidebar-link">
+            <span className="sidebar-text14">
+              Progreso
+            </span>
+          </Link>
         </div>
         <div className="sidebar-docs">
           <img
@@ -90,9 +108,11 @@ const Sidebar = (props) => {
             src="/assets/docs-icon.svg"
             className="sidebar-docs-icon"
           />
-          <span className="sidebar-text15">
-            Documentación
-          </span>
+          <Link to="/docs" className="sidebar-link">
+            <span className="sidebar-text15">
+              Documentación
+            </span>
+          </Link>
         </div>
       </div>
       <div className="sidebar-logout-theme">
@@ -102,14 +122,16 @@ const Sidebar = (props) => {
             src="/assets/logout-icon.svg"
             className="sidebar-logout-icon"
           />
-          <span className="sidebar-text17 Heading3">
-            Cerrar Sesión
-          </span>
+          <Link to="/logout" className="sidebar-link">
+            <span className="sidebar-text17 Heading3">
+            <SignOutButton  /> 
+            </span>
+          </Link>
         </div>
         <img className='sidebar-theme-icon' src="/assets/sun-icon.svg" alt="change theme icon" />
       </div>
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
