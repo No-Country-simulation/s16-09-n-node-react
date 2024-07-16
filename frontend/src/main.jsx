@@ -13,8 +13,6 @@ import axios from 'axios';
 
 
 
-axios.defaults.baseURL = 'localhost:3000/'
-
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 if (!PUBLISHABLE_KEY) {
@@ -25,35 +23,27 @@ if (!PUBLISHABLE_KEY) {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    
-   <ClerkProvider 
-afterSignOutUrl="/"
-signInFallbackRedirectUrl="/dashboard"
-                   localization={esES}
-                  publishableKey={PUBLISHABLE_KEY}
-                  appearance={{
-            
+   <ClerkProvider   afterSignOutUrl="/"
+                    signInFallbackRedirectUrl="/dashboard"
+                    localization={esES}
+                    publishableKey={PUBLISHABLE_KEY}
+                    appearance={{
+                                variables: {
+                                            fontFamily: "Sans-Serif",   },
+                                  layout: {
+                                            termsPageUrl: '/auth/terms',  
+                                            socialButtonsPlacement: 'bottom',
+                                            socialButtonsVariant: 'blockButton', 
+                                   },
+                                  helpPageUrl: 'https://docs.clerk.dev/',
 
-                               layout: {
-                                termsPageUrl: '/auth/terms',  
-                                socialButtonsPlacement: 'bottom',
-                              socialButtonsVariant: 'blockButton', 
-                              signUpFields: [
-                                'email',
-                                'password',
-                                'fullName'
-                              ],},
-                              helpPageUrl: 'https://docs.clerk.dev/',
-
-        variables: {
-          colorPrimary: "#007DFA"
-        }
-     
+                                  variables: {
+                                              colorPrimary: "#007DFA" }
       } } 
-   
-   >
+      >
     <Provider store={store} >
     <GoogleOneTap />
-      <App />
+    <App />
     </Provider>
     </ClerkProvider>
   </React.StrictMode>,

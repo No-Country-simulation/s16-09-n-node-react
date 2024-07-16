@@ -12,7 +12,7 @@ const Sidebar = (props) => {
             src="/assets/home-icon.svg"
             className="sidebar-home-icon"
           />
-          <Link to="/dashboard" className="sidebar-link">
+          <Link to="/" className="sidebar-link">
             <span className="sidebar-text">
               Home
             </span>
