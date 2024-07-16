@@ -26,11 +26,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    
    <ClerkProvider 
-      localization={esES}
+                   localization={esES}
                   publishableKey={PUBLISHABLE_KEY}
                   appearance={{
-                    baseTheme: [dark],
-   
+                animations:true,
+
                                layout: {
                                 socialButtonsPlacement: 'bottom',
                               socialButtonsVariant: 'blockButton', 
@@ -39,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                 'password',
                                 'fullName'
                               ],},
+                              helpPageUrl: 'https://docs.clerk.dev/',
 
         variables: {
           colorPrimary: "#007DFA"
