@@ -2,6 +2,16 @@ import PropTypes from 'prop-types'
 import './user.css'
 import { UserButton } from '@clerk/clerk-react'
 import { useUser } from '@clerk/clerk-react'
+import ClipLoader from "react-spinners/ClipLoader";
+
+
+const styles = {
+  spinner: {
+    display: 'block',
+    margin: '10px auto',
+    borderColor: 'white',
+  } 
+}
 
 const User = (props) => {
 
@@ -9,10 +19,20 @@ const {isLoader, user } = useUser()
 
 console.log (user, isLoader, 'user')
   return (
- (!user ) ?   <p> Loading... </p>  : (
+ (!user ) ?   <p>   <ClipLoader
+ color="white"
+ loading={isLoader}
+ size={40}
+ cssOverride= {styles.spinner  }
+ aria-label="Loading Spinner"
+ data-testid="loader"
+/></p>  : (
     <div className={`user-user`}>
       <div className="user-container font-white">
-    <UserButton  />
+    <UserButton 
+    
+    
+    />
         <div className="user-container1">
           <span className="user-text Heading3 font-bold">
     { user.fullName }
