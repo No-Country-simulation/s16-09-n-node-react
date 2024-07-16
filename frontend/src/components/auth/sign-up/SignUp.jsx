@@ -1,6 +1,7 @@
 import { SignUp } from "@clerk/clerk-react";
 import logo from '../../../assets/logo.svg';
 import icono from '../../../assets/icono.svg';
+import './signup.css';
 
 export default function SignInPage() {
   return (
