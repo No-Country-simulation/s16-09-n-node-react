@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 .sidebar-sidebar {
   width: 20dvw;
   height: 100%;
@@ -7,8 +9,11 @@
   border-radius: 15px;
   flex-direction: column;
   justify-content: space-between;
+  font-size: large;
+  font-weight: 600;
   background-color: var(--dl-color-ours-primary-dark);
 }
+
 .sidebar-nav-links {
   gap: 16px;
   width: 215px;
