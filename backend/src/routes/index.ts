@@ -9,7 +9,5 @@ export const mainRouter = Router();
 
 mainRouter.use('/', homeRouter);
 mainRouter.use('/users', userRouter);
-mainRouter.use('/user', userRouter);
 mainRouter.use('/calendar/v3', calendarRouter);
 mainRouter.use('/auth', authRouter);
-mainRouter.use('/calendar/v3', calendarRouter);
