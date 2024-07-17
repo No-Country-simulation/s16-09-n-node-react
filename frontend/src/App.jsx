@@ -23,6 +23,7 @@ import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
 import Participantes from './components/dashboard/participantes/participantes';
 
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -66,9 +67,9 @@ function App() {
  
    
  
-            { path: 'home', element: <HomeMain /> },
-            { path: 'projects', element: <Project /> },
-            { path: 'participantes', element: <Participantes /> },
+            { path: 'dashboard/home', element: <HomeMain /> },
+            { path: 'dashboard/projects', element: <Project /> },
+            { path: 'dashboard/participantes', element: <Participantes /> },
             { path: 'tools', element: <Tools /> },
             { path: 'meetings', element: <Meetings /> },
             { path: 'calendar', element: <Calendar /> },

@@ -6,4 +6,18 @@
         border: 2px solid red;
 
     }
-    
+    .cl-cardBox{
+       box-shadow: none;
+       
+
+    }
+    .cl-formFieldLabel{
+        color: #007dfa;  
+        justify-content: flex-start; 
+        margin-bottom: -5%;
+        background-color: white;
+        width: 40%;
+        z-index: 5;
+        padding-left: 5%;
+        padding-right: -5%;
+    }
