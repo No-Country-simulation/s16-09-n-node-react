@@ -42,7 +42,7 @@ const Terms = () => {
       <h2>8. Limitation of Liability</h2>
       <p>In no event shall we be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenues.</p>
       
-      <Link to="/auth/signup" className={styles.backLink}>Back to Sign Up</Link>
+      <Link to="/auth/sign-up" className={styles.backLink}>Back to Sign Up</Link>
     </div>
   );
 };
