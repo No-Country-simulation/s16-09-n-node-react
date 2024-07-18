@@ -93,4 +93,11 @@ color:red
 
     background-color: red;
      }
-     
+     .cl-socialButtonsBlockButton {
+        border: 2px solid red !important;
+      }
+      
+      .cl-socialButtonsBlockButton__apple {
+        border: 2px solid red !important;
+      }
+      
