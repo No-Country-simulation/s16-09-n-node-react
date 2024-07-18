@@ -2,29 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./views/error/Error";
 import ProtectedRoutes from "./components/commons/Protected";
 
-<<<<<<< HEAD
-import Home from "./views/home/Home";
-import HomeMain from "./components/home/homemain/HomeMain";
-import About from "./components/home/about/About";
-import Contact from "./components/home/contact/Contact";
-
-import Auth from "./views/auth/Auth";
-import SignInPage from "./components/auth/sign-in/SignIn";
-import SignUpPage from "./components/auth/sign-up/Signup";
-import Terms from "./components/auth/terms/Terms";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-  SignIn,
-  SignUp,
-} from "@clerk/clerk-react";
-import Participantes from "./components/participantes/participantes";
-
-import logo from "./assets/logo.png";
-=======
 import Home from './views/home/Home';
 import HomeMain from './components/home/homemain/HomeMain';
 import About from './components/home/about/About';
@@ -46,7 +23,6 @@ import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
 import Participantes from './components/dashboard/participantes/participantes';
 
->>>>>>> origin/dev
 
 function App() {
   const router = createBrowserRouter([
@@ -64,18 +40,11 @@ function App() {
           element: <About />,
         },
         {
-<<<<<<< HEAD
-          path: "/contact",
-          element: <Contact />,
-        },
-      ],
-=======
           path: '/contact',
           element: <Contact />
         }
         
       ]
->>>>>>> origin/dev
     },
     {
       path: "/auth",
@@ -86,16 +55,6 @@ function App() {
           element: <SignInPage />,
         },
         {
-<<<<<<< HEAD
-          path: "/auth/sign-up",
-          element: <SignUpPage />,
-        },
-        {
-          path: "/auth/term",
-          element: <Terms />,
-        },
-      ],
-=======
           path: '/auth/sign-up',
           element: <SignUpPage />
         },
@@ -104,7 +63,6 @@ function App() {
           element: <Terms />
         }
       ]
->>>>>>> origin/dev
     },
  
    
@@ -121,41 +79,12 @@ function App() {
   
    ,
     {
-<<<<<<< HEAD
-      element: <ProtectedRoutes />,
-      children: [
-        /*
-        RUTAS PROTEGIDAS
-        */
-      ],
-    },
-  ]);
-
-  return (
-    <>
-      <RouterProvider router={router} />
-
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-
-      <div>
-        <h1>Proyecto de Participantes</h1>
-        <Participantes />
-      </div>
-    </>
-  );
-=======
       path: '/dashboard',
       element: <Dashboard />
     }
   ]);
 
   return <RouterProvider router={router} />;
->>>>>>> origin/dev
 }
 
 export default App;
