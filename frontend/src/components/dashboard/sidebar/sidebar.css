@@ -1,0 +1,81 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --color-primary-dark: #002c58;
+  --color-primary-normal: #007dfa;
+  --color-primary-dark-hover: #004b96;
+  --color-secondary-normal: #34e06f;
+  --color-text-light: #CCCCCC;
+  --color-text-dark: #000000;
+  --color-background-light: #ffffff;
+  --color-background-dark: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.sidebar {
+  width: 20dvw;
+  height: 100%;
+  display: flex;
+  padding: 24px;
+  position: relative;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: large;
+  font-weight: 600;
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+}
+
+.sidebar.light-mode {
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+}
+
+.sidebar-nav-links {
+  gap: 16px;
+  width: 215px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 32px;
+}
+
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-link span:hover {
+  color: #3498db; /* Cambia este color según tu preferencia */
+  cursor: pointer;
+}
+
+.sidebar-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar-theme-icon {
+  width: 25px;
+  height: 25px;
+}

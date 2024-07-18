@@ -1,0 +1,81 @@
+.task2-task {
+  width: 203px;
+  height: 137px;
+  display: flex;
+  padding: 8px;
+  position: relative;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--dl-color-ours-primary-dark-hover);
+}
+.task2-issue {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 28px;
+}
+.task2-team {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  text-align: left;
+  line-height: 22px;
+}
+.task2-collaborators {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.task2-collaborator-image {
+  width: 31px;
+  height: 31px;
+}
+.task2-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.task2-status {
+  gap: 8px;
+  width: auto;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-shrink: 1;
+}
+.task2-in-progress {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  border-radius: 3px;
+  background-color: var(--dl-color-ours-secondary-normal);
+}
+.task2-text2 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  width: 11ch;
+  text-align: left;
+  line-height: 14px;
+}
+.task2-container1 {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.task2-message-icon {
+  width: 20px;
+  height: 20px;
+}
+.task2-text4 {
+  color: var(--dl-color-textos-light);
+  height: auto;
+  width: auto;
+  text-align: left;
+  line-height: 28px;
+}
