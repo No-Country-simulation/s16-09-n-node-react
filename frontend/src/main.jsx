@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { esES } from "@clerk/localizations";
-
+import { ThemeProvider } from './context/themecontext';
 
 import { store } from "./Redux/store";
 import { Provider } from "react-redux";
@@ -22,7 +22,7 @@ if (!PUBLISHABLE_KEY) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   
+    <ThemeProvider>
    <ClerkProvider   afterSignOutUrl="/"
                     signInFallbackRedirectUrl="/dashboard"
                     localization={esES}
@@ -47,5 +47,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
     </Provider>
     </ClerkProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 )
