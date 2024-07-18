@@ -1,58 +1,67 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ErrorPage from './views/error/Error';
-import ProtectedRoutes from './components/commons/Protected';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./views/error/Error";
+import ProtectedRoutes from "./components/commons/Protected";
 
-import Home from './views/home/Home';
-import HomeMain from './components/home/homemain/HomeMain';
-import About from './components/home/about/About';
-import Contact from './components/home/contact/Contact'
+import Home from "./views/home/Home";
+import HomeMain from "./components/home/homemain/HomeMain";
+import About from "./components/home/about/About";
+import Contact from "./components/home/contact/Contact";
 
-import Auth from './views/auth/Auth';
-import SignInPage from './components/auth/sign-in/SignIn';
-import SignUpPage  from './components/auth/sign-up/Signup';
-import Terms from './components/auth/terms/Terms';
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton, SignIn, SignUp } from "@clerk/clerk-react";
+import Auth from "./views/auth/Auth";
+import SignInPage from "./components/auth/sign-in/SignIn";
+import SignUpPage from "./components/auth/sign-up/Signup";
+import Terms from "./components/auth/terms/Terms";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+  SignIn,
+  SignUp,
+} from "@clerk/clerk-react";
+import Participantes from "./components/participantes/participantes";
 
-import logo from './assets/logo.png'
+import logo from "./assets/logo.png";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <Home />,
       errorElement: <ErrorPage />,
       children: [
         {
-          path: '/',
-          element: <HomeMain />
+          path: "/",
+          element: <HomeMain />,
         },
         {
-          path: '/about',
-          element: <About />
+          path: "/about",
+          element: <About />,
         },
         {
-          path: '/contact',
-          element: <Contact />
-        }
-      ]
-    }, 
+          path: "/contact",
+          element: <Contact />,
+        },
+      ],
+    },
     {
-      path: '/auth',
+      path: "/auth",
       element: <Auth />,
       children: [
         {
-          path: '/auth/sign-in',
-          element: <SignInPage />
+          path: "/auth/sign-in",
+          element: <SignInPage />,
         },
         {
-          path: '/auth/sign-up',
-          element: <SignUpPage />
-        }, 
+          path: "/auth/sign-up",
+          element: <SignUpPage />,
+        },
         {
-          path: '/auth/term',
-          element: <Terms />
-        }
-      ]
+          path: "/auth/term",
+          element: <Terms />,
+        },
+      ],
     },
     {
       element: <ProtectedRoutes />,
@@ -60,25 +69,27 @@ function App() {
         /*
         RUTAS PROTEGIDAS
         */
-      ]
-    }
-  ])
+      ],
+    },
+  ]);
 
-  return (<> 
+  return (
+    <>
+      <RouterProvider router={router} />
 
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
 
-
-
-
-    <RouterProvider router={router} />
-      
-<SignedIn><UserButton /></SignedIn>
-      <SignedOut><SignInButton /></SignedOut>
-      
-  </>
-  
-  
-  )
+      <div>
+        <h1>Proyecto de Participantes</h1>
+        <Participantes />
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
