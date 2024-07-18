@@ -23,7 +23,7 @@ const Participantes = () => {
       {personas.length > 0 &&
         personas.map((personas) => {
           return (
-            <div claa>
+            <div className="lista">
               <h1>{personas.id}</h1>
               <h2>{personas.first_name}</h2>
               <h2>{personas.last_name}</h2>
