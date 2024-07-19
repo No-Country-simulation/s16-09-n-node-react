@@ -1,12 +1,15 @@
 import './docs.css'
+import {useTheme} from '../../../context/ThemeContext'
 
 const Docs = (props) => {
+
+  const { theme } = useTheme()
   return (
-    <div className="docs-docs">
+    <div className="docs-docs" style={{color: theme.primary, backgroundColor: theme.background}}>
       <span className="docs-title Heading1">
         <span>Documentación</span>
       </span>
-      <div className="docs-container">
+      <div className="docs-container" style={{backgroundColor: theme.back }}>
         <div className="docs-container1">
           <span className="docs-text1 Heading3">
             <span>MVP</span>

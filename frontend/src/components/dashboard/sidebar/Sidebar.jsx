@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SignOutButton } from '@clerk/clerk-react';
-import { useTheme } from '../../../hooks/hookTheme'; 
+import { useTheme } from '../../../context/ThemeContext'; 
 import './sidebar.css';
-import sun from '../../../assets/sun-icon.svg';
-import moon from '../../../assets/moon-icon.svg';
+import sun from '/assets/sun-icon.svg';
+import moon from '/assets/moon-icon.svg';
 
 const Sidebar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -22,11 +22,16 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className={`sidebar ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}>
+    <div className="sidebar" style={{ color: theme.text, backgroundColor: theme.background }}>
       <div className="sidebar-nav-links">
         {menuItems.map(item => (
-          <div key={item.name} className="sidebar-item">
-            <img alt={`${item.name} icon`} src={item.icon} className="sidebar-icon" />
+          <div key={item.name} className="sidebar-item" style={{color: theme.text, fill: theme.text}} > 
+            <img 
+              alt={`${item.name} icon`} 
+              src={item.icon} 
+              className="sidebar-icon" 
+              style={{ color: theme.text,  fill: theme.text }} 
+            />
             <Link to={item.link} className="sidebar-link">
               <span>{item.name}</span>
             </Link>
@@ -35,8 +40,8 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-footer">
         <div className="sidebar-item">
-          <img alt="logout icon" src="/assets/logout-icon.svg" className="sidebar-icon" />
-          <Link to="/logout" className="sidebar-link">
+          <img alt="logout icon" src="/assets/logout-icon.svg" className="sidebar-icon" style={{ color: theme.text, fill: theme.primary }} />
+          <Link to="/logout" className="sidebar-link" style={{color: theme.text}}>
             <span className="sidebar-text">
               <SignOutButton />
             </span>
@@ -44,9 +49,10 @@ const Sidebar = () => {
         </div>
         <img
           className="sidebar-theme-icon cursor-pointer"
-          src={theme === 'light' ? sun : moon}
+          src={theme.text === '#000000' ? moon : sun}
           alt="change theme icon"
           onClick={toggleTheme}
+          style={{ color: theme.text, fill: theme.text }}
         />
       </div>
     </div>
