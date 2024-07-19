@@ -3,7 +3,7 @@ import './user.css'
 import { UserButton } from '@clerk/clerk-react'
 import { useUser } from '@clerk/clerk-react'
 import ClipLoader from "react-spinners/ClipLoader";
-
+import {useTheme} from '../../../context/ThemeContext'
 
 const styles = {
   spinner: {
@@ -14,7 +14,7 @@ const styles = {
 }
 
 const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', userRol = 'Frontend' }) => {
-
+const { theme } = useTheme()
 const {isLoader, user } = useUser()
 
 console.log (user, isLoader, 'user')
@@ -27,17 +27,17 @@ console.log (user, isLoader, 'user')
  aria-label="Loading Spinner"
  data-testid="loader"
 /></p>  : (
-    <div className={`user-user`}>
+    <div className={`user-user`} style={{color: theme.text, backgroundColor: theme.background} }>
       <div className="user-container font-white">
     <UserButton 
     
     
     />
-        <div className="user-container1">
-          <span className="user-text Heading3 font-bold">
+        <div className="user-container1" style={{color: theme.text, backgroundColor: theme.background}}>
+          <span className="user-text Heading3 font-bold" style={{color: theme.text, backgroundColor: theme.background}  }>
     { user.fullName }
           </span>
-          <span className="user-text2 Body2">
+          <span className="user-text2 Body2" style={{color: theme.text, backgroundColor: theme.background} }>
             {userRol}
           </span>
         </div>
@@ -46,6 +46,7 @@ console.log (user, isLoader, 'user')
         alt="settings icon"
         src="/assets/settings-icon.svg"
         className="user-settings-icon hover:text-red-700"
+        style={{color: theme.text, backgroundColor: theme.background} }
  
       />
     </div>) 

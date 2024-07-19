@@ -11,7 +11,7 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  const themeStyles = theme === 'light' ? lightTheme : darkTheme;
+  const themeStyles = theme === 'light' ? light : dark;
 
   return (
     <ThemeContext.Provider value={{ theme: themeStyles, toggleTheme }}>
@@ -21,17 +21,19 @@ export const ThemeProvider = ({ children }) => {
 };
 
 export const useTheme = () => useContext(ThemeContext);
-const lightTheme = {
-    text: "rgb(87, 87, 88)",
+const light = {
+    text: '#000000',
     background: '#f8f9fa', // Fondo Normal
     secondary: '#34e06f', // Secundario Normal
-    backgroundSecondary: '#dfe0e1', // Fondo Normal :hover
+    backgroundSecondary: '#b0d7fd', // Fondo Normal :hover
+    back: "rgb(217, 236, 254)" // primario light hover
   };
   
-  const darkTheme = {
+  const dark = {
     text: "white",
     background: '#002c58', // Fondo darker
     secondary: '#007dfa', // Primario Normal
-    backgroundSecondary: '#959596', // Fondo Dark :hover
+    backgroundSecondary: 'black', // Fondo Dark :hover
+    back: "rgb(0, 71, 138)" // primario
   };
   

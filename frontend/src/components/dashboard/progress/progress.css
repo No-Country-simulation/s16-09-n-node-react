@@ -8,11 +8,10 @@
   border-radius: 15px;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark);
+
   grid-area:  2 / 3 / 4 / 3;
 }
 .progress-title {
-  color: var(--dl-color-textos-light);
   height: auto;
   font-size: 32px;
   font-style: normal;
@@ -32,7 +31,6 @@
   justify-content: space-between;
 }
 .progress-text1 {
-  color: var(--dl-color-textos-light);
   height: auto;
   width: 15ch;
   text-align: left;
@@ -64,7 +62,6 @@
   justify-content: space-between;
 }
 .progress-text3 {
-  color: var(--dl-color-textos-light);
   height: auto;
   width: 15ch;
   text-align: left;
@@ -96,7 +93,6 @@
   justify-content: space-between;
 }
 .progress-text5 {
-  color: var(--dl-color-textos-light);
   height: auto;
   width: 15ch;
   text-align: left;
@@ -128,7 +124,6 @@
   justify-content: space-between;
 }
 .progress-text7 {
-  color: var(--dl-color-textos-light);
   height: auto;
   width: 15ch;
   text-align: left;

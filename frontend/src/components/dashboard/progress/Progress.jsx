@@ -1,8 +1,11 @@
 import './progress.css'
+import { useTheme } from '../../../context/ThemeContext'
 
 const Progress = (props) => {
+
+const { theme } = useTheme()
   return (
-    <div className="progress-progress">
+    <div className="progress-progress" style={{color: theme.text, backgroundColor: theme.background}}>
       <span className="progress-title Heading1">
         <span>Progreso</span>
       </span>

@@ -25,6 +25,7 @@ import Participantes from './components/dashboard/participantes/participantes';
 import {useTheme} from './context/ThemeContext'
 
 
+
 function App() {
   const theme = useTheme();
   const router = createBrowserRouter([
@@ -86,7 +87,7 @@ function App() {
     }
   ]);
 
-  return <RouterProvider router={router} />;
+  return  <RouterProvider router={router} />;
 }
 
 export default App;

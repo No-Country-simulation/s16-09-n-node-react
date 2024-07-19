@@ -3,8 +3,8 @@ import './proyect.css'
 
 const Proyect = (props) => {
   return (
-    <div className="proyect-proyect">
-      <span className="proyect-title">{props.title}</span>
+    <div className="proyect-proyect" style={props.theme}>
+      <span className="proyect-title" style={props.theme}>{props.title}</span>
       <span className="proyect-description Body1">{props.description}</span>
       <img
         alt="proyect image"
