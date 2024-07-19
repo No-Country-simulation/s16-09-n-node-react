@@ -1,55 +1,152 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SignOutButton } from '@clerk/clerk-react';
-import { useTheme } from '../../../hooks/hookTheme'; 
-import './sidebar.css';
-import sun from '../../../assets/sun-icon.svg';
-import moon from '../../../assets/moon-icon.svg';
+import { useTheme } from '../../../context/ThemeContext'; 
+import styled from 'styled-components';
+import sun from './sun-icon.svg';
+import moon from './moon-icon.svg';
+
+const SidebarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 890px;
+  gap: 20px;
+  width: 250px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 0;
+  width: 300px;
+  font-size: x-large;
+    background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+`;
+
+const NavLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
+
+const NavLinkItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  &:hover {
+    color: ${({ theme }) => theme.secondary};
+  }
+`;
+
+const Icon = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+`;
+
+const LinkText = styled.span`
+padding: 5%;
+`;
+
+const LogoutThemeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+`;
+
+const LogoutButton = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: ${({ theme }) => theme.text};
+  &:hover {
+    background-color: ${({ theme }) => theme.backgroundSecondary};
+  }
+`;
+
+const ThemeIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.text};
+`;
 
 const Sidebar = () => {
   const { theme, toggleTheme } = useTheme();
-
-  const menuItems = [
-    { name: 'Home', icon: '/assets/home-icon.svg', link: '/' },
-    { name: 'Proyectos', icon: '/assets/proyects-icon.svg', link: '/projects' },
-    { name: 'Participantes', icon: '/assets/participants-icon.svg', link: '/participants' },
-    { name: 'Herramientas', icon: '/assets/tools-icon.svg', link: '/tools' },
-    { name: 'Reuniones', icon: '/assets/meetings-icon.svg', link: '/meetings' },
-    { name: 'Calendario', icon: '/assets/calendar-icon.svg', link: '/calendar' },
-    { name: 'Tareas', icon: '/assets/tasks-icon.svg', link: '/tasks' },
-    { name: 'Progreso', icon: '/assets/progress-icon.svg', link: '/progress' },
-    { name: 'Documentación', icon: '/assets/docs-icon.svg', link: '/docs' },
-  ];
+  console.log(theme);
 
   return (
-    <div className={`sidebar ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}>
-      <div className="sidebar-nav-links">
-        {menuItems.map(item => (
-          <div key={item.name} className="sidebar-item">
-            <img alt={`${item.name} icon`} src={item.icon} className="sidebar-icon" />
-            <Link to={item.link} className="sidebar-link">
-              <span>{item.name}</span>
-            </Link>
-          </div>
-        ))}
-      </div>
-      <div className="sidebar-footer">
-        <div className="sidebar-item">
-          <img alt="logout icon" src="/assets/logout-icon.svg" className="sidebar-icon" />
-          <Link to="/logout" className="sidebar-link">
-            <span className="sidebar-text">
-              <SignOutButton />
-            </span>
+    <SidebarContainer theme={theme}>
+      <NavLinks>
+        <NavLinkItem theme={theme}>
+          <Icon alt="home icon" src="/assets/home-icon.svg" />
+          <Link to="/" className="sidebar-link">
+            <LinkText>Home</LinkText>
           </Link>
-        </div>
-        <img
-          className="sidebar-theme-icon cursor-pointer"
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="projects icon" src="/assets/proyects-icon.svg" />
+          <Link to="/projects" className="sidebar-link">
+            <LinkText>Proyectos</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="participants icon" src="/assets/participants-icon.svg" />
+          <Link to="/participantes" className="sidebar-link">
+            <LinkText>Participantes</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="tools icon" src="/assets/tools-icon.svg" />
+          <Link to="/tools" className="sidebar-link">
+            <LinkText>Herramientas</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="meetings icon" src="/assets/meetings-icon.svg" />
+          <Link to="/meetings" className="sidebar-link">
+            <LinkText>Reuniones</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="calendar icon" src="/assets/calendar-icon.svg" />
+          <Link to="/calendar" className="sidebar-link">
+            <LinkText>Calendario</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="tasks icon" src="/assets/tasks-icon.svg" />
+          <Link to="/tasks" className="sidebar-link">
+            <LinkText>Tareas</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="progress icon" src="/assets/progress-icon.svg" />
+          <Link to="/progress" className="sidebar-link">
+            <LinkText>Progreso</LinkText>
+          </Link>
+        </NavLinkItem>
+        <NavLinkItem theme={theme}>
+          <Icon alt="docs icon" src="/assets/docs-icon.svg" />
+          <Link to="/docs" className="sidebar-link">
+            <LinkText>Documentación</LinkText>
+          </Link>
+        </NavLinkItem>
+      </NavLinks>
+      <LogoutThemeContainer>
+        <LogoutButton theme={theme}>
+          <Icon alt="logout icon" src="/assets/logout-icon.svg" />
+          <SignOutButton />
+        </LogoutButton>
+        <ThemeIcon
           src={theme === 'light' ? sun : moon}
           alt="change theme icon"
           onClick={toggleTheme}
         />
-      </div>
-    </div>
+      </LogoutThemeContainer>
+    </SidebarContainer>
   );
 };
 

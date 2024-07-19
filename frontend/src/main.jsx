@@ -1,15 +1,19 @@
+"use client"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { esES } from "@clerk/localizations";
-import { ThemeProvider } from './context/themecontext';
 
 import { store } from "./Redux/store";
 import { Provider } from "react-redux";
 import { ClerkProvider, GoogleOneTap } from "@clerk/clerk-react";
 import { dark } from "@clerk/themes";
 import axios from 'axios';
+
+import {ThemeProvider}   from '../src/context/ThemeContext'
+
+
 
 
 
@@ -22,7 +26,6 @@ if (!PUBLISHABLE_KEY) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider>
    <ClerkProvider   afterSignOutUrl="/"
                     signInFallbackRedirectUrl="/dashboard"
                     localization={esES}
@@ -42,11 +45,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                               colorPrimary: "#007DFA" }
       } } 
       >
+      <ThemeProvider>
     <Provider store={store} >
     <GoogleOneTap />
+
+
     <App />
+
     </Provider>
-    </ClerkProvider>
     </ThemeProvider>
+
+    </ClerkProvider>
   </React.StrictMode>,
 )

@@ -1,8 +1,0 @@
-.main-container {
-  width: 76dvw;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 16px;
-  align-items: flex-start;
-  justify-content: flex-start;
-}

@@ -22,9 +22,11 @@ import Tasks from './components/dashboard/tasks/Tasks';
 import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
 import Participantes from './components/dashboard/participantes/participantes';
+import {useTheme} from './context/ThemeContext'
 
 
 function App() {
+  const theme = useTheme();
   const router = createBrowserRouter([
     {
       path: '/',
@@ -80,7 +82,7 @@ function App() {
    ,
     {
       path: '/dashboard',
-      element: <Dashboard />
+      element: <Dashboard theme={theme} />
     }
   ]);
 

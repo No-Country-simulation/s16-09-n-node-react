@@ -13,7 +13,7 @@ const styles = {
   } 
 }
 
-const User = (props) => {
+const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', userRol = 'Frontend' }) => {
 
 const {isLoader, user } = useUser()
 
@@ -38,7 +38,7 @@ console.log (user, isLoader, 'user')
     { user.fullName }
           </span>
           <span className="user-text2 Body2">
-            {props.userRol}
+            {userRol}
           </span>
         </div>
       </div>
@@ -50,12 +50,6 @@ console.log (user, isLoader, 'user')
       />
     </div>) 
   )
-}
-
-User.defaultProps = {
-  userImage: '/external/user-image.png',
-  userName: 'Usuario',
-  userRol: 'Frontend'
 }
 
 User.propTypes = {
