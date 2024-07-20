@@ -57,9 +57,14 @@ body {
 .sidebar-icon {
   width: 20px;
   height: 20px;
-  margin-right: -50px;
+  
 }
 
+.sidebar-icon-logout {
+  width: 20px;
+  height: 20px;
+  margin-right: -50px;
+}
 .sidebar-link {
   text-decoration: none;
   color: inherit;
