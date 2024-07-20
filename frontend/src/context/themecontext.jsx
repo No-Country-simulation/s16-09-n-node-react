@@ -22,18 +22,23 @@ export const ThemeProvider = ({ children }) => {
 
 export const useTheme = () => useContext(ThemeContext);
 const light = {
-    text: '#000000',
+    text:  "#007dfa",
     background: '#f8f9fa', // Fondo Normal
     secondary: '#34e06f', // Secundario Normal
     backgroundSecondary: '#b0d7fd', // Fondo Normal :hover
-    back: "rgb(217, 236, 254)" // primario light hover
+    back: "rgb(217, 236, 254)", // primario light hover
+    back1: "#c0f5d2", // secundario light active
+    titulos: "#007dfa", //textos dark
+    subtitulos: "black"
   };
   
   const dark = {
-    text: "white",
+    text: "#e8e8e8", //textos light
     background: '#002c58', // Fondo darker
     secondary: '#007dfa', // Primario Normal
     backgroundSecondary: 'black', // Fondo Dark :hover
-    back: "rgb(0, 71, 138)" // primario
+    back: "rgb(0, 71, 138)",
+   back1: "#004b96", // primario
+    titulos: "#ebebec", //textos (alternativo) light
   };
   

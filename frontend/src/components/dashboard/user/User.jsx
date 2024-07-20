@@ -19,7 +19,8 @@ const {isLoader, user } = useUser()
 
 console.log (user, isLoader, 'user')
   return (
- (!user ) ?   <p>   <ClipLoader
+ (!user ) ?   <p>
+     <ClipLoader
  color="white"
  loading={isLoader}
  size={40}
@@ -29,8 +30,7 @@ console.log (user, isLoader, 'user')
 /></p>  : (
     <div className={`user-user`} style={{color: theme.text, backgroundColor: theme.background} }>
       <div className="user-container font-white">
-    <UserButton 
-    
+    <UserButton userProfileMode="navigation"   userProfileUrl="/perfil"
     
     />
         <div className="user-container1" style={{color: theme.text, backgroundColor: theme.background}}>
