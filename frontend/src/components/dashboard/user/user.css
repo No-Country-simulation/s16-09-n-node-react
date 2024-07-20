@@ -43,3 +43,6 @@
   height: 29px;
 }
 
+.cl-userButtonBox {
+  pointer-events: none;
+}
