@@ -1,20 +1,9 @@
 import { Request, Response } from 'express';
 
-import {
-  errorProfiler,
-  successProfiler,
-} from '@/shared/apiRespond/responseProfiler';
-import {
-  isBodyParamsValidate,
-  isQueryParamsValidate,
-} from '@/shared/validations/params.validation';
+import { errorProfiler, successProfiler } from '@/shared/apiRespond/responseProfiler';
+import { isBodyParamsValidate, isQueryParamsValidate, responseContentValidator } from '@/shared/validations/params.validation';
 
-import {
-  deleteProjectsBy,
-  getProjectsBy,
-  saveProject,
-  updateProjectsBy,
-} from '../services/project.services';
+import { deleteProjectsBy, getProjectsBy, saveProject, updateProjectsBy } from '../services/project.services';
 
 //===================
 // Create project
@@ -25,10 +14,11 @@ export const createProject = async (
 ): Promise<void> => {
   try {
     const body = isBodyParamsValidate(req.body);
-    const project = await saveProject(body);
-    successProfiler(res, 201, 'getProjectByValue', { project });
+    const response = await saveProject(body);
+    const project = responseContentValidator(response);
+    successProfiler(res, 201, 'createProject', { project });
   } catch (error) {
-    errorProfiler(error, res, 'getProjectByValue');
+    errorProfiler(error, res, 'createProject');
   };
 };
 
@@ -41,7 +31,8 @@ export const getProjectByValue = async (
 ): Promise<void> => {
   try {
     const query = isQueryParamsValidate(req.query, 'get');
-    const projects = await getProjectsBy(query);
+    const response = await getProjectsBy(query);
+    const projects = responseContentValidator(response);
     successProfiler(res, 200, 'getProjectByValue', { projects });
   } catch (error) {
     errorProfiler(error, res, 'getProjectByValue');

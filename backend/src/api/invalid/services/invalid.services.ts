@@ -1,6 +1,15 @@
+//======================
+// Class Router Error
+//======================
+export class RouterError extends Error {
+  constructor(
+    public key: string,
+    public message: string,
+  ) {
+    super(`${key}: ${message}`);
+  }
+}
 
 export const getInvalid = async () => {
-  return ({
-    error: `💀 Invalid route ☠️.`,
-  });
+  throw new RouterError('Router error', '💀 Invalid route ☠️.');
 };

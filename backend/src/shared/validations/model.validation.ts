@@ -1,35 +1,73 @@
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import path from 'path';
 
-//====================================
-// Validation of fields in the model
-//====================================
-export const isFieldInPrismaModel = (
-  modelName: string,
-  fieldName: string,
-): boolean | null => {
-  try {
-    // Ruta al archivo de esquema de Prisma
-    const schemaPath = join(__dirname, '../../../', 'prisma', 'schema.prisma');
-    const schemaContent = readFileSync(schemaPath, { encoding: 'utf-8' });
-    // Buscar la definición del modelo
-    const modelRegex = new RegExp(`model ${modelName} \\{[^\\}]*\\}`, 's');
-    const modelMatch = modelRegex.exec(schemaContent);
-    if (!modelMatch) {
-      return null; // Modelo no encontrado
-    }
-    // Buscar la definición del campo en el modelo
-    const fieldRegex = new RegExp(`${fieldName} [^\\n]+`, 'g');
-    const fieldMatch = fieldRegex.exec(modelMatch[0]);
-    if (!fieldMatch) {
-      return null; // Campo no encontrado
-    }
-    // Determinar si el campo es requerido (no opcional)
-    if (!fieldMatch[0].includes('?')) {
-      return true;
-    }
-    return false;
-  } catch (error) {
-    return null;
+
+
+
+
+interface ValidateObject {
+  [key: string]: any;
+}
+
+//=====================
+// Class Field Error
+//=====================
+export class FieldError extends Error {
+  constructor(
+    public key: string,
+    public message: string,
+  ) {
+    super(`${key}: ${message}`);
   }
+}
+
+//=====================
+// Load Model Fields
+//=====================
+const loadModelFields = (modelName: string): Set<string> => {
+  const schemaPath = path.join(
+    __dirname,
+    '../../../',
+    'prisma',
+    'schema.prisma',
+  );
+  const modelString: string = readFileSync(schemaPath, 'utf8');
+  const regex = new RegExp(`model ${modelName} {([\\s\\S]*?)}`, 'm');
+  const modelMatch = regex.exec(modelString);
+  if (!modelMatch) throw new FieldError('Model Error',`Model ${modelName} not found`);
+
+  return new Set(
+    modelMatch[1]
+      .split('\n')
+      .map((line) => /^(\w+)/.exec(line.trim()))
+      .filter(Boolean)
+      .map((match) => match![1]),
+  );
+};
+
+//==========================
+// Valiadte keys in model
+//==========================
+export const validateKeysInPrismaModel = (
+  modelName: string,
+  validateObject: ValidateObject,
+): ValidateObject => {
+  const modelFields = loadModelFields(modelName);
+  const errors: string[] = [];
+  const validKeys: ValidateObject = {};
+  Object.keys(validateObject).forEach((key) => {
+    if (modelFields.has(key)) {
+      validKeys[key] = validateObject[key];
+    } else {
+      errors.push(
+        `The ${key} field does not belong to the model ${modelName}`,
+      );
+    }
+  });
+
+  if (errors.length > 0) {
+    throw new FieldError('Field Error', errors.join(', '));
+  }
+
+  return validKeys;
 };

@@ -1,11 +1,12 @@
-import { apiResponse } from "@/shared/apiRespond/apiResponse";
+
+import { errorProfiler, successProfiler } from "@/shared/apiRespond/responseProfiler";
 import { getInvalid } from "../services/invalid.services";
 
 export const invalid = async (req: any, res: any) => {
   try {
-    const invalidResponse = await getInvalid();
-    apiResponse(res, 404, 'invalidRoot', invalidResponse);
+    const response = await getInvalid();
+    successProfiler(res, 404, 'getInvalid', response);
   } catch (error: any) {
-    apiResponse(res, 500, 'invalidRoot', { error: error.message });
+    errorProfiler(error, res, 'getInvalid');
   }
 };

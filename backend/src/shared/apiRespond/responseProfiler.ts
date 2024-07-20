@@ -2,10 +2,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { Response } from 'express';
 import { ZodError } from 'zod';
 
-
-
 import { apiResponse } from './apiResponse';
-
 
 //====================
 // Success Profiler
@@ -14,13 +11,10 @@ export const successProfiler = (
   res: Response,
   statusCode: number,
   functionName: string,
-  data: object,
+  data: any,
 ) => {
-  console.log('Code -> ', statusCode);
-  console.log('Name -> ', functionName);
-  console.log('Data -> ', data);
   handleApiResponse(res, statusCode, functionName, data);
-}
+};
 
 //====================
 // Error Profiler
@@ -30,27 +24,42 @@ export const errorProfiler = (
   res: Response,
   functionName: string,
 ) => {
-  let statusCode = 500;
-  let errorMessage = 'An unexpected error occurred';
-  let errorKey = 'Server error ';
-  if (error instanceof ZodError) {
-    statusCode = 422;
-    errorKey = 'Validation error';
-    errorMessage = error.errors
-      .map((e) => `${e.path}: ${e.message} `)
-      .join(',');
-  } else if (error instanceof PrismaClientKnownRequestError) {
-    statusCode = 400;
-    errorKey = 'Prisma error';
-    errorMessage = error.message.substring(error.message.indexOf('(\n') + 2);
-  } else if (error instanceof Error) {
-    statusCode = 404;
-    errorKey = 'Client error';
-    errorMessage = error.message;
-  }
+  const errorType = error.constructor.name;
+  const { statusCode, key } = errorMapping[errorType] || {
+    statusCode: 500,
+    key: 'Server error',
+  };
+  const errorMessage = generateErrorMessage(error);
+  const errorKey = error.key || key || 'Error';
+
   handleApiResponse(res, statusCode, functionName, {
     [errorKey]: errorMessage,
   });
+};
+
+//============================================
+// Error mapping for cleaner error handling
+//============================================
+const errorMapping: { [key: string]: { statusCode: number; key?: string } } = {
+  ApiKeyError: { statusCode: 404 },
+  Error: { statusCode: 401, key: 'Client error' },
+  FieldError: { statusCode: 409 },
+  ParamError: { statusCode: 409 },
+  PrismaClientKnownRequestError: { statusCode: 400, key: 'Prisma error' },
+  RouterError: { statusCode: 409 },
+  ZodError: { statusCode: 422, key: 'Validation error' },
+};
+
+//==============================================
+// Generate error message based on error type
+//==============================================
+const generateErrorMessage = (error: any) => {
+  if (error instanceof ZodError) {
+    return error.errors.map((e) => `${e.path}: ${e.message}`).join(',');
+  } else if (error instanceof PrismaClientKnownRequestError) {
+    return error.message.substring(error.message.indexOf('(\n') + 2);
+  }
+  return error.message;
 };
 
 //=======================
@@ -61,4 +70,6 @@ const handleApiResponse = (
   statusCode: number,
   functionName: string,
   content: object,
-) => apiResponse(res, statusCode, functionName, content);
+) => {
+  apiResponse(res, statusCode, functionName, content);
+};

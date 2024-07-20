@@ -1,15 +1,17 @@
 import { Router } from 'express';
 
-import {
-  createProject,
-  deleteProjectByValue,
-  getProjectByValue,
-  updateProjectByValue,
-} from '../controller/project.controller';
+
+
+import { requireApiKey } from '@/middleware/apiKey.middleware';
+
+
+
+import { createProject, deleteProjectByValue, getProjectByValue, updateProjectByValue } from '../controller/project.controller';
+
 
 export const projectRouter = Router();
 
-projectRouter.post('/', createProject);
-projectRouter.get('/', /*requireAuth,*/ getProjectByValue);
-projectRouter.put('/', /*requireAuth,*/ updateProjectByValue);
-projectRouter.delete('/', /*requireAuth,*/ deleteProjectByValue);
+projectRouter.post('/', requireApiKey, createProject);
+projectRouter.get('/', requireApiKey, /*requireAuth,*/ getProjectByValue);
+projectRouter.put('/', requireApiKey, /*requireAuth,*/ updateProjectByValue);
+projectRouter.delete('/', requireApiKey, /*requireAuth,*/ deleteProjectByValue);
