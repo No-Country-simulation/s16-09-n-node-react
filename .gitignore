@@ -73,7 +73,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # Local history
-
 .lh/
 
 # dotenv environment variable files

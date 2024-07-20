@@ -23,7 +23,7 @@ const swaggerConfig = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Project Api',
+      title: 'ProJet Api',
       summary: 'Un Sistema de Manejo de equipo',
       description: 'Sistema De Manejo de equipo By',
       termsOfService: 'http://swagger.io/terms/',

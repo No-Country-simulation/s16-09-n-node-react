@@ -1,0 +1,56 @@
+.cl-internal-2iusy0{
+    justify-content: center;
+    }
+    .cl-input {
+
+        border: 2px solid red;
+
+    }
+    .cl-cardBox{
+       box-shadow: none;
+       
+ }
+       .cl-socialButtons {
+
+        display: grid;
+        grid-template-columns:1;
+       
+      }
+      .cl-button {
+        display: flex;
+        justify-content: center;
+        width: 300%;
+        grid-column-start: 1 ;
+      }
+      .cl-formButtonPrimary{
+        width: 100%;
+        grid-column-start: 1 ;
+      }
+   
+    .cl-formFieldLabel{
+        color: #007dfa;  
+        justify-content: flex-start; 
+        margin-bottom: -5%;
+        background-color: white;
+        width: 40%;
+        z-index: 5;
+        margin-left: 2%;
+        padding-left: 1%;
+        padding-right: auto;
+         } 
+
+    .cl-socialButtonsBlockButton{
+        border: 2px solid red;
+    }
+    .cl-socialButtonsBlockButton__apple 
+    {
+        border: red 2px solid;
+    }
+    
+    cl-button__apple
+
+    
+    .cl-formFieldInputShowPasswordButton{
+       
+    display: none;
+    }

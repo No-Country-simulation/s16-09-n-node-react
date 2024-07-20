@@ -1,0 +1,103 @@
+.tools-tools {
+  width: 329px;
+  height: 260px;
+  display: flex;
+  padding: 20px;
+  position: relative;
+  align-items: flex-start;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-area: 1 / 2 / 3 / 2;
+}
+.tools-title {
+
+  height: auto;
+  font-size: 32px;
+  font-style: normal;
+
+  font-weight: 600;
+  line-height: 40px;
+  font-stretch: normal;
+  letter-spacing: -0.01em;
+}
+.tools-design {
+  gap: 8px;
+  width: auto;
+  height: 33px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.tools-figma-icon {
+  width: 27px;
+  height: 32px;
+}
+.tools-text1 {
+
+  height: auto;
+  text-align: left;
+  line-height: 26px;
+}
+.tools-frontend {
+  gap: 8px;
+  width: auto;
+  height: 26.423416137695312px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.tools-react-icon {
+  width: 27px;
+  height: 27px;
+}
+.tools-text3 {
+  height: auto;
+  text-align: left;
+  line-height: 26px;
+}
+.tools-backend {
+  gap: 8px;
+  width: auto;
+  height: 27px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.tools-backend-icon {
+  width: 27px;
+  height: 27px;
+}
+.tools-text5 {
+  height: auto;
+  text-align: left;
+  line-height: 26px;
+}
+.tools-data {
+  gap: 8px;
+  width: auto;
+  height: 26px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.tools-python-icon {
+  width: 27px;
+  height: 27px;
+}
+.tools-text7 {
+  height: auto;
+  text-align: left;
+  line-height: 26px;
+}
+.tools-plus-icon {
+  top: 20px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+}

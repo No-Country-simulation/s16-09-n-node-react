@@ -1,0 +1,100 @@
+.cl-internal-2iusy0{
+    justify-content: center;
+    }
+    .cl-input {
+
+        border: 2px solid red;
+
+    }
+    .cl-cardBox{
+       box-shadow: none;
+       
+ }
+       .cl-socialButtons {
+
+        display: grid;
+        grid-template-columns:1;
+       
+      }
+      
+      
+      .cl-button {
+        display: flex;
+        justify-content: center;
+        width: 300%;
+        grid-column-start: 1 ;
+      }
+      .cl-formButtonPrimary{
+        width: 100%;
+        grid-column-start: 1 ;
+      }
+   
+    .cl-formFieldLabel{
+        color: #12569a;  
+        justify-content: flex-start; 
+        margin-bottom: -5%;
+        background-color: white;
+        width: 40%;
+        z-index: 5;
+        padding-left: 5%;
+        padding-right: -5%;
+         } 
+
+         .cl-socialButtons {
+
+  display: grid;
+  grid-template-columns:1;
+ 
+}
+.cl-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+ 
+ 
+ .cl-{
+    flex-grow: 1;
+    border-bottom: 1px solid black;
+    margin: 0 10px; 
+  }
+  
+  .cl-dividerText span {
+    padding: 0 10px; 
+     white-space: nowrap;
+  }
+  
+    .cl-dividerLine{
+color:red
+
+    } 
+.cl-button {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  grid-column-start: 1 ;
+}
+.cl-formButtonPrimary{
+  width: 100%;
+  grid-column-start: 1 ;;
+}
+
+.cl-formFieldInput{
+    background-attachment: fixed;
+    border: 4px solid #000b17;
+    
+} 
+   
+
+.cl-button {
+
+    background-color: red;
+     }
+     .cl-socialButtonsBlockButton {
+        border: 2px solid red !important;
+      }
+      
+      .cl-socialButtonsBlockButton__apple {
+        border: 2px solid red !important;
+      }
+      

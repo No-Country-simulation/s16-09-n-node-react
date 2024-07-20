@@ -131,3 +131,6 @@ dist
 
 # Local History
 .lh/
+
+# Google secret key file
+data/secret-key.json

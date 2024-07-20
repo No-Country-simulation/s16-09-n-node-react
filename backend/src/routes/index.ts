@@ -8,6 +8,7 @@ import { invalidRouter } from '@/api/invalid/router/invalid.router';
 import { projectRouter } from '@/api/project/router/project.router';
 import { swaggerRouter } from './swagger.routes';
 import { userRouter } from './user.routes';
+import { calendarRouter } from './calendar.routes'
 
 export const mainRouter = Router();
 
@@ -21,3 +22,5 @@ mainRouter.use('/auth', authRouter);
 mainRouter.use('/docs', swaggerRouter);
 mainRouter.use('/projects', projectRouter);
 mainRouter.use('/*', invalidRouter);
+mainRouter.use('/calendar/v3', calendarRouter);
+mainRouter.use('/auth', authRouter);
