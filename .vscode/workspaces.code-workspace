@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/vsconfig",
+  "folders": [
+    {
+      "name": "✨ root",
+      "path": "../"
+    },
+    {
+      "name": "🧑‍💻 clinet",
+      "path": "../frontend/"
+    },
+    {
+      "name": "📔 server",
+      "path": "../backend/"
+    },
+    {
+      "name": "🧮 test",
+      "path": "../test/"
+    }
+  ]
+}
