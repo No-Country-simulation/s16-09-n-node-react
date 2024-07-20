@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types'
 import './task1.css'
+import { useTheme } from '../../../context/ThemeContext'
 
 const Task1 = (props) => {
+  const { theme } = useTheme()
   return (
-    <div className="task1-task">
-      <span className="task1-issue Heading3">
+    <div className="task1-task" style={{color: theme.text, background: theme.back1}}>
+      <span className="task1-issue Heading3" style={{color: theme.subtitulos}}>
         <span>
           Desarrollo de UI
         </span>
       </span>
-      <span className="task1-team Body3">
+      <span className="task1-team Body3" >
         <span>Frontend</span>
       </span>
       <div className="task1-collaborators">

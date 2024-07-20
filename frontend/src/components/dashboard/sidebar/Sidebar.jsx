@@ -46,10 +46,12 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-footer">
         <div className="sidebar-item">
-          <img alt="logout icon" src="/assets/logout-icon.svg" className="sidebar-icon" style={{ filter: getFilterStyle() }} />
-          <Link to="/logout" className="sidebar-link" style={{ color: theme.text }}>
+          <img alt="logout icon" src="/assets/logout-icon.svg" className="sidebar-icon" style={{ filter: getFilterStyle()}} />
+          <Link to="/" className="sidebar-link" style={{ color: theme.text }}>
             <span className="sidebar-text">
-              <SignOutButton />
+            <SignOutButton>
+        <button>Cerrar Sesión</button>
+      </SignOutButton>
             </span>
           </Link>
         </div>
