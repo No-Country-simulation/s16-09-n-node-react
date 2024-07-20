@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 .task-task {
   width: 203px;
   height: 137px;
@@ -8,18 +10,20 @@
   border-radius: 10px;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark-hover);
+  font-family: "Inter", sans-serif;
+
 }
 
 .task-issue {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: left;
   line-height: 28px;
+  font-weight: 600;
+  color: #070707;
+  font-family: Inter;
 }
 
 .task-team {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: left;
   line-height: 22px;
