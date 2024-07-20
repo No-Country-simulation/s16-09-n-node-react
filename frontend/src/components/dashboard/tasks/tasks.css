@@ -12,8 +12,9 @@
   grid-column: 1 / span 2;
 }
 .tasks-title {
+
   height: auto;
-  font-size: 42px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: 40px;
