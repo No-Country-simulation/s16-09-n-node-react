@@ -18,6 +18,19 @@ import Calendar from './components/dashboard/calendar/Calendar';
 import Tasks from './components/dashboard/tasks/Tasks';
 import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
+import Main from './components/dashboard/main/Main'
+import Proyects from './components/dashboard/proyects/Proyects'
+import ProyectDetails from './components/dashboard/proyect/ProyectDetails'
+import Participants from './components/dashboard/participants/Participants';
+import ToolsDetails from './components/dashboard/tools/ToolsDetails';
+import MeetingsDetails from './components/dashboard/meetings/MeetingsDetails';
+import CalendarDetails from './components/dashboard/calendar/CalendarDetails';
+import AddTask from './components/dashboard/tasks/AddTask';
+import TaskDetails from './components/dashboard/tasks/TaskDetails';
+import TasksList from './components/dashboard/tasks/TasksList';
+import DocsDetails from './components/dashboard/docs/DocsDetails';
+import ProgressDetails from './components/dashboard/progress/ProgressDetails';
+
 import {useTheme} from './context/ThemeContext'
 
 function App() {
