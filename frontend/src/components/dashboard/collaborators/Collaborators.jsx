@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types'
 import './collaborators.css'
+import { useTheme } from '../../../context/ThemeContext'
 import { NavLink } from 'react-router-dom'
 
 const Collaborators = (props) => {
+  const { theme } = useTheme()
   return (
-    <div className="collaborators-collaborators">
+    <div className="collaborators-collaborators" style={{color: theme.primary, backgroundColor: theme.background}}>
       <span className="collaborators-title Heading1">
         <span>Participantes</span>
       </span>

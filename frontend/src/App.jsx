@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './views/error/Error';
-import ProtectedRoutes from './components/commons/Protected';
 
 import Home from './views/home/Home';
 import HomeMain from './components/home/homemain/HomeMain';
@@ -14,27 +13,15 @@ import Terms from './components/auth/terms/Terms';
 import Dashboard from './views/dashboard/Dashboard';
 
 // Importar las vistas de las rutas protegidas
-import Tools from './components/dashboard/tools/Tools';
 import Meetings from './components/dashboard/meetings/Meetings';
 import Calendar from './components/dashboard/calendar/Calendar';
 import Tasks from './components/dashboard/tasks/Tasks';
 import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
-import Participants from './components/dashboard/participants/Participants';
-import Main from './components/dashboard/main/Main';
-import ProyectDetails from './components/dashboard/proyect/ProyectDetails';
-import Proyects from './components/dashboard/proyects/Proyects';
-import ToolsDetails from './components/dashboard/tools/ToolsDetails';
-import TaskDetails from './components/dashboard/tasks/TaskDetails';
-import TasksList from './components/dashboard/tasks/TasksList';
-import MeetingsDetails from './components/dashboard/meetings/MeetingsDetails';
-import DocsDetails from './components/dashboard/docs/DocsDetails';
-import ProgressDetails from './components/dashboard/progress/ProgressDetails';
-import CalendarDetails from './components/dashboard/calendar/CalendarDetails';
-import AddTask from './components/dashboard/tasks/AddTask';
-
+import {useTheme} from './context/ThemeContext'
 
 function App() {
+  const theme = useTheme();
   const router = createBrowserRouter([
     {
       path: '/',
@@ -76,7 +63,7 @@ function App() {
     },
     {
       path: '/dashboard',
-      element: <Dashboard />,
+      element: <Dashboard theme={theme} />,
       children: [
         { path: '/dashboard/home', element: <Main /> },
         { path: '/dashboard/proyects', element: <Proyects /> },
@@ -99,7 +86,7 @@ function App() {
     }
   ]);
 
-  return <RouterProvider router={router} />;
+  return  <RouterProvider router={router} />;
 }
 
 export default App;

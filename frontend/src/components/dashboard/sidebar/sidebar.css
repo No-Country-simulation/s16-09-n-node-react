@@ -1,23 +1,10 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
-:root {
-  --color-primary-dark: #002c58;
-  --color-primary-normal: #007dfa;
-  --color-primary-dark-hover: #004b96;
-  --color-secondary-normal: #34e06f;
-  --color-text-light: #CCCCCC;
-  --color-text-dark: #000000;
-  --color-background-light: #ffffff;
-  --color-background-dark: #000000;
-}
 
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .sidebar {
@@ -31,13 +18,7 @@ body {
   justify-content: space-between;
   font-size: large;
   font-weight: 600;
-  background-color: var(--color-primary-dark);
-  color: var(--color-text-light);
-}
-
-.sidebar.light-mode {
-  background-color: var(--color-background-light);
-  color: var(--color-text-dark);
+ 
 }
 
 .sidebar-nav-links {
@@ -65,8 +46,8 @@ body {
 }
 
 .sidebar-link span:hover {
-  color: #3498db; /* Cambia este color según tu preferencia */
-  cursor: pointer;
+  color: #3498db; 
+    cursor: pointer;
 }
 
 .sidebar-footer {

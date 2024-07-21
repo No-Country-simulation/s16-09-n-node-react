@@ -1,9 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import './tools.css'
+import { useTheme } from '../../../context/ThemeContext'
 
 const Tools = (props) => {
+
+  const { theme } = useTheme()
   return (
-    <div className="tools-tools">
+    <div className="tools-tools" style={{color: theme.primary, backgroundColor: theme.background}}>
       <span className="tools-title Heading1">
         <span>Herramientas</span>
       </span>

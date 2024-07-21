@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types'
 import './proyect.css'
+import { useTheme } from '../../../context/ThemeContext'
 import { NavLink } from 'react-router-dom'
 
 const Proyect = (props) => {
+
+  const {theme} = useTheme()
   return (
-    <div className="proyect-proyect">
-      <span className="proyect-title">{props.title}</span>
-      <span className="proyect-description Body1">{props.description}</span>
+    <div className="proyect-proyect" style={props.theme}>
+      <span className="proyect-title" style={props.theme}>{props.title}</span>
+      <span className="proyect-description Body1" style={{color:theme.subtitulos }}>{props.description}</span>
       <img
         alt="proyect image"
         src={props.proyectImageSrc}
         className="proyect-proyect-image"
       />
-      <div className="proyect-dates">
+      <div className="proyect-dates" style={{color:theme.subtitulos }}>
         <span className="proyect-beginning Label1">Inicio: {props.beginning}</span>
         <span className="proyect-deadline Label1">Entrega: {props.deadline}</span>
       </div>
