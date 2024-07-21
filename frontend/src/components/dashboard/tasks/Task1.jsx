@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import './task1.css'
+import { NavLink } from 'react-router-dom'
 
 const Task1 = (props) => {
   return (
-    <div className="task1-task">
+    <NavLink to={'/dashboard/task-details/task_2'} className="task1-task">
       <span className="task1-issue Heading3">
         <span>
           Desarrollo de UI
@@ -45,7 +46,7 @@ const Task1 = (props) => {
           <span className="task1-text5 Heading3">{props.text}</span>
         </div>
       </div>
-    </div>
+    </NavLink>
   )
 }
 

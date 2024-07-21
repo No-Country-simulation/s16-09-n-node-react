@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import './collaborators.css'
 import { useTheme } from '../../../context/ThemeContext'
+import { NavLink } from 'react-router-dom'
 
 const Collaborators = (props) => {
   const { theme } = useTheme()
@@ -45,11 +46,13 @@ const Collaborators = (props) => {
           className="collaborators-collaborator-image5"
         />
       </div>
-      <img
-        alt="plus-icon"
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/df672044-aed4-4a0d-8a7e-c02b5e6cbde7?org_if_sml=1506&amp;force_format=original"
-        className="collaborators-plus-icon"
-      />
+      <NavLink to={"/dashboard/participants"}>
+        <img
+          alt="plus-icon"
+          src="/assets/plus-icon.svg"
+          className="collaborators-plus-icon"
+        />
+      </NavLink>
     </div>
   )
 }

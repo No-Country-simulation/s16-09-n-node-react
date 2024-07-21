@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './tools.css'
 import { useTheme } from '../../../context/ThemeContext'
 
@@ -49,11 +50,13 @@ const Tools = (props) => {
           <span>Data Análisis</span>
         </span>
       </div>
-      <img
-        alt="plus-icon"
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/bab876eb-3955-49c0-bf71-09ad91ed4f7a?org_if_sml=1506&amp;force_format=original"
-        className="tools-plus-icon"
-      />
+      <NavLink to={"/dashboard/tools"}>
+        <img
+          alt="plus-icon"
+          src="/assets/plus-icon.svg"
+          className="tools-plus-icon"
+        />
+      </NavLink>
     </div>
   )
 }
