@@ -14,14 +14,24 @@ import Terms from './components/auth/terms/Terms';
 import Dashboard from './views/dashboard/Dashboard';
 
 // Importar las vistas de las rutas protegidas
-import Project from './components/dashboard/proyect/Proyect';
 import Tools from './components/dashboard/tools/Tools';
 import Meetings from './components/dashboard/meetings/Meetings';
 import Calendar from './components/dashboard/calendar/Calendar';
 import Tasks from './components/dashboard/tasks/Tasks';
 import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
-import Participantes from './components/dashboard/participantes/participantes';
+import Participants from './components/dashboard/participants/Participants';
+import Main from './components/dashboard/main/Main';
+import ProyectDetails from './components/dashboard/proyect/ProyectDetails';
+import Proyects from './components/dashboard/proyects/Proyects';
+import ToolsDetails from './components/dashboard/tools/ToolsDetails';
+import TaskDetails from './components/dashboard/tasks/TaskDetails';
+import TasksList from './components/dashboard/tasks/TasksList';
+import MeetingsDetails from './components/dashboard/meetings/MeetingsDetails';
+import DocsDetails from './components/dashboard/docs/DocsDetails';
+import ProgressDetails from './components/dashboard/progress/ProgressDetails';
+import CalendarDetails from './components/dashboard/calendar/CalendarDetails';
+import AddTask from './components/dashboard/tasks/AddTask';
 
 
 function App() {
@@ -43,7 +53,7 @@ function App() {
           path: '/contact',
           element: <Contact />
         }
-        
+
       ]
     },
     {
@@ -64,23 +74,28 @@ function App() {
         }
       ]
     },
- 
-   
- 
-            { path: 'dashboard/home', element: <HomeMain /> },
-            { path: 'dashboard/projects', element: <Project /> },
-            { path: 'dashboard/participantes', element: <Participantes /> },
-            { path: 'tools', element: <Tools /> },
-            { path: 'meetings', element: <Meetings /> },
-            { path: 'calendar', element: <Calendar /> },
-            { path: 'tasks', element: <Tasks /> },
-            { path: 'progress', element: <Progress /> },
-            { path: 'docs', element: <Docs /> },
-  
-   ,
     {
       path: '/dashboard',
-      element: <Dashboard />
+      element: <Dashboard />,
+      children: [
+        { path: '/dashboard/home', element: <Main /> },
+        { path: '/dashboard/proyects', element: <Proyects /> },
+        { path: '/dashboard/proyect-details', element: <ProyectDetails /> },
+        { path: '/dashboard/participants', element: <Participants /> },
+        { path: '/dashboard/tools', element: <ToolsDetails /> },
+        { path: '/dashboard/meetings', element: <Meetings /> },
+        { path: '/dashboard/meetings-details', element: <MeetingsDetails /> },
+        { path: '/dashboard/calendar', element: <Calendar /> },
+        { path: '/dashboard/calendar-details', element: <CalendarDetails /> },
+        { path: '/dashboard/tasks', element: <Tasks /> },
+        { path: '/dashboard/add-task', element: <AddTask /> },
+        { path: '/dashboard/task-details/:id', element: <TaskDetails /> },
+        { path: '/dashboard/tasks-list', element: <TasksList /> },
+        { path: '/dashboard/progress', element: <Progress /> },
+        { path: '/dashboard/progress-details', element: <ProgressDetails /> },
+        { path: '/dashboard/docs', element: <Docs /> },
+        { path: '/dashboard/docs-details', element: <DocsDetails /> }
+      ]
     }
   ]);
 

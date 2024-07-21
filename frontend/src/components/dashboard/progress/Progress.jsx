@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './progress.css'
 
 const Progress = (props) => {
@@ -38,11 +39,13 @@ const Progress = (props) => {
           <div className="progress-range3"></div>
         </div>
       </div>
-      <img
-        alt="plus-icon"
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/d1f79472-57bb-4962-b786-d5139a98bf52?org_if_sml=1506&amp;force_format=original"
-        className="progress-plus-icon"
-      />
+      <NavLink to={"/dashboard/progress-details"}>
+        <img
+          alt="plus-icon"
+          src="/assets/plus-icon.svg"
+          className="progress-plus-icon"
+        />
+      </NavLink>
     </div>
   )
 }

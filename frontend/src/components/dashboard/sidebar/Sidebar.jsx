@@ -10,15 +10,15 @@ const Sidebar = () => {
   const { theme, toggleTheme } = useTheme();
 
   const menuItems = [
-    { name: 'Home', icon: '/assets/home-icon.svg', link: '/' },
-    { name: 'Proyectos', icon: '/assets/proyects-icon.svg', link: '/projects' },
-    { name: 'Participantes', icon: '/assets/participants-icon.svg', link: '/participants' },
-    { name: 'Herramientas', icon: '/assets/tools-icon.svg', link: '/tools' },
-    { name: 'Reuniones', icon: '/assets/meetings-icon.svg', link: '/meetings' },
-    { name: 'Calendario', icon: '/assets/calendar-icon.svg', link: '/calendar' },
-    { name: 'Tareas', icon: '/assets/tasks-icon.svg', link: '/tasks' },
-    { name: 'Progreso', icon: '/assets/progress-icon.svg', link: '/progress' },
-    { name: 'Documentación', icon: '/assets/docs-icon.svg', link: '/docs' },
+    { name: 'Inicio', icon: '/assets/home-icon.svg', link: '/dashboard/home' },
+    { name: 'Proyectos', icon: '/assets/proyects-icon.svg', link: '/dashboard/proyects' },
+    { name: 'Participantes', icon: '/assets/participants-icon.svg', link: '/dashboard/participants' },
+    { name: 'Herramientas', icon: '/assets/tools-icon.svg', link: '/dashboard/tools' },
+    { name: 'Reuniones', icon: '/assets/meetings-icon.svg', link: '/dashboard/meetings-details' },
+    { name: 'Calendario', icon: '/assets/calendar-icon.svg', link: '/dashboard/calendar-details' },
+    { name: 'Tareas', icon: '/assets/tasks-icon.svg', link: '/dashboard/tasks-list' },
+    { name: 'Progreso', icon: '/assets/progress-icon.svg', link: '/dashboard/progress-details' },
+    { name: 'Documentación', icon: '/assets/docs-icon.svg', link: '/dashboard/docs-details' },
   ];
 
   return (

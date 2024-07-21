@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import './task.css'
+import { NavLink } from 'react-router-dom'
 
 const Task = (props) => {
   return (
-    <div className="task-task">
+    <NavLink className="task-task" to={'/dashboard/task-details/task_1'}>
       <span className="task-issue Heading3">
         <span>
           Diseño de Footer
@@ -40,7 +41,7 @@ const Task = (props) => {
           <span className="task-text5 Heading3">{props.text}</span>
         </div>
       </div>
-    </div>
+    </NavLink>
   )
 }
 

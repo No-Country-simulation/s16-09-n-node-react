@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import './proyect.css'
+import { NavLink } from 'react-router-dom'
 
 const Proyect = (props) => {
   return (
@@ -15,11 +16,13 @@ const Proyect = (props) => {
         <span className="proyect-beginning Label1">Inicio: {props.beginning}</span>
         <span className="proyect-deadline Label1">Entrega: {props.deadline}</span>
       </div>
-      <img
-        alt="plus-icon"
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/b442d114-e08c-44d3-8cf8-dd3ecea493d6?org_if_sml=1506&amp;force_format=original"
-        className="proyect-plus-icon"
-      />
+      <NavLink to={'/dashboard/proyect-details'}>
+        <img
+          alt="plus-icon"
+          src="/assets/plus-icon.svg"
+          className="proyect-plus-icon"
+        />
+      </NavLink>
     </div>
   )
 }
