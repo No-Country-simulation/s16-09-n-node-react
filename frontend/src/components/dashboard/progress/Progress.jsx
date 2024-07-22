@@ -2,6 +2,11 @@ import './progress.css'
 import { useTheme } from '../../../context/ThemeContext'
 
 const Progress = (props) => {
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? 
+      'invert(0)' : 
+      'invert(1)';
+  };
 
 const { theme } = useTheme()
   return (
@@ -45,6 +50,7 @@ const { theme } = useTheme()
         alt="plus-icon"
         src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/d1f79472-57bb-4962-b786-d5139a98bf52?org_if_sml=1506&amp;force_format=original"
         className="progress-plus-icon"
+        style={{filter: getFilterStyle()}}
       />
     </div>
   )

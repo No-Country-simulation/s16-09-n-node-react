@@ -6,6 +6,11 @@ import { useTheme } from '../../../context/ThemeContext'
 
 const Tasks = (props) => {
 const { theme } = useTheme()
+const getFilterStyle = () => {
+  return theme.text === "#e8e8e8" ? 
+    'invert(0)' : 
+    'invert(1)';
+};
 
   return (
     <div className="tasks-tasks" style={{color: theme.titulos, backgroundColor: theme.background}}>
@@ -21,6 +26,8 @@ const { theme } = useTheme()
         alt="plus-icon"
         src="/assets/plus-icon.svg"
         className="tasks-plus-icon"
+
+        style={{ filter: getFilterStyle() }}
       />
     </div>
   )

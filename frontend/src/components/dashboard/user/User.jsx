@@ -13,12 +13,21 @@ const styles = {
   } 
 }
 
+
+
 const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', userRol = 'Frontend' }) => {
 const { theme } = useTheme()
 const {isLoader, user } = useUser()
 
 console.log (user, isLoader, 'user')
-  return (
+const getFilterStyle = () => {
+  return theme.text === "#e8e8e8" ? 
+    'invert(0)' : 
+    'invert(1)';
+};
+
+
+return (
  (!user ) ?   <p>
      <ClipLoader
  color="white"
@@ -28,16 +37,14 @@ console.log (user, isLoader, 'user')
  aria-label="Loading Spinner"
  data-testid="loader"
 /></p>  : (
-    <div className={`user-user`} style={{color: theme.text, backgroundColor: theme.background} }>
-      <div className="user-container font-white"  style={{pointerEvents: "none"}}>
-    <UserButton userProfileMode="false"   userProfileUrl="/perfil" 
-    defaultOpen= "false"
-    />
-        <div className="user-container1" style={{color: theme.text, backgroundColor: theme.background}}>
-          <span className="user-text Heading3 font-bold" style={{color: theme.text, backgroundColor: theme.background}  }>
+    <div className={`user-user`} style={{color: theme.subtitulos, backgroundColor: theme.background} }>
+      <div className="user-container font-white"  style={{pointerEvents: "none",  }}>
+    <UserButton  />
+        <div className="user-container1" style={{color: theme.subtitulos, backgroundColor: theme.background}}>
+          <span className="user-text Heading3 font-bold" style={{color: theme.subtitulos, backgroundColor: theme.background}  }>
     { user.fullName }
           </span>
-          <span className="user-text2 Body2" style={{color: theme.text, backgroundColor: theme.background} }>
+          <span className="user-text2 Body2" style={{color: theme.subtitulos, backgroundColor: theme.background} }>
             {userRol}
           </span>
         </div>
@@ -46,7 +53,7 @@ console.log (user, isLoader, 'user')
         alt="settings icon"
         src="/assets/settings-icon.svg"
         className="user-settings-icon hover:text-red-700"
-        style={{color: theme.text, backgroundColor: theme.background} }
+              style={{ filter: getFilterStyle() }}
  
       />
     </div>) 

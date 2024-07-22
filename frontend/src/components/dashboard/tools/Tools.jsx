@@ -4,6 +4,12 @@ import { useTheme } from '../../../context/ThemeContext'
 const Tools = (props) => {
 
   const { theme } = useTheme()
+
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? 
+      'invert(0)' : 
+      'invert(1)';
+  };
   return (
     <div className="tools-tools" style={{color: theme.primary, backgroundColor: theme.background}}>
       <span className="tools-title Heading1">
@@ -53,6 +59,7 @@ const Tools = (props) => {
         alt="plus-icon"
         src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/bab876eb-3955-49c0-bf71-09ad91ed4f7a?org_if_sml=1506&amp;force_format=original"
         className="tools-plus-icon"
+        style={{filter: getFilterStyle()}}
       />
     </div>
   )

@@ -4,6 +4,11 @@ import {useTheme} from '../../../context/ThemeContext'
 const Docs = (props) => {
 
   const { theme } = useTheme()
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? 
+      'invert(0)' : 
+      'invert(1)';
+  };
   return (
     <div className="docs-docs" style={{color: theme.primary, backgroundColor: theme.background}}>
       <span className="docs-title Heading1">
@@ -34,6 +39,7 @@ const Docs = (props) => {
               alt="download-icon"
               src="/assets/download-icon.svg"
               className="docs-download-icon"
+              style={{ filter: getFilterStyle() }}
             />
           </div>
           <div className="docs-container5">
@@ -59,6 +65,7 @@ const Docs = (props) => {
         alt="plus-icon"
         src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/f1737a89-87d6-464f-9683-1d0cb6cbbd46?org_if_sml=1506&amp;force_format=original"
         className="docs-plus-icon"
+        style={{ filter: getFilterStyle() }}  
       />
     </div>
   )

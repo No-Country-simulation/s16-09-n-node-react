@@ -5,6 +5,11 @@ import { useTheme } from '../../../context/ThemeContext'
 const Proyect = (props) => {
 
   const {theme} = useTheme()
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? 
+      'invert(0)' : 
+      'invert(1)';
+  };
   return (
     <div className="proyect-proyect" style={props.theme}>
       <span className="proyect-title" style={props.theme}>{props.title}</span>
@@ -22,6 +27,7 @@ const Proyect = (props) => {
         alt="plus-icon"
         src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/b442d114-e08c-44d3-8cf8-dd3ecea493d6?org_if_sml=1506&amp;force_format=original"
         className="proyect-plus-icon"
+        style={{filter: getFilterStyle()}}
       />
     </div>
   )

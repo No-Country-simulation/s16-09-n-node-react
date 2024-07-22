@@ -8,14 +8,12 @@
   border-radius: 15px;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark);
+
 }
 .meetings-title {
-  color: var(--dl-color-textos-light);
   height: auto;
   font-size: 32px;
   font-style: normal;
-  font-family: "Roboto";
   font-weight: 600;
   line-height: 40px;
   font-stretch: normal;
@@ -30,7 +28,7 @@
   border-radius: 10px;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark-hover);
+
 }
 .meetings-container1 {
   gap: 16px;
@@ -39,13 +37,12 @@
   flex-direction: column;
 }
 .meetings-text1 {
-  color: var(--dl-color-textos-light);
+
   height: auto;
   text-align: left;
   line-height: 28px;
 }
 .meetings-text3 {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: left;
   line-height: 22px;
@@ -71,7 +68,6 @@
   flex-direction: row;
 }
 .meetings-schelude {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: left;
   line-height: 14px;
@@ -108,7 +104,7 @@
   border-radius: 6px;
   flex-direction: row;
   justify-content: center;
-  background-color: var(--dl-color-fondo-darkhover);
+
 }
 .meetings-text6 {
   color: var(--dl-color-textos-light);

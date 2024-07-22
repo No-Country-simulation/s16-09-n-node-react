@@ -21,7 +21,7 @@ import Calendar from './components/dashboard/calendar/Calendar';
 import Tasks from './components/dashboard/tasks/Tasks';
 import Progress from './components/dashboard/progress/Progress';
 import Docs from './components/dashboard/docs/Docs';
-import Participantes from './components/dashboard/participantes/participantes';
+import Collaborators from './components/dashboard/collaborators/Collaborators';
 import {useTheme} from './context/ThemeContext'
 
 
@@ -72,7 +72,7 @@ function App() {
  
             { path: 'dashboard/home', element: <HomeMain /> },
             { path: 'dashboard/projects', element: <Project /> },
-            { path: 'dashboard/participantes', element: <Participantes /> },
+            { path: 'dashboard/participantes', element: <Collaborators /> },
             { path: 'tools', element: <Tools /> },
             { path: 'meetings', element: <Meetings /> },
             { path: 'calendar', element: <Calendar /> },
