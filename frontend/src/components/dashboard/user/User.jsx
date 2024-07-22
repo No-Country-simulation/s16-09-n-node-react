@@ -20,8 +20,6 @@ function User({ userImage = '/external/user-image.png', userName = 'Usuario', us
   };
 
   let style = showMenu ? { borderColor: 'var(--dl-color-ours-light-over)' } : {};
-  style.color = theme.text;
-  style.backgroundColor = theme.backgroundColor;
 
   return (
     (!user) ? <p>
@@ -31,14 +29,14 @@ function User({ userImage = '/external/user-image.png', userName = 'Usuario', us
         size={40}
         aria-label="Loading Spinner"
         data-testid="loader" /></p> : (
-      <div className={`user-user`} style={style}>
+      <div className={`user-user`} style={{color: theme.subtitulos, backgroundColor: theme.background} }>
         <div className="user-container font-white">
           <UserButton userProfileMode="navigation" userProfileUrl="/perfil" />
-          <div className="user-container1" style={{ color: theme.text, backgroundColor: theme.background }}>
-            <span className="user-text Heading3 font-bold" style={{ color: theme.text, backgroundColor: theme.background }}>
+          <div className="user-container1" style={{ color: theme.subtitulos, backgroundColor: theme.background }}>
+            <span className="user-text Heading3 font-bold" style={{ color: theme.subtitulos, backgroundColor: theme.background }}>
               {user.fullName}
             </span>
-            <span className="user-text2 Body2" style={{ color: theme.text, backgroundColor: theme.background }}>
+            <span className="user-text2 Body2" style={{ color: theme.subtitulos, backgroundColor: theme.background }}>
               {userRol}
             </span>
           </div>
