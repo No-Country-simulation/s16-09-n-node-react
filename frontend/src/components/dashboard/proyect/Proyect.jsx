@@ -19,7 +19,7 @@ const Proyect = (props) => {
         <span className="proyect-beginning Label1">Inicio: {props.beginning}</span>
         <span className="proyect-deadline Label1">Entrega: {props.deadline}</span>
       </div>
-      <NavLink to={'/dashboard/proyect-details'}>
+      <NavLink to={'/dashboard/proyects'}>
         <img
           alt="plus-icon"
           src="/assets/plus-icon.svg"

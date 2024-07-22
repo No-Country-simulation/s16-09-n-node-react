@@ -4,7 +4,7 @@ const ProyectCard = ({ proyect, idx, theme }) => {
 
   const style = {
     width: idx === 0 ? '65%' : '49%',
-    height: '48%',
+    height: '50dvh',
     backgroundColor: theme.background
   }
 
@@ -43,9 +43,9 @@ const ProyectCard = ({ proyect, idx, theme }) => {
       </NavLink>
       :
       <NavLink
-        className='h-2/5 flex flex-col justify-between p-4 rounded-2xl'
+        className='flex flex-col p-4 justify-between rounded-2xl'
         to={`/dashboard/proyect/edit-proyect/${proyect.id}`}
-        style={style}
+        style={{...style, height: '55dvh'}}
       >
         <span>
           {proyect.name}
@@ -62,12 +62,25 @@ const ProyectCard = ({ proyect, idx, theme }) => {
           <p className="w-auto">Inicio: {proyect.beginning}</p>
           <p className="w-auto">{proyect.status === 'finished' ? 'Entregado: ' : 'Entrega: '}: {proyect.deadline}</p>
         </div>
-        {
-          idx % 2 !== 0 ? 
-          'impar' 
-          : 
-          'par'
-        }
+
+        <div className="flex justify-between">
+          <div className="flex flex-col items-start">
+            <span className="w-auto">Participantes:</span>
+            <p className="w-auto">{proyect.participants.length} miembros del grupo</p>
+          </div>
+          <div className="flex justify-end px-2">
+            {
+              proyect.participants.map(({ image }, idx) => (
+                <img
+                  className="-m-2 w-10 h-10"
+                  src={image}
+                  alt={'participante' + idx}
+                  key={image}
+                />
+              ))
+            }
+          </div>
+        </div>
       </NavLink>
 
   )
