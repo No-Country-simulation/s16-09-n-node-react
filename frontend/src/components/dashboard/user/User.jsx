@@ -29,8 +29,6 @@ const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', us
   }
 
   let style = showMenu ? {borderColor: 'var(--dl-color-ours-light-over)'} : {}
-  style.color = theme.text
-  style.backgroundColor = theme.backgroundColor
 
   return (
     (!user) ? <p>
@@ -42,11 +40,13 @@ const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', us
         aria-label="Loading Spinner"
         data-testid="loader"
       /></p> : (
-      <div className={`user-user`} style={style}>
-        <div className="user-container font-white">
-          <UserButton userProfileMode="navigation" userProfileUrl="/perfil"
-
-          />
+      <div className={`user-user`} style={  {color: theme.text,
+        backgroundColor: theme.backgroundColor}
+      }>
+         <div className="user-container font-white"  style={{pointerEvents: "none"}}>
+    <UserButton userProfileMode="false"   userProfileUrl="/perfil" 
+    defaultOpen= "false"
+    />
           <div className="user-container1" style={{ color: theme.text, backgroundColor: theme.background }}>
             <span className="user-text Heading3 font-bold" style={{ color: theme.text, backgroundColor: theme.background }}>
               {user.fullName}
@@ -75,3 +75,4 @@ User.propTypes = {
 }
 
 export default User
+
