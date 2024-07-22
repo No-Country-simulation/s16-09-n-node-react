@@ -32,6 +32,7 @@ import DocsDetails from './components/dashboard/docs/DocsDetails';
 import ProgressDetails from './components/dashboard/progress/ProgressDetails';
 
 import {useTheme} from './context/ThemeContext'
+import AddEditProyect from './components/dashboard/proyects/AddEditProyect';
 
 function App() {
   const theme = useTheme();
@@ -80,6 +81,8 @@ function App() {
       children: [
         { path: '/dashboard/home', element: <Main /> },
         { path: '/dashboard/proyects', element: <Proyects /> },
+        { path: '/dashboard/proyect/add-proyect', element: <AddEditProyect /> },
+        { path: '/dashboard/proyect/edit-proyect/:id', element: <AddEditProyect /> },
         { path: '/dashboard/proyect-details', element: <ProyectDetails /> },
         { path: '/dashboard/participants', element: <Participants /> },
         { path: '/dashboard/tools', element: <ToolsDetails /> },
