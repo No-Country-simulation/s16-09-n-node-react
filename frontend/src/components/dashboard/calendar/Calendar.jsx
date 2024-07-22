@@ -8,6 +8,7 @@ const Calendar = (props) => {
         alt="calendar-image"
         src="/assets/calendar-image.svg"
         className="calendar-calendar-image"
+        
       />
     </NavLink>
   )

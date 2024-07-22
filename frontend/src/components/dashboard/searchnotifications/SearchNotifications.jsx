@@ -1,10 +1,15 @@
 import './searchnotifications.css'
 import PropTypes from 'prop-types'
+import { useTheme } from '../../../context/ThemeContext'
 
 const SearchNotifications = (props) => {
+
+  const { theme } = useTheme()
+  console.log(theme, "theme")
   return (
     <div
       className={`search-notifications-search-notifications`}
+      style={{ color: theme.text, backgroundColor: theme.background } }	
     >
       <div className="search-notifications-search">
         <button type="button" className="search-notifications-button">
@@ -18,6 +23,7 @@ const SearchNotifications = (props) => {
           type="text"
           placeholder="Buscar proyecto, participante, tarea..."
           className="search-notifications-textinput"
+          style={{ color: theme.text, backgroundColor: theme.back }}
         />
       </div>
       <div className="search-notifications-notification">

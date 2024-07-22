@@ -19,7 +19,7 @@
   text-align: left;
   line-height: 28px;
   font-weight: 600;
-  color: #070707;
+
   font-family: Inter;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .task-text3 {
-  color: var(--dl-color-textos-light);
+
   height: auto;
   width: 11ch;
   text-align: left;
@@ -95,7 +95,7 @@
 }
 
 .task-text5 {
-  color: var(--dl-color-textos-light);
+
   height: auto;
   width: auto;
   text-align: left;

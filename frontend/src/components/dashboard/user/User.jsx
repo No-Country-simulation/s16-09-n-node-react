@@ -1,34 +1,27 @@
-import PropTypes from 'prop-types'
-import './user.css'
-import { UserButton } from '@clerk/clerk-react'
-import { useUser } from '@clerk/clerk-react'
-import ClipLoader from "react-spinners/ClipLoader";
-import { useTheme } from '../../../context/ThemeContext'
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import './user.css';
+import { UserButton, useUser } from '@clerk/clerk-react';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { useTheme } from '../../../context/ThemeContext';
+import { useState } from 'react';
 import UserMenu from './UserMenu';
 
 
-const styles = {
-  spinner: {
-    display: 'block',
-    margin: '10px auto',
-    borderColor: 'white',
-  }
-}
+function User({ userImage = '/external/user-image.png', userName = 'Usuario', userRol = 'Frontend' }) {
+  const { theme } = useTheme();
+  const { isLoader, user } = useUser();
 
-const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', userRol = 'Frontend' }) => {
-  const { theme } = useTheme()
-  const { isLoader, user } = useUser()
-
-  const set = '/assets/settings-icon.svg'
-  const close = '/assets/close-icon.svg'
-  const [showMenu, setShowMenu] = useState(false)
+  const set = '/assets/settings-icon.svg';
+  const close = '/assets/close-icon.svg';
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleMenu = () => {
-    setShowMenu(prev => !prev)
-  }
+    setShowMenu(prev => !prev);
+  };
 
-  let style = showMenu ? {borderColor: 'var(--dl-color-ours-light-over)'} : {}
+  let style = showMenu ? { borderColor: 'var(--dl-color-ours-light-over)' } : {};
+  style.color = theme.text;
+  style.backgroundColor = theme.backgroundColor;
 
   return (
     (!user) ? <p>
@@ -36,17 +29,11 @@ const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', us
         color="white"
         loading={isLoader}
         size={40}
-        cssOverride={styles.spinner}
         aria-label="Loading Spinner"
-        data-testid="loader"
-      /></p> : (
-      <div className={`user-user`} style={  {color: theme.text,
-        backgroundColor: theme.backgroundColor}
-      }>
-         <div className="user-container font-white"  style={{pointerEvents: "none"}}>
-    <UserButton userProfileMode="false"   userProfileUrl="/perfil" 
-    defaultOpen= "false"
-    />
+        data-testid="loader" /></p> : (
+      <div className={`user-user`} style={style}>
+        <div className="user-container font-white">
+          <UserButton userProfileMode="navigation" userProfileUrl="/perfil" />
           <div className="user-container1" style={{ color: theme.text, backgroundColor: theme.background }}>
             <span className="user-text Heading3 font-bold" style={{ color: theme.text, backgroundColor: theme.background }}>
               {user.fullName}
@@ -61,18 +48,17 @@ const User = ({ userImage = '/external/user-image.png', userName = 'Usuario', us
           src={showMenu ? close : set}
           className="user-settings-icon hover:text-red-700 cursor-pointer"
           style={{ color: theme.text, backgroundColor: theme.background }}
-          onClick={handleMenu}
-        />
+          onClick={handleMenu} />
         {showMenu && <UserMenu handleMenu={handleMenu} />}
       </div>)
-  )
+  );
 }
 
 User.propTypes = {
   userImage: PropTypes.string,
   userName: PropTypes.string,
-  userRol: PropTypes.string
-}
+  userRol: PropTypes.string,
+};
 
-export default User
+export default User;
 

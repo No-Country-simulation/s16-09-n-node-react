@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types'
 import './meetings.css'
+import { useTheme } from '../../../context/ThemeContext'
 import { NavLink } from 'react-router-dom'
 
 const Meetings = (props) => {
+  const { theme } = useTheme()
   return (
-    <div className="meetings-meetings">
-      <span className="meetings-title Heading1">
+    <div className="meetings-meetings" style={{color: theme.primary, backgroundColor: theme.background}}>
+      <span className="meetings-title Heading1" >
         <span>Reuniones</span>
       </span>
-      <div className="meetings-container">
+      <div className="meetings-container" style={{color: theme.subtitulos, backgroundColor: theme.back }}>
         <div className="meetings-container1">
           <span className="meetings-text1 Heading3">
             <span>Sistema de Diseño</span>
@@ -40,9 +42,9 @@ const Meetings = (props) => {
             placeholder={props.textinputPlaceholder}
             className="meetings-textinput"
           />
-          <button type="button" className="meetings-button">
-            <span className="meetings-text6 Label1">
-              <span>Unirse</span>
+          <button type="button" className="meetings-button" >
+            <span className="meetings-text6 Label1" >
+              <span style={{backgroundColor: theme.secondary, padding: "12%", margin: "1%", color: theme.subtitulos}} >Unirse</span>
             </span>
           </button>
         </div>
