@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import './task.css'
 import { useTheme } from '../../../context/ThemeContext'
+import { NavLink } from 'react-router-dom'
 
 const Task = (props) => {
   const { theme } = useTheme()
 
   return (
-    <div className="task-task" style={{color: theme.text, background: theme.back1}}>
+    <NavLink className="task-task" style={{color: theme.text, background: theme.back1}} to={'/dashboard/task-details/task_1'}>
       <span className="task-issue Heading3" style={{color: theme.subtitulos}}>
         <span>
           Diseño de Footer
@@ -43,7 +44,7 @@ const Task = (props) => {
           <span className="task-text5 Heading3">{props.text}</span>
         </div>
       </div>
-    </div>
+    </NavLink>
   )
 }
 
