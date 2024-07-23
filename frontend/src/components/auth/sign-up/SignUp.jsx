@@ -2,7 +2,7 @@ import icono from "@/assets/icono.svg";
 import logo from "@/assets/logo.svg";
 import { SignUp } from "@clerk/clerk-react";
 
-import "./signup.css";
+import "./SignUp.css";
 
 import { useEffect } from "react";
 import AOS from "aos";
