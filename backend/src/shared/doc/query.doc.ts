@@ -20,16 +20,4 @@
  *      type: string
  *      default: ""
  *      description: Name Product.
- *    pageLimit:
- *      in: query
- *      name: limit
- *      description: Limits the number of items on a page
- *      schema:
- *        type: integer
- *    pageOffset:
- *      in: query
- *      name: offset
- *      description: Specifies the page number of the artists to be displayed
- *      schema:
- *        type: integer
  */

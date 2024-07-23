@@ -10,17 +10,17 @@ import { swaggerRouter } from './swagger.routes';
 import { userRouter } from './user.routes';
 import { calendarRouter } from './calendar.routes'
 
-export const mainRouter = Router();
+export const serverRouter = Router();
 
 const root = join(__dirname, '..');
-mainRouter.use('/assets', express.static(join(root, 'assets')));
-mainRouter.use(favicon(join(root, 'assets/ico/favicon.ico')));
+serverRouter.use('/assets', express.static(join(root, 'assets')));
+serverRouter.use(favicon(join(root, 'assets/ico/favicon.ico')));
 
-mainRouter.use('/', homeRouter);
-mainRouter.use('/users', userRouter);
-mainRouter.use('/auth', authRouter);
-mainRouter.use('/docs', swaggerRouter);
-mainRouter.use('/projects', projectRouter);
-mainRouter.use('/*', invalidRouter);
-mainRouter.use('/calendar/v3', calendarRouter);
-mainRouter.use('/auth', authRouter);
+serverRouter.use('/', homeRouter);
+serverRouter.use('/users', userRouter);
+serverRouter.use('/auth', authRouter);
+serverRouter.use('/docs', swaggerRouter);
+serverRouter.use('/projects', projectRouter);
+serverRouter.use('/*', invalidRouter);
+serverRouter.use('/calendar/v3', calendarRouter);
+serverRouter.use('/auth', authRouter);

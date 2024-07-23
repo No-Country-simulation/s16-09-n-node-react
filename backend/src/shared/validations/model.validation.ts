@@ -1,10 +1,6 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 
-
-
-
-
 interface ValidateObject {
   [key: string]: any;
 }
@@ -34,7 +30,8 @@ const loadModelFields = (modelName: string): Set<string> => {
   const modelString: string = readFileSync(schemaPath, 'utf8');
   const regex = new RegExp(`model ${modelName} {([\\s\\S]*?)}`, 'm');
   const modelMatch = regex.exec(modelString);
-  if (!modelMatch) throw new FieldError('Model Error',`Model ${modelName} not found`);
+  if (!modelMatch)
+    throw new FieldError('Model Error', `Model ${modelName} not found`);
 
   return new Set(
     modelMatch[1]
@@ -46,7 +43,7 @@ const loadModelFields = (modelName: string): Set<string> => {
 };
 
 //==========================
-// Valiadte keys in model
+// Validate keys in model
 //==========================
 export const validateKeysInPrismaModel = (
   modelName: string,
@@ -59,9 +56,7 @@ export const validateKeysInPrismaModel = (
     if (modelFields.has(key)) {
       validKeys[key] = validateObject[key];
     } else {
-      errors.push(
-        `The ${key} field does not belong to the model ${modelName}`,
-      );
+      errors.push(`The ${key} field does not belong to the model ${modelName}`);
     }
   });
 

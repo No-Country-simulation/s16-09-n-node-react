@@ -8,16 +8,15 @@ config();
 const env = process.env.NODE_ENV ?? 'development';
 const port = process.env.PORT ?? 3000;
 const hostDev = process.env.HOST_DEV ?? 'localhost';
-const hostProd = process.env.HOST_PROD_BACK ?? 'proyecto.vercel.app';
+const hostProd = process.env.HOST_PROD_BACK ?? 'projet.vercel.app';
 const theme = new SwaggerTheme();
 const darkStyle = theme.getBuffer(SwaggerThemeNameEnum.DARK);
 const serverUrl =
   env?.trim() === 'production'
-    ? `https://${hostProd}/{basePath}`
-    : `http://${hostDev}:${port}/{basePath}`;
+    ? `https://${hostProd}/{basePath}/{versionApi}`
+    : `http://${hostDev}:${port}/{basePath}/{versionApi}`;
 const apisRoot =
   env?.trim() === 'production' ? `./**/doc/*.doc.js` : `./**/doc/*.doc.ts`;
-
 const swaggerConfig = {
   failOnErrors: true,
   definition: {
@@ -51,8 +50,13 @@ const swaggerConfig = {
           (env?.trim() === 'production' ? 'production' : 'development'),
         variables: {
           basePath: {
-            enum: ['', 'api'],
-            default: '',
+            enum: ['api',' '],
+            default: 'api',
+            description: 'this value is assigned by the service provider',
+          },
+          versionApi: {
+            enum: ['v1', ' '],
+            default: 'v1',
             description: 'this value is assigned by the service provider',
           },
         },

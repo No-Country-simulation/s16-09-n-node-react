@@ -6,28 +6,28 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
-import { mainRouter } from './routes';
+import { serverRouter } from './routes/server.routes';
 
 // Configuración de variables de entorno
 dotenv.config();
 
 // Inicialización de la app
-const app = express();
+const server = express();
 const PORT = process.env.PORT ?? 3000;
 
 // Middleware
-app.use(cors());
-app.use(helmet());
-app.use(express.json());
-app.use(morgan('dev'));
-app.use(cookieParser());
+server.use(cors());
+server.use(helmet());
+server.use(express.json());
+server.use(morgan('dev'));
+server.use(cookieParser());
 
 // Rutas
-app.use('/', mainRouter);
+server.use('/api/v1', serverRouter);
 
 // Inicio del servidor
-app.listen(PORT, () => {
-  console.log('\n==================================================');
-  console.log(`🚀 Servidor corriendo en: http://localhost:${PORT}`);
-  console.log('==================================================\n');
+server.listen(PORT, () => {
+  console.log('\n===============================================================');
+  console.log(`  🚀 Servidor corriendo en: http://localhost:${PORT}/api/v1/docs`);
+  console.log('===============================================================\n');
 });
