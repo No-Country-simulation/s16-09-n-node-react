@@ -7,9 +7,11 @@ import { Outlet } from "react-router-dom";
 import SearchNotifications from "../../components/dashboard/searchnotifications/SearchNotifications";
 import Sidebar from "../../components/dashboard/sidebar/Sidebar";
 import User from "../../components/dashboard/user/User";
+import { useUser } from "@clerk/clerk-react";
 
 const Dashboard = () => {
   const { theme } = useTheme();
+
 
   return (
     <>

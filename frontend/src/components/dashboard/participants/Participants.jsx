@@ -2,7 +2,8 @@ const Participants = () => {
 
     return (
         <div className="text-white">
-            Participants
+     Participantes
+
         </div>
     )
 }
