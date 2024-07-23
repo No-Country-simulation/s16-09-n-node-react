@@ -40,8 +40,6 @@ model User {
   timezone     String?
   companyId    String
   company      Company       @relation(fields: [companyId], references: [id])
-  cohortId     String
-  cohort       Cohort        @relation(fields: [cohortId], references: [id])
   userProjects UserProject[]
   userSkills   UserSkill[]
   tasks        Task[]
@@ -68,13 +66,12 @@ model Role {
 model Company {
   id         String     @id @default(cuid())
   name       String
-  cohorts    Cohort[]
   calendar   Calendar?  @relation(fields: [calendarId], references: [id])
-  user       User[]
+  users      User[]
   calendarId String?
-  vertical   Vertical[]
   documents  Document[]
   createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  Project    Project[]
 }
 
 model Document {
@@ -88,31 +85,17 @@ model Document {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
-model Cohort {
-  id             String           @id @default(cuid())
-  name           String
-  companyId      String
-  company        Company          @relation(fields: [companyId], references: [id])
-  projects       Project[]
-  user           User[]
-  calendarId     String?
-  verticalCohort VerticalCohort[]
-  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
-}
-
 model Project {
   id           String        @id @default(cuid())
   name         String
   description  String?
-  verticalId   String
-  vertical     Vertical      @relation("VerticalProjects", fields: [verticalId], references: [id])
+  companyId    String
+  company      Company       @relation(fields: [companyId], references: [id])
   shift        Shift?
   userProjects UserProject[]
   calendar     Calendar?     @relation(fields: [calendarId], references: [id])
   milestones   Milestone[]
   tasks        Task[]
-  cohort       Cohort?       @relation(fields: [cohortId], references: [id])
-  cohortId     String?
   calendarId   String?
   meeting      Meeting[]
   document     Document[]
@@ -188,24 +171,4 @@ model UserProject {
   role      Role    @relation(fields: [roleId], references: [id])
 
   @@unique([userId, projectId])
-}
-
-model Vertical {
-  id          String           @id @default(cuid())
-  name        String           @unique
-  description String?
-  companyId   String
-  company     Company          @relation(fields: [companyId], references: [id])
-  cohorts     VerticalCohort[]
-  projects    Project[]        @relation("VerticalProjects")
-}
-
-model VerticalCohort {
-  id         String   @id @default(cuid())
-  cohortId   String
-  verticalId String
-  cohort     Cohort   @relation(fields: [cohortId], references: [id])
-  vertical   Vertical @relation(fields: [verticalId], references: [id])
-
-  @@unique([cohortId, verticalId])
 }
