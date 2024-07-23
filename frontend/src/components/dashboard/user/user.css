@@ -7,7 +7,7 @@
   padding: 8px 20px;
   border-radius: 15px;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark);
+  background-color: var(--dl-color-ours-primary-light);
   border: 1px solid transparent;
 }
 .user-container {
@@ -43,4 +43,3 @@
   width: 29px;
   height: 29px;
 }
-

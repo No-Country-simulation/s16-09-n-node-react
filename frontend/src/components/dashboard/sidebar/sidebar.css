@@ -1,10 +1,7 @@
-
-
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  font-family: "Inter", sans-serif;
 }
 
 .sidebar {
@@ -18,7 +15,6 @@ body {
   justify-content: space-between;
   font-size: large;
   font-weight: 600;
- 
 }
 
 .sidebar-nav-links {
@@ -46,8 +42,8 @@ body {
 }
 
 .sidebar-link span:hover {
-  color: #3498db; 
-    cursor: pointer;
+  color: #3498db;
+  cursor: pointer;
 }
 
 .sidebar-footer {

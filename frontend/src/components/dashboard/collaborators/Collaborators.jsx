@@ -1,72 +1,76 @@
-import PropTypes from 'prop-types'
-import './collaborators.css'
-import { useTheme } from '../../../context/ThemeContext'
-import { NavLink } from 'react-router-dom'
+import PropTypes from "prop-types";
+
+import "./collaborators.css";
+
+import { useTheme } from "@/context/themecontext";
+import { NavLink } from "react-router-dom";
 
 const Collaborators = (props) => {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
   return (
-    <div className="collaborators-collaborators" style={{color: theme.primary, backgroundColor: theme.background}}>
-      <span className="collaborators-title Heading1">
+    <div
+      className='collaborators-collaborators'
+      style={{ color: theme.primary, backgroundColor: theme.background }}
+    >
+      <span className='collaborators-title Heading1'>
         <span>Participantes</span>
       </span>
-      <div className="collaborators-container">
-        <span className="collaborators-count">{props.count}</span>
-        <span className="collaborators-text1">miembros de equipo</span>
+      <div className='collaborators-container'>
+        <span className='collaborators-count'>{props.count}</span>
+        <span className='collaborators-text1'>miembros de equipo</span>
       </div>
-      <div className="collaborators-container1">
+      <div className='collaborators-container1'>
         <img
-          alt="collaborator image"
+          alt='collaborator image'
           src={props.collaboratorImageSrc}
-          className="collaborators-collaborator-image"
+          className='collaborators-collaborator-image'
         />
         <img
-          alt="collaborator image"
+          alt='collaborator image'
           src={props.collaboratorImageSrc1}
-          className="collaborators-collaborator-image1"
+          className='collaborators-collaborator-image1'
         />
         <img
-          alt="collaborator image"
+          alt='collaborator image'
           src={props.collaboratorImageSrc2}
-          className="collaborators-collaborator-image2"
+          className='collaborators-collaborator-image2'
         />
         <img
-          alt="Ellipse95183"
+          alt='Ellipse95183'
           src={props.collaboratorImageSrc3}
-          className="collaborators-collaborator-image3"
+          className='collaborators-collaborator-image3'
         />
         <img
-          alt="collaborator image"
+          alt='collaborator image'
           src={props.collaboratorImageSrc4}
-          className="collaborators-collaborator-image4"
+          className='collaborators-collaborator-image4'
         />
         <img
-          alt="collaborator image"
+          alt='collaborator image'
           src={props.collaboratorImageSrc5}
-          className="collaborators-collaborator-image5"
+          className='collaborators-collaborator-image5'
         />
       </div>
       <NavLink to={"/dashboard/participants"}>
         <img
-          alt="plus-icon"
-          src="/assets/plus-icon.svg"
-          className="collaborators-plus-icon"
+          alt='plus-icon'
+          src='/assets/plus-icon.svg'
+          className='collaborators-plus-icon'
         />
       </NavLink>
     </div>
-  )
-}
+  );
+};
 
 Collaborators.defaultProps = {
-  collaboratorImageSrc3: '/external/collaborator-image6-200h.png',
-  collaboratorImageSrc4:
-    '/external/collaborator-image1-200h.png',
-  collaboratorImageSrc5: '/external/collaborator-image4-200h.png',
-  collaboratorImageSrc1: '/external/collaborator-image3-200h.png',
-  collaboratorImageSrc: '/external/collaborator-image2-200h.png',
-  count: '10',
-  collaboratorImageSrc2: '/external/collaborator-image5-200h.png',
-}
+  collaboratorImageSrc3: "/external/collaborator-image6-200h.png",
+  collaboratorImageSrc4: "/external/collaborator-image1-200h.png",
+  collaboratorImageSrc5: "/external/collaborator-image4-200h.png",
+  collaboratorImageSrc1: "/external/collaborator-image3-200h.png",
+  collaboratorImageSrc: "/external/collaborator-image2-200h.png",
+  count: "10",
+  collaboratorImageSrc2: "/external/collaborator-image5-200h.png",
+};
 
 Collaborators.propTypes = {
   collaboratorImageSrc3: PropTypes.string,
@@ -76,6 +80,6 @@ Collaborators.propTypes = {
   collaboratorImageSrc: PropTypes.string,
   count: PropTypes.string,
   collaboratorImageSrc2: PropTypes.string,
-}
+};
 
-export default Collaborators
+export default Collaborators;
