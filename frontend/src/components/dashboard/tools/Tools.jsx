@@ -6,6 +6,10 @@ import { useTheme } from "@/context/themecontext";
 
 const Tools = (props) => {
   const { theme } = useTheme();
+
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+  };
   return (
     <div
       className='tools-tools'
@@ -59,6 +63,7 @@ const Tools = (props) => {
           alt='plus-icon'
           src='/assets/plus-icon.svg'
           className='tools-plus-icon'
+          style={{ filter: getFilterStyle() }}
         />
       </NavLink>
     </div>

@@ -6,6 +6,9 @@ import { useTheme } from "@/context/themecontext";
 
 const Docs = (props) => {
   const { theme } = useTheme();
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+  };
   return (
     <div
       className='docs-docs'
@@ -39,6 +42,7 @@ const Docs = (props) => {
               alt='download-icon'
               src='/assets/download-icon.svg'
               className='docs-download-icon'
+              style={{ filter: getFilterStyle() }}
             />
           </div>
           <div className='docs-container5'>
@@ -65,6 +69,7 @@ const Docs = (props) => {
           alt='plus-icon'
           src='/assets/plus-icon.svg'
           className='docs-plus-icon'
+          style={{ filter: getFilterStyle() }}
         />
       </NavLink>
     </div>

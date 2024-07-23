@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .sidebar {
@@ -15,6 +16,13 @@ body {
   justify-content: space-between;
   font-size: large;
   font-weight: 600;
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+}
+
+.sidebar.light-mode {
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
 }
 
 .sidebar-nav-links {
@@ -36,6 +44,11 @@ body {
   height: 20px;
 }
 
+.sidebar-icon-logout {
+  width: 20px;
+  height: 20px;
+  margin-right: -50px;
+}
 .sidebar-link {
   text-decoration: none;
   color: inherit;

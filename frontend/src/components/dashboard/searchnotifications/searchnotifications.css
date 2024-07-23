@@ -6,7 +6,7 @@
   padding: 11px 24px;
   border-radius: 15px;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark);
+
 }
 
 .search-notifications-search {
@@ -16,7 +16,7 @@
   align-items: center;
   padding: 0px 16px;
   border-radius: 100px;
-  background-color: #fff;
+
 }
 
 .search-notifications-button {
@@ -37,6 +37,8 @@
   border: none;
   outline: none;
   background-color: transparent;
+  border-radius: 10px;
+  padding: 2%;
 }
 
 .search-notifications-notification {
@@ -73,7 +75,6 @@
 }
 
 .search-notifications-text {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: right;
   line-height: 32px;

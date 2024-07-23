@@ -14,7 +14,7 @@ const Task = (props) => {
       style={{ color: theme.text, background: theme.back1 }}
       to={"/dashboard/task-details/task_1"}
     >
-      <span className='task-issue Heading3'>
+      <span className='task-issue Heading3' style={{ color: theme.subtitulos }}>
         <span>Diseño de Footer</span>
       </span>
       <span className='task-team Body3'>

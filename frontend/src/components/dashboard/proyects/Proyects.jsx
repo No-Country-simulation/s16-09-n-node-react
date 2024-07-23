@@ -13,11 +13,14 @@ const Proyects = () => {
   };
 
   return (
-    <div className='flex h-full flex-wrap justify-start gap-3' style={style}>
+    <div
+      className='no-scrollbar flex h-screen flex-wrap justify-start gap-3 overflow-auto'
+      style={style}
+    >
       <NavLink
         className='flex w-1/3 flex-col items-center justify-center gap-4 rounded-2xl'
         to='/dashboard/proyect/add-proyect'
-        style={{ backgroundColor: theme.background, height: "48%" }}
+        style={{ backgroundColor: theme.background, height: "50dvh" }}
       >
         <svg
           width='40'
@@ -33,9 +36,16 @@ const Proyects = () => {
         </svg>
         <span className='font-roboto text-center'>Crear Projecto</span>
       </NavLink>
-      <ProyectCard idx={0} proyect={proyects[0]} theme={theme} />
-      <ProyectCard idx={1} proyect={proyects[1]} theme={theme} />
-      <ProyectCard idx={2} proyect={proyects[2]} theme={theme} />
+      {proyects && proyects.length > 0
+        ? proyects.map((proyect, idx) => (
+            <ProyectCard
+              idx={idx}
+              proyect={proyect}
+              theme={theme}
+              key={proyect.id}
+            />
+          ))
+        : null}
     </div>
   );
 };

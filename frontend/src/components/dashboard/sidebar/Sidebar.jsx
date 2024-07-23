@@ -87,25 +87,24 @@ const Sidebar = () => {
           <img
             alt='logout icon'
             src='/assets/logout-icon.svg'
-            className='sidebar-icon'
+            className='sidebar-icon-logout'
             style={{ filter: getFilterStyle() }}
           />
-          <Link
-            to='/logout'
-            className='sidebar-link'
-            style={{ color: theme.text }}
-          >
-            <span className='sidebar-text'>
-              <SignOutButton />
+          <Link to='/' className='sidebar-link' style={{ color: theme.text }}>
+            <span className='sidebar-text' style={{ color: theme.text }}>
+              <SignOutButton>
+                <button style={{ color: theme.subtitulos }}>
+                  Cerrar Sesión
+                </button>
+              </SignOutButton>
             </span>
           </Link>
         </div>
         <img
           className='sidebar-theme-icon cursor-pointer'
-          src={theme.text === "#000000" ? moon : sun}
+          src={theme.subtitulos === "black" ? moon : sun}
           alt='change theme icon'
           onClick={toggleTheme}
-          style={{ filter: getFilterStyle() }}
         />
       </div>
     </div>

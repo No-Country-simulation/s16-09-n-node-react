@@ -10,6 +10,9 @@ import { useTheme } from "@/context/themecontext";
 
 const Tasks = (props) => {
   const { theme } = useTheme();
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+  };
 
   return (
     <div
@@ -32,6 +35,7 @@ const Tasks = (props) => {
           alt='plus-icon'
           src='/assets/plus-icon.svg'
           className='tasks-plus-icon'
+          style={{ filter: getFilterStyle() }}
         />
       </NavLink>
     </div>

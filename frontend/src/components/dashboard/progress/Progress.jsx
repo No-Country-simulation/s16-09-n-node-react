@@ -5,6 +5,10 @@ import "./progress.css";
 import { useTheme } from "@/context/themecontext";
 
 const Progress = (props) => {
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+  };
+
   const { theme } = useTheme();
   return (
     <div
@@ -51,6 +55,7 @@ const Progress = (props) => {
           alt='plus-icon'
           src='/assets/plus-icon.svg'
           className='progress-plus-icon'
+          style={{ filter: getFilterStyle() }}
         />
       </NavLink>
     </div>

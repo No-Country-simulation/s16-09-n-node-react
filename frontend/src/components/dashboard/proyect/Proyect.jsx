@@ -7,6 +7,9 @@ import { NavLink } from "react-router-dom";
 
 const Proyect = (props) => {
   const { theme } = useTheme();
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+  };
   return (
     <div className='proyect-proyect' style={props.theme}>
       <span className='proyect-title' style={props.theme}>
@@ -31,11 +34,12 @@ const Proyect = (props) => {
           Entrega: {props.deadline}
         </span>
       </div>
-      <NavLink to={"/dashboard/proyect-details"}>
+      <NavLink to={"/dashboard/proyects"}>
         <img
           alt='plus-icon'
           src='/assets/plus-icon.svg'
           className='proyect-plus-icon'
+          style={{ filter: getFilterStyle() }}
         />
       </NavLink>
     </div>
