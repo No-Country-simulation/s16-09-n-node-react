@@ -7,11 +7,12 @@ import morgan from 'morgan';
 
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 import { serverRouter } from './routes/server.routes';
+import { invalidRouter } from './api/invalid/router/invalid.router';
 
 // Configuración de variables de entorno
 dotenv.config();
 
-// Inicialización de la app
+// Initialization of server
 const server = express();
 const PORT = process.env.PORT ?? 3000;
 
@@ -24,6 +25,7 @@ server.use(cookieParser());
 
 // Rutas
 server.use('/api/v1', serverRouter);
+server.use('*', invalidRouter);
 
 // Inicio del servidor
 server.listen(PORT, () => {

@@ -8,7 +8,7 @@
  *      description: Project entity
  *      required:
  *        - name
- *        - ownerId
+ *        - companyId
  *      properties:
  *        id:
  *          type: string
@@ -20,28 +20,35 @@
  *        description:
  *          type: string
  *          example: api para controlar el tiempo
- *        ownerId:
+ *        shift:
+ *          type: shift
+ *          example: morning
+ *        companyId:
  *          type: string
- *          example: id
- *        technologies:
+ *          example: id de la empresa
+ *        calendarId:
  *          type: string
- *          example: tecnologías
- *        type:
- *          type: string
- *          example: api
- *        duration:
- *          type: string
- *          example: 1 month
- *        createdAt:
- *          type: dateTime
- *          example: 2021-01-01 00:00:00
- *        projectMembers:
- *          type: ProjectMember
+ *          example: id de calendario
+ *        userProjects:
+ *          type: User Projects
+ *          example: []
+ *        milestones:
+ *          type: Milestones
+ *          example: []
+ *        task:
+ *          type: Task
  *          example: []
  *        meeting:
  *          type: Meeting
  *          example: []
+ *        document:
+ *          type: Document
+ *          example: []
  *        isActive:
  *          type: boolean
  *          example: true
+ *        createdAt:
+ *          type: string
+ *          format: dateTime
+ *          example: 2021-01-01 00:00:00
  */

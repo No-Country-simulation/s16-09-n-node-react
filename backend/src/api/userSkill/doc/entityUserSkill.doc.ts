@@ -2,10 +2,10 @@
  * @swagger
  * components:
  *  schemas:
- *    User Entity:
- *      name: User Entity
+ *    User Skill Entity:
+ *      name: User Skill Entity
  *      type: object
- *      description: User entity
+ *      description: User Skill entity
  *      required:
  *        - email
  *        - password
@@ -46,10 +46,10 @@
  *          type: string
  *          example: id de la empresa
  *        userProjects:
- *          type: userProjects
+ *          type: User Projects
  *          example: []
  *        userSkills:
- *          type: User Skill
+ *          type: User Skills
  *          example: []
  *        tasks:
  *          type: Task

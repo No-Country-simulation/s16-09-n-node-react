@@ -2,14 +2,15 @@
  * @swagger
  * components:
  *  schemas:
- *    Meeting Entity:
- *      name: Meeting Entity
+ *    Milestone Entity:
+ *      name: Milestone Entity
  *      type: object
- *      description: Meeting Entity
+ *      description: Milestone entity
  *      required:
  *        - name
- *        - link
- *        - dateTime
+ *        - completed
+ *        - projectId
+ *        - targetDate
  *      properties:
  *        id:
  *          type: string
@@ -17,23 +18,23 @@
  *          example: 123e4567-e89b-12d3-a456-426655440000
  *        name:
  *          type: string
- *          example: name Meeting
+ *          example: name
  *        description:
  *          type: string
- *          example: description Meeting
- *        link:
- *          type: string
- *          example: https://meet.google.com
- *        dateTime:
+ *          example: description
+ *        targetDate:
  *          type: string
  *          format: dateTime
  *          example: 2021-01-01 00:00:00
- *        calendarId:
- *          type: string
- *          example: id del calendario
+ *        completed:
+ *          type: boolean
+ *          example: false
  *        projectId:
  *          type: string
  *          example: id del proyecto
+ *        tasks:
+ *          type: Task
+ *          example: []
  *        isActive:
  *          type: boolean
  *          example: true

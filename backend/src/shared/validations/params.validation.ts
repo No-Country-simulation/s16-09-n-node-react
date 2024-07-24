@@ -64,7 +64,7 @@ const isKeyAndValueValidate = (queryParams: any) => {
   if (!key || !value)
     throw new ParamError('Query error','The wrong query parameter.');
   const query = validateKeysInPrismaModel("Project", { [key]: value });
-  return queryParams;
+  return query;
 };
 
 //========================

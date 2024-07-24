@@ -5,7 +5,7 @@ import { prisma } from '@/config/prisma';
 //==================
 export const saveProject = async (body: any) => {
   const response = await prisma.project.create({
-    data: { ...body },
+    data: body,
   });
   return response;
 };
@@ -19,6 +19,7 @@ export const getProjectsBy = async (value: any) => {
     select: {
       id: true,
       name: true,
+      companyId: true,
     },
   });
   return response;
@@ -34,6 +35,7 @@ export const updateProjectsBy = async (value: any, body: any) => {
     select: {
       id: true,
       name: true,
+      companyId: true,
     },
   });
   return response;
@@ -48,6 +50,7 @@ export const deleteProjectsBy = async (value: any) => {
     select: {
       id: true,
       name: true,
+      companyId: true,
     },
   });
   return response;

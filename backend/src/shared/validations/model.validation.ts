@@ -1,6 +1,10 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 
+
+
+
+
 interface ValidateObject {
   [key: string]: any;
 }
@@ -59,10 +63,8 @@ export const validateKeysInPrismaModel = (
       errors.push(`The ${key} field does not belong to the model ${modelName}`);
     }
   });
-
   if (errors.length > 0) {
     throw new FieldError('Field Error', errors.join(', '));
   }
-
   return validKeys;
 };
