@@ -5,7 +5,6 @@ import { proyects } from './data'
 
 const Proyects = () => {
   const { theme } = useTheme()
-
   const style = {
     color: theme.text,
     backgroundColor: theme.backgroundColor
