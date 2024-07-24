@@ -39,10 +39,11 @@
   flex-shrink: 1;
 }
 .proyect-beginning {
+  font-size: 14px;
   line-height: 14px;
 }
 .proyect-deadline {
-
+font-size: 14px;
   line-height: 14px;
 }
 .proyect-plus-icon {

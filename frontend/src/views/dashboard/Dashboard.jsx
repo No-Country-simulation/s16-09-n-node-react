@@ -1,10 +1,12 @@
-import './dashboard.css';
-import { Helmet } from 'react-helmet';
-import User from '../../components/dashboard/user/User';
-import SearchNotifications from '../../components/dashboard/searchnotifications/SearchNotifications';
-import Sidebar from '../../components/dashboard/sidebar/Sidebar';
-import Main from '../../components/dashboard/main/Main';
-import { useTheme } from '../../context/ThemeContext';
+import "./dashboard.css";
+
+import { useTheme } from "@/context/themecontext";
+import { Helmet } from "react-helmet";
+import { Outlet } from "react-router-dom";
+
+import SearchNotifications from "../../components/dashboard/searchnotifications/SearchNotifications";
+import Sidebar from "../../components/dashboard/sidebar/Sidebar";
+import User from "../../components/dashboard/user/User";
 
 const Dashboard = () => {
   const { theme } = useTheme();
@@ -13,13 +15,19 @@ const Dashboard = () => {
     <>
       <Helmet>
         <title>Proyect - Dashboard</title>
-        <meta property="og:title" content="Proyect - Dashboard" />
+        <meta property='og:title' content='Proyect - Dashboard' />
       </Helmet>
-      <div className='dashboard-container' style={{ color: theme.text, backgroundColor: theme.backgroundSecondary }}>
-        <User id='item1' />
-        <SearchNotifications id='item2' />
-        <Sidebar id='item3' />
-        <Main id='item4' />
+      <div
+        className='dashboard-container'
+        style={{
+          color: theme.text,
+          backgroundColor: theme.backgroundSecondary,
+        }}
+      >
+        <User />
+        <SearchNotifications />
+        <Sidebar />
+        <Outlet />
       </div>
     </>
   );

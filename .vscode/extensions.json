@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "prisma.prisma",
+    "abians.prisma-generate-uml",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
