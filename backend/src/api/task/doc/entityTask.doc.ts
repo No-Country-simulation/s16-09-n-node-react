@@ -9,7 +9,7 @@
  *      required:
  *        - name
  *        - status
- *        - projectIde
+ *        - projectId
  *      properties:
  *        id:
  *          type: string
@@ -29,12 +29,15 @@
  *          type: enum
  *          enum: ["TODO","IN_PROGRESS","REVIEW","DONE"]
  *          example: TODO
+ *        userId:
+ *          type: string
+ *          example: id del usuario
  *        projectId:
  *          type: string
  *          example: id del proyecto
- *        tasks:
- *          type: Task
- *          example: []
+ *        milestoneId:
+ *          type: string
+ *          example: id del milestone
  *        isActive:
  *          type: boolean
  *          example: true

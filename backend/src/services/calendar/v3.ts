@@ -75,7 +75,7 @@ export const listEvents = async (req: Request, res: Response) => {
 };
 
 export const createEvent = async (req: Request, res: Response) => {
-  const { summary, location, description, start, end, attendees } = req.body;
+  const { summary, location, description, start, end } = req.body;
   var event = {
     summary: summary,
     location: location,
@@ -89,7 +89,7 @@ export const createEvent = async (req: Request, res: Response) => {
       timeZone: end.timeZone,
     },
     recurrence: ['RRULE:FREQ=DAILY;COUNT=2'],
-    attendees: attendees,
+    attendees: [],
     reminders: {
       useDefault: false,
       overrides: [

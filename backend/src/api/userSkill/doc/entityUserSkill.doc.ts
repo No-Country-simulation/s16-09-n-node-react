@@ -7,53 +7,22 @@
  *      type: object
  *      description: User Skill entity
  *      required:
- *        - email
- *        - password
- *        - name
- *        - lastName
- *        - isAdmin
- *        - companyId
+ *        - userId
+ *        - skillId
  *      properties:
  *        id:
  *          type: string
  *          format: cuid
  *          example: 123e4567-e89b-12d3-a456-426655440000
- *        username:
+ *        userId:
  *          type: string
- *          example: userName
- *        email:
+ *          example: id del usuario
+ *        skillId:
  *          type: string
- *          example: coreo@coreo.com
- *        password:
+ *          example: id de la habilidad
+ *        level:
  *          type: string
- *          example: pass
- *        name:
- *          type: string
- *          example: dame
- *        lastName:
- *          type: string
- *          example: lastName
- *        isAdmin:
- *          type: boolean
- *          example: true
- *        location:
- *          type: string
- *          example: location
- *        timezone:
- *          type: string
- *          example: location
- *        companyId:
- *          type: string
- *          example: id de la empresa
- *        userProjects:
- *          type: User Projects
- *          example: []
- *        userSkills:
- *          type: User Skills
- *          example: []
- *        tasks:
- *          type: Task
- *          example: []
+ *          example: nivel de habilidad
  *        isActive:
  *          type: boolean
  *          example: true

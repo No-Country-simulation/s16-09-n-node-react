@@ -35,7 +35,7 @@
  *        milestones:
  *          type: Milestones
  *          example: []
- *        task:
+ *        tasks:
  *          type: Task
  *          example: []
  *        meeting:

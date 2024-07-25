@@ -44,7 +44,7 @@
  *          example: location
  *        companyId:
  *          type: string
- *          example: id de la empresa
+ *          example: default "project"
  *        userProjects:
  *          type: userProjects
  *          example: []

@@ -1,6 +1,6 @@
 // src/controllers/auth.controller.ts
 import bcrypt from 'bcrypt';
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { prisma } from '@/config/prisma';
@@ -35,9 +35,9 @@ export const registerUser = async (req: Request, res: Response) => {
       email: user.email,
       name: user.name,
       lastName: user.lastName,
-      role: user.role,
-      technologies: user.technologies,
-      tools: user.tools,
+      // role: user.role,
+      // technologies: user.technologies,
+      // tools: user.tools,
       location: user.location,
       timezone: user.timezone,
       createdAt: user.createdAt,
@@ -74,9 +74,9 @@ export const loginUser = async (req: Request, res: Response) => {
       email: user.email,
       name: user.name,
       lastName: user.lastName,
-      role: user.role,
-      technologies: user.technologies,
-      tools: user.tools,
+      // role: user.role,
+      // technologies: user.technologies,
+      // tools: user.tools,
       location: user.location,
       timezone: user.timezone,
       createdAt: user.createdAt,
