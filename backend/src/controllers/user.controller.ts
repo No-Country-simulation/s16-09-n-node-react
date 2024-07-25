@@ -1,9 +1,9 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { z } from 'zod';
 
 import { prisma } from '@/config/prisma';
 
-import { UserInput, userSchema } from '../schemas/userSchema';
+import { userSchema, type UserInput } from '../schemas/userSchema';
 
 // Crear un nuevo usuario
 export const createUser = async (req: Request, res: Response) => {
