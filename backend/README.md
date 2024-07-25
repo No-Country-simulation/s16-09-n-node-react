@@ -33,7 +33,7 @@
 - **GET** `/calendar/:calendarId` - Obtener un calendario interno compartido por la id del calendario.
 - **GET** `/calendar/calendarList` - Obtener una lista de todos los calendarios internos compartidos.
 
-## Evento
+### Evento
 
 - **POST** `/event/:calendarId` - Crear un evento en un calendario interno compartido por la id del calendario.  
   **Request body:**
@@ -58,7 +58,7 @@
 
 - **DELETE** `/event/delete/:eventId` - Eliminar un evento de un calendario interno compartido por la id del evento.
 
-## Reunión
+### Reunión
 
 - **POST** `/meeting/:calendarId` - Crear una reunión en un calendario interno compartido por la id del calendario.  
   **Request body:**
