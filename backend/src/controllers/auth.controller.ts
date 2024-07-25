@@ -1,50 +1,67 @@
 // src/controllers/auth.controller.ts
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
 
 import { prisma } from '@/config/prisma';
-
-const createToken = (id: string) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET as string, {
-    expiresIn: process.env.JWT_EXPIRATION,
-  });
-};
+import { comparePasswords, hashPassword } from '@/utils/hashUtils';
+import { createToken } from '@/utils/token';
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { name, lastName, email, password } = req.body;
+    // Obtener datos del cuerpo de la solicitud
+    const {
+      username,
+      name,
+      lastName,
+      email,
+      password,
+      isAdmin,
+      location,
+      timezone,
+    } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Validar datos requeridos
+    if (!username || !name || !lastName || !email || !password) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
 
+    // Hash de la contraseña
+    const hashedPassword = await hashPassword(password);
+
+    // Crear usuario en la base de datos
     const user = await prisma.user.create({
       data: {
-        name,
-        lastName,
+        username,
         email,
         password: hashedPassword,
+        name,
+        lastName,
+        isAdmin: isAdmin || false,
+        location: location || null,
+        timezone: timezone || null,
       },
     });
 
+    // Crear un token para el usuario
     const token = createToken(user.id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: 3600000 }); // 1 hora
 
+    // Formatear respuesta del usuario
     const userResponse = {
       id: user.id,
       username: user.username,
       email: user.email,
       name: user.name,
       lastName: user.lastName,
-      role: user.role,
-      technologies: user.technologies,
-      tools: user.tools,
       location: user.location,
       timezone: user.timezone,
       createdAt: user.createdAt,
     };
 
-    res.status(201).json({ userResponse });
+    // Enviar respuesta
+    res.status(201).json({ user: userResponse });
   } catch (error) {
+    console.error('Error registering user:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -59,7 +76,7 @@ export const loginUser = async (req: Request, res: Response) => {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await comparePasswords(password, user.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid email or password' });
@@ -74,9 +91,6 @@ export const loginUser = async (req: Request, res: Response) => {
       email: user.email,
       name: user.name,
       lastName: user.lastName,
-      role: user.role,
-      technologies: user.technologies,
-      tools: user.tools,
       location: user.location,
       timezone: user.timezone,
       createdAt: user.createdAt,
