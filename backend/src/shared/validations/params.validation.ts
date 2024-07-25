@@ -1,6 +1,9 @@
 import { ProjectInput, projectSchema } from '@/api/project/schema/project.schema';
 
+
+
 import { validateKeysInPrismaModel } from './model.validation';
+
 
 //=====================
 // Class Param Error
@@ -17,14 +20,15 @@ export class ParamError extends Error {
 //========================
 // Validate query params
 //========================
-export const isQueryParamsValidate = (queryParams: any, method: string): any => {
+export const isQueryParamsValidate = (queryParams: any, method: string, model:string): any => {
   let validatedParams;
   if (method === 'get') {
     validatedParams = handleGetQueryParams(queryParams);
   } else if (method === 'put' || method === 'delete') {
     validatedParams = handlePutOrDeleteQueryParams(queryParams);
   }
-  return validatedParams;
+  const params = isKeyAndValueValidate(validatedParams, model);
+  return params;
 };
 
 //============================
@@ -36,7 +40,7 @@ const handleGetQueryParams = (queryParams: any): any => {
   } else if (Object.keys(queryParams).length !== 1) {
     throw new ParamError('Query error','can only have one parameter.');
   }
-  return isKeyAndValueValidate(queryParams);
+  return queryParams;
 };
 
 //======================================
@@ -50,7 +54,7 @@ const handlePutOrDeleteQueryParams = (queryParams: any): any => {
     Object.keys(queryParams).length === 1 &&
     queryParams.hasOwnProperty('id')
   ) {
-    return isKeyAndValueValidate(queryParams);
+    return queryParams;
   } else {
     throw new ParamError('Query error','The query parameter only supports id.');
   }
@@ -59,25 +63,36 @@ const handlePutOrDeleteQueryParams = (queryParams: any): any => {
 //======================================
 // Validate key and value
 //======================================
-const isKeyAndValueValidate = (queryParams: any) => {
+const isKeyAndValueValidate = (queryParams: any, model: string) => {
   const [key, value] = Object.entries(queryParams)[0];
   if (!key || !value)
     throw new ParamError('Query error','The wrong query parameter.');
-  const query = validateKeysInPrismaModel("Project", { [key]: value });
+  const query = validateKeysInPrismaModel(model, { [key]: value });
   return query;
 };
 
 //========================
 // Validate body params
 //========================
-export const isBodyParamsValidate = (body: any) => {
+export const isBodyParamsValidate = (body: any, model: string) => {
   if (Object.keys(body).length < 1)
     throw new ParamError('Body error','must have body');
   /* validador de campos en el modelo */
-  const validateFields = validateKeysInPrismaModel("Project", body);
-  const parsedBody: ProjectInput = projectSchema.parse(validateFields);
-  return parsedBody;
+  const validateFields = validateKeysInPrismaModel(model, body);
+  const validateBody = parseBody(validateFields, model);
+  return validateBody;
 };
+
+//==============================
+// response content validator
+//==============================
+const parseBody = (validate: any, model: string) => {
+  let parsedBody;
+  if (model === 'Project') {
+    parsedBody = projectSchema.parse(validate);
+  }
+  return parsedBody;
+}
 
 //==============================
 // response content validator

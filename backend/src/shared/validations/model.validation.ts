@@ -1,10 +1,6 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 
-
-
-
-
 interface ValidateObject {
   [key: string]: any;
 }
