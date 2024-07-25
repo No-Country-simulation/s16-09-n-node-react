@@ -186,9 +186,11 @@ async function main() {
   const userProjectRolePromises = userProjectRoleAssignments.map(
     ({ userId, projectId, roleName }) => {
       const role = createdRoles.find((role) => role.name === roleName);
-      return prisma.userProject.create({
-        data: { userId, projectId, roleId: role.id },
-      });
+      if (role) {
+        return prisma.userProject.create({
+          data: { userId, projectId, roleId: role.id },
+        });
+      }
     },
   );
 
