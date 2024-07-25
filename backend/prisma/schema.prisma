@@ -38,7 +38,7 @@ model User {
   isAdmin      Boolean       @default(false)
   location     String?
   timezone     String?
-  companyId    String
+  companyId    String        @default("projet")
   company      Company       @relation(fields: [companyId], references: [id])
   userProjects UserProject[]
   userSkills   UserSkill[]
