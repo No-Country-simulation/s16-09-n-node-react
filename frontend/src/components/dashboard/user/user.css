@@ -7,7 +7,7 @@
   padding: 8px 20px;
   border-radius: 15px;
   justify-content: space-between;
-  background-color: var(--dl-color-ours-primary-dark);
+  border: 1px solid transparent;
 }
 .user-container {
   width: auto;
@@ -27,13 +27,11 @@
   flex-direction: column;
 }
 .user-text {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: left;
   line-height: 28px;
 }
 .user-text2 {
-  color: var(--dl-color-textos-light);
   height: auto;
   text-align: left;
   line-height: 24px;
@@ -43,3 +41,6 @@
   height: 29px;
 }
 
+.cl-userButtonBox {
+  pointer-events: none;
+}

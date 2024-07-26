@@ -59,7 +59,85 @@ Notas
 
 Este proyecto está configurado con Vite como la herramienta de construcción y soporta módulos JavaScript modernos (type: module). Asegúrate de tener una versión de Node.js >= 16.0.0 para garantizar la compatibilidad.
 
+## Theme Context
+El ThemeContext proporciona un contexto para gestionar el tema de la aplicación (modo claro u oscuro) de forma global. A continuación se muestra cómo se configura y utiliza:
 
+Configuración
+Crea el contexto y el proveedor:
+
+javascript
+Copiar código
+import React, { createContext, useContext, useState } from 'react';
+
+const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  const themeStyles = theme === 'light' ? light : dark;
+
+  return (
+    <ThemeContext.Provider value={{ theme: themeStyles, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => useContext(ThemeContext);
+
+const light = {
+  text: "#007dfa",
+  background: '#f8f9fa',
+  secondary: '#34e06f',
+  backgroundSecondary: '#b0d7fd',
+  back: "rgb(217, 236, 254)",
+  back1: "#c0f5d2",
+  titulos: "#007dfa",
+  subtitulos: "black"
+};
+
+const dark = {
+  text: "#e8e8e8",
+  background: '#002c58',
+  secondary: '#007dfa',
+  backgroundSecondary: 'black',
+  back: "rgb(0, 71, 138)",
+  back1: "#004b96",
+  titulos: "#ebebec",
+};
+Envuelve tu aplicación con el ThemeProvider:
+
+javascript
+Copiar código
+import { ThemeProvider } from './context/ThemeContext';
+
+function App() {
+  return (
+    <ThemeProvider>
+      {/* Tu aplicación aquí */}
+    </ThemeProvider>
+  );
+}
+Uso del Hook
+Para acceder al tema y alternar entre modos claro y oscuro:
+
+javascript
+Copiar código
+import { useTheme } from './context/ThemeContext';
+
+const MyComponent = () => {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div style={{ background: theme.background, color: theme.text }}>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+    </div>
+  );
+};
 
 ## Uso Combinado de TailwindCSS y CSS Puro: Mejores Prácticas
 
@@ -160,14 +238,4 @@ Mantén tu CSS modularizado creando archivos CSS separados para componentes o se
   background-color: #0056b3;
 }
 ```
-
-#### 5. Documentación y Comentarios
-Documenta el uso de clases personalizadas y las razones detrás de la elección de CSS puro en lugar de TailwindCSS. Esto ayuda a otros desarrolladores a entender y mantener el código.
-
-
-
-### Referencias
-- [TailwindCSS Documentation](https://tailwindcss.com/docs)
-- [MDN Web Docs - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-
 

@@ -12,11 +12,10 @@
   grid-column: 1 / span 2;
 }
 .tasks-title {
-  color: var(--dl-color-textos-light);
+
   height: auto;
   font-size: 32px;
   font-style: normal;
-  font-family: "Roboto";
   font-weight: 600;
   line-height: 40px;
   font-stretch: normal;

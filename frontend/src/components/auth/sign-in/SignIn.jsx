@@ -24,7 +24,7 @@ export default function SignInPage() {
         if (dividerText) {
           dividerText.innerHTML = `<div class="cl-container">
                                     <div class="cl-"></div>
-                                    <span>-------------------------------------   o   -----------------------------------</span>
+                                    <span>o</span>
                                     <div class="cl-dividerText"></div>
                                    </div>`;
           clearInterval(intervalId);

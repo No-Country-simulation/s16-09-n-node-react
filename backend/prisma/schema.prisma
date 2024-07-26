@@ -7,52 +7,168 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Shift {
+  MORNING
+  AFTERNOON
+  NIGHT
+  FULL_TIME
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  REVIEW
+  DONE
+}
+
+model Skill {
+  id         String      @id @default(cuid())
+  name       String      @unique
+  level      String?
+  userSkills UserSkill[]
+}
+
 model User {
-  id           String          @id @default(cuid())
-  username     String?         @unique
-  email        String          @unique
+  id           String        @id @default(cuid())
+  username     String?       @unique
+  email        String        @unique
   password     String
   name         String
   lastName     String
-  role         String          @default("user")
-  technologies String?
-  tools        String?
+  isAdmin      Boolean       @default(false)
   location     String?
   timezone     String?
-  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
-  projects     Project[]
-  memberships  ProjectMember[]
+  companyId    String
+  company      Company       @relation(fields: [companyId], references: [id])
+  userProjects UserProject[]
+  userSkills   UserSkill[]
+  tasks        Task[]
+  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+}
+
+model UserSkill {
+  id      String  @id @default(cuid())
+  userId  String
+  skillId String
+  level   String?
+  user    User    @relation(fields: [userId], references: [id])
+  skill   Skill   @relation(fields: [skillId], references: [id])
+
+  @@unique([userId, skillId])
+}
+
+model Role {
+  id          String        @id @default(cuid())
+  name        String        @unique
+  userProject UserProject[]
+}
+
+model Company {
+  id         String     @id @default(cuid())
+  name       String
+  calendar   Calendar?  @relation(fields: [calendarId], references: [id])
+  users      User[]
+  calendarId String?
+  documents  Document[]
+  createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  Project    Project[]
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  name      String
+  url       String
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id])
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
 model Project {
-  id           String          @id @default(cuid())
+  id           String        @id @default(cuid())
   name         String
   description  String?
-  owner        User            @relation(fields: [ownerId], references: [id])
-  ownerId      String
-  technologies String?
-  type         String?
-  duration     String?
-  createdAt    DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
-  members      ProjectMember[]
-  meetings     Meeting[]
+  companyId    String
+  company      Company       @relation(fields: [companyId], references: [id])
+  shift        Shift?
+  userProjects UserProject[]
+  calendar     Calendar?     @relation(fields: [calendarId], references: [id])
+  milestones   Milestone[]
+  tasks        Task[]
+  calendarId   String?
+  meeting      Meeting[]
+  document     Document[]
+  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
-model ProjectMember {
-  id        String   @id @default(cuid())
-  project   Project  @relation(fields: [projectId], references: [id])
-  projectId String
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  role      String
-  joined_at DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+model Milestone {
+  id          String   @id @default(cuid())
+  projectId   String
+  name        String
+  description String?
+  targetDate  DateTime
+  completed   Boolean  @default(false)
+  project     Project  @relation(fields: [projectId], references: [id])
+  tasks       Task[]
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  dueDate     DateTime?
+  status      TaskStatus @default(TODO)
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id])
+  projectId   String
+  project     Project    @relation(fields: [projectId], references: [id])
+  milestoneId String?
+  milestone   Milestone? @relation(fields: [milestoneId], references: [id])
+  createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+}
+
+model Calendar {
+  id        String    @id @default(cuid())
+  name      String
+  events    Event[]
+  company   Company[]
+  project   Project[]
+  meetings  Meeting[]
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+}
+
+model Event {
+  id         String   @id @default(cuid())
+  calendarId String
+  name       String
+  date       DateTime
+  calendar   Calendar @relation(fields: [calendarId], references: [id])
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
 model Meeting {
-  id           String   @id @default(cuid())
-  project      Project  @relation(fields: [projectId], references: [id])
-  projectId    String
-  title        String
-  meeting_date DateTime
-  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  link        String
+  dateTime    DateTime
+  calendarId  String?
+  calendar    Calendar? @relation(fields: [calendarId], references: [id])
+  projectId   String?
+  project     Project?  @relation(fields: [projectId], references: [id])
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+}
+
+model UserProject {
+  id        String  @id @default(cuid())
+  userId    String
+  projectId String
+  roleId    String
+  user      User    @relation(fields: [userId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
+  role      Role    @relation(fields: [roleId], references: [id])
+
+  @@unique([userId, projectId])
 }

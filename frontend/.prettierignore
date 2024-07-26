@@ -1,0 +1,8 @@
+# Location of UI library components (shadcn-ui)
+/src/components/ui/
+
+# Ignore all SVG files
+**/*.svg
+
+# Ignore all minified files
+**/*.min.*

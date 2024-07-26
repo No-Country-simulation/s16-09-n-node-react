@@ -51,20 +51,17 @@
     align-items: center;
     text-align: center;
   }
-  /* cl-button__apple 🔒️ cl-internal-1x4ta9e" */
-
  
  
- 
- .cl{
+ .cl-{
     flex-grow: 1;
     border-bottom: 1px solid black;
-    margin: 0 10px; /* Ajusta el margen entre las líneas y el texto */
+    margin: 0 10px; 
   }
   
   .cl-dividerText span {
-    padding: 0 10px; /* Ajusta el relleno alrededor del texto */
-    white-space: nowrap;
+    padding: 0 10px; 
+     white-space: nowrap;
   }
   
     .cl-dividerLine{
