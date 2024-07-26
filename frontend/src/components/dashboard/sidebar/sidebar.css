@@ -3,11 +3,12 @@ body {
   padding: 0;
   display: flex;
   font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
 }
 
 .sidebar {
   width: 20dvw;
-  height: 100%;
+  height: 65dvw;
   display: flex;
   padding: 24px;
   position: relative;
@@ -18,6 +19,8 @@ body {
   font-weight: 600;
   background-color: var(--color-primary-dark);
   color: var(--color-text-light);
+  z-index:1; 
+ 
 }
 
 .sidebar.light-mode {

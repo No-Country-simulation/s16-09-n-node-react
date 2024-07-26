@@ -1,0 +1,23 @@
+{
+  "params": {},
+  "paramsArray": [],
+  "url": "{{dev}}/*",
+  "data": {},
+  "backup": {
+    "bodyType": "raw",
+    "data": {},
+    "bodySubType": "json"
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "headersArray": [
+    [
+      "ee74aa97-a6e9-496e-96bf-e33298c1a2ca",
+      "Content-Type",
+      "application/json",
+      true,
+      "STRING"
+    ]
+  ]
+}

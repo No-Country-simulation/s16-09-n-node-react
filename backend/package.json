@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "name": "backend",
   "version": "1.0.0",
   "description": "",
@@ -9,8 +10,23 @@
     "Node.js",
     "Express"
   ],
-  "author": "",
+  "author": "s16-09-n-node-react",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/No-Country-simulation/s16-09-n-node-react"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/No-Country-simulation/s16-09-n-node-react.git"
+  },
+  "contributors": [
+    "(in alphabetical order)",
+    "David Caycedo <dcdevtk@gmail.com>",
+    "Luis Correa <correaluisfernando00@gmail.com>",
+    "Agustin Gracia <agustingmaggi@gmail.com>",
+    "Pedro Molina <pedropemmolina@gmail.com>",
+    "Rogelio Romo <rogelioromo955@gmail.com>"
+  ],
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/server.ts",
     "build": "tsup",
@@ -28,7 +44,12 @@
     "express": "^4.19.2",
     "google-auth-library": "^9.11.0",
     "googleapis": "^140.0.1",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-themes": "^1.4.3",
+    "swagger-ui-express": "^5.0.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -36,10 +57,15 @@
     "@types/bcrypt": "^5.0.2",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
+    "@types/helmet": "^4.0.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.14.12",
+    "@types/serve-favicon": "^2.5.7",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.6",
     "morgan": "^1.10.0",
     "prisma": "^5.16.1",
     "tsup": "^8.2.3",

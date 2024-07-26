@@ -1,31 +1,35 @@
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import helmet from 'helmet';
 import morgan from 'morgan';
-import cookieParser from 'cookie-parser';
-import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 
-import { mainRouter } from './routes';
+import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import { serverRouter } from './routes/server.routes';
+import { invalidRouter } from './api/invalid/router/invalid.router';
 
 // Configuración de variables de entorno
 dotenv.config();
 
-// Inicialización de la app
-const app = express();
+// Initialization of server
+const server = express();
+const PORT = process.env.PORT ?? 3000;
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-app.use(morgan('dev'));
-app.use(cookieParser());
+server.use(cors());
+server.use(helmet());
+server.use(express.json());
+server.use(morgan('dev'));
+server.use(cookieParser());
 
 // Rutas
-app.use('/', mainRouter);
+server.use('/api/v1', serverRouter);
+server.use('*', invalidRouter);
 
 // Inicio del servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log('\n==================================================');
-  console.log(`🚀 Servidor corriendo en: http://localhost:${PORT}`);
-  console.log('==================================================\n');
+server.listen(PORT, () => {
+  console.log('\n===============================================================');
+  console.log(`  🚀 Servidor corriendo en: http://localhost:${PORT}/api/v1/docs`);
+  console.log('===============================================================\n');
 });

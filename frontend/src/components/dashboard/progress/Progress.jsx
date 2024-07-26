@@ -4,7 +4,7 @@ import "./progress.css";
 
 import { useTheme } from "@/context/themecontext";
 
-const Progress = (props) => {
+const Progress = () => {
   const getFilterStyle = () => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
