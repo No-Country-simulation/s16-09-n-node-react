@@ -7,6 +7,7 @@
   padding: 24px 50px 0px 50px;
   background-color: #002C58;
   position: relative;
+  font-family: Inter;
 }
 .home-header {
   width: 95%;
@@ -59,10 +60,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
   top: 35%;
   left: 0;
   position: absolute;
+ 
 }
 .home-text,
 .home-text-green {
@@ -72,11 +74,16 @@
   font-weight: 500;
   font-family: "Roboto";
   font-size: 40px;
+
 }
 .home-text {
+  line-height: 40px;
   color: #fff;
+ 
 }
 .home-text-green {
+ 
+  margin-bottom: 10px;
   color: var(--dl-color-ours-secondary-normal);
 }
 .home-flint  {

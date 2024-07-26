@@ -7,9 +7,7 @@ const Calendar = () => {
 const {theme} = useTheme()
 
 
-  const getFilterStyle = () => {
-    return theme.color === "#e8e8e8" ? "invert(0)" : "invert(1)";
-  };
+
   return (
     <NavLink to={"/dashboard/calendar-details"} className="calendar-calendar"
     style={{backgroundColor: theme.background, color: theme.subtitulos}}>
