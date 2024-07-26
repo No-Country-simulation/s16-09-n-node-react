@@ -1,7 +1,7 @@
+// ./routes/user.routes.ts
 import { Router } from 'express';
 
 import {
-  createUser,
   deleteUserById,
   getUserById,
   getUsers,
@@ -11,7 +11,6 @@ import { requireAuth } from '@/middleware/auth.middleware';
 
 export const userRouter = Router();
 
-userRouter.post('/', createUser);
 userRouter.get('/', getUsers);
 userRouter.get('/:id', requireAuth, getUserById);
 userRouter.put('/:id', requireAuth, updateUserById);

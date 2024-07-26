@@ -7,168 +7,230 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Shift {
-  MORNING
-  AFTERNOON
-  NIGHT
-  FULL_TIME
-}
-
-enum TaskStatus {
-  TODO
-  IN_PROGRESS
-  REVIEW
-  DONE
-}
-
 model Skill {
-  id         String      @id @default(cuid())
-  name       String      @unique
-  level      String?
-  userSkills UserSkill[]
+  id         String      @id @default(uuid())
+  name       String
+  level      String
+  UserSkills UserSkill[]
 }
 
 model User {
-  id           String        @id @default(cuid())
-  username     String?       @unique
-  email        String        @unique
-  password     String
-  name         String
-  lastName     String
-  isAdmin      Boolean       @default(false)
-  location     String?
-  timezone     String?
-  companyId    String        @default("projet")
-  company      Company       @relation(fields: [companyId], references: [id])
-  userProjects UserProject[]
-  userSkills   UserSkill[]
-  tasks        Task[]
-  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  id            String          @id @default(uuid())
+  username      String
+  email         String          @unique
+  password      String
+  name          String
+  lastName      String
+  isAdmin       Boolean
+  location      String
+  timezone      String
+  createdAt     DateTime        @default(now())
+  UserSkills    UserSkill[]
+  UserProjects  UserProject[]
+  CompanyToUser CompanyToUser[]
+  TaskToUser    TaskToUser[]
 }
 
 model UserSkill {
-  id      String  @id @default(cuid())
+  id      String @id @default(uuid())
+  level   String
   userId  String
   skillId String
-  level   String?
-  user    User    @relation(fields: [userId], references: [id])
-  skill   Skill   @relation(fields: [skillId], references: [id])
-
-  @@unique([userId, skillId])
+  user    User   @relation(fields: [userId], references: [id])
+  skill   Skill  @relation(fields: [skillId], references: [id])
 }
 
 model Role {
-  id          String        @id @default(cuid())
-  name        String        @unique
-  userProject UserProject[]
+  id                String              @id @default(uuid())
+  name              String
+  UserProject       UserProject[]
+  RoleToUserProject RoleToUserProject[]
 }
 
 model Company {
-  id         String     @id @default(cuid())
-  name       String
-  calendar   Calendar?  @relation(fields: [calendarId], references: [id])
-  calendarId String?
-  users      User[]
-  documents  Document[]
-  Project    Project[]
-  createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  id                String              @id @default(uuid())
+  name              String
+  createdAt         DateTime            @default(now())
+  documents         Document[]
+  CompanyToUsers    CompanyToUser[]
+  projects          CompanyToProject[]
+  CompanyToDocument CompanyToDocument[]
 }
 
 model Document {
-  id        String   @id @default(cuid())
-  name      String
-  url       String
-  project   Project? @relation(fields: [projectId], references: [id])
-  projectId String?
-  company   Company? @relation(fields: [companyId], references: [id])
-  companyId String?
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  id                 String              @id @default(uuid())
+  name               String
+  url                String
+  createdAt          DateTime            @default(now())
+  projectId          String?
+  project            Project?            @relation(fields: [projectId], references: [id])
+  CompanyToDocuments CompanyToDocument[]
+  Company            Company?            @relation(fields: [companyId], references: [id])
+  companyId          String?
 }
 
 model Project {
-  id           String        @id @default(cuid())
-  name         String
-  description  String?
-  shift        Shift?
-  company      Company       @relation(fields: [companyId], references: [id])
-  companyId    String
-  calendar     Calendar?     @relation(fields: [calendarId], references: [id])
-  calendarId   String?
-  userProjects UserProject[]
-  milestones   Milestone[]
-  tasks        Task[]
-  meeting      Meeting[]
-  document     Document[]
-  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  id                   String                 @id @default(uuid())
+  name                 String
+  description          String
+  shift                Shift                  @relation(fields: [shiftId], references: [id])
+  createdAt            DateTime               @default(now())
+  milestones           Milestone[]
+  tasks                Task[]
+  documents            Document[]
+  UserProjects         UserProject[]
+  CompanyToProjects    CompanyToProject[]
+  shiftId              String
+  Meeting              Meeting[]
+  ProjectToUserProject ProjectToUserProject[]
+}
+
+model Shift {
+  id      String    @id @default(uuid())
+  name    String
+  Project Project[]
 }
 
 model Milestone {
-  id          String   @id @default(cuid())
+  id          String   @id @default(uuid())
   name        String
-  description String?
+  description String
   targetDate  DateTime
-  completed   Boolean  @default(false)
+  completed   Boolean
+  createdAt   DateTime @default(now())
+  projectId   String
   project     Project  @relation(fields: [projectId], references: [id])
   projectId   String
   tasks       Task[]
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
 model Task {
-  id          String     @id @default(cuid())
-  name        String
-  description String?
-  dueDate     DateTime?
-  status      TaskStatus @default(TODO)
-  user        User?      @relation(fields: [userId], references: [id])
-  userId      String?
-  project     Project    @relation(fields: [projectId], references: [id])
-  projectId   String
-  milestone   Milestone? @relation(fields: [milestoneId], references: [id])
-  milestoneId String?
-  createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  id           String       @id @default(uuid())
+  name         String
+  description  String
+  dueDate      DateTime
+  status       TaskStatus   @relation(fields: [taskStatusId], references: [id])
+  createdAt    DateTime     @default(now())
+  milestoneId  String?
+  milestone    Milestone?   @relation(fields: [milestoneId], references: [id])
+  users        TaskToUser[]
+  Project      Project?     @relation(fields: [projectId], references: [id])
+  projectId    String?
+  taskStatusId String
+}
+
+model TaskStatus {
+  id   String @id @default(uuid())
+  name String
+  Task Task[]
 }
 
 model Calendar {
-  id        String    @id @default(cuid())
+  id        String              @id @default(uuid())
   name      String
-  events    Event[]
-  company   Company[]
-  project   Project[]
-  meetings  Meeting[]
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdAt DateTime            @default(now())
+  events    CalendarToEvent[]
+  meetings  CalendarToMeeting[]
+  Event     Event[]
+  Meeting   Meeting[]
 }
 
 model Event {
-  id         String   @id @default(cuid())
-  name       String
-  date       DateTime
-  calendar   Calendar @relation(fields: [calendarId], references: [id])
-  calendarId String
-  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  id              String            @id @default(uuid())
+  name            String
+  date            DateTime
+  createdAt       DateTime          @default(now())
+  calendarId      String
+  calendar        Calendar          @relation(fields: [calendarId], references: [id])
+  CalendarToEvent CalendarToEvent[]
 }
 
 model Meeting {
-  id          String    @id @default(cuid())
-  name        String
-  description String?
-  link        String
-  dateTime    DateTime
-  calendar    Calendar? @relation(fields: [calendarId], references: [id])
-  calendarId  String?
-  project     Project?  @relation(fields: [projectId], references: [id])
-  projectId   String?
-  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  id                String              @id @default(uuid())
+  name              String
+  description       String
+  link              String
+  dateTime          DateTime
+  createdAt         DateTime            @default(now())
+  calendarId        String
+  calendar          Calendar            @relation(fields: [calendarId], references: [id])
+  projectId         String?
+  project           Project?            @relation(fields: [projectId], references: [id])
+  CalendarToMeeting CalendarToMeeting[]
 }
 
 model UserProject {
-  id        String  @id @default(cuid())
-  user      User    @relation(fields: [userId], references: [id])
-  userId    String
-  project   Project @relation(fields: [projectId], references: [id])
-  projectId String
-  role      Role    @relation(fields: [roleId], references: [id])
-  roleId    String
+  id                   String                 @id @default(uuid())
+  userId               String
+  projectId            String
+  user                 User                   @relation(fields: [userId], references: [id])
+  project              Project                @relation(fields: [projectId], references: [id])
+  roleId               String?
+  role                 Role?                  @relation(fields: [roleId], references: [id])
+  ProjectToUserProject ProjectToUserProject[]
+  RoleToUserProject    RoleToUserProject[]
+}
 
-  @@unique([userId, projectId])
+model CompanyToUser {
+  id        String  @id @default(uuid())
+  companyId String
+  userId    String
+  company   Company @relation(fields: [companyId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+}
+
+model CompanyToDocument {
+  id         String   @id @default(uuid())
+  companyId  String
+  documentId String
+  company    Company  @relation(fields: [companyId], references: [id])
+  document   Document @relation(fields: [documentId], references: [id])
+}
+
+model CompanyToProject {
+  id        String  @id @default(uuid())
+  companyId String
+  projectId String
+  company   Company @relation(fields: [companyId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
+}
+
+model CalendarToEvent {
+  id         String   @id @default(uuid())
+  calendarId String
+  eventId    String
+  calendar   Calendar @relation(fields: [calendarId], references: [id])
+  event      Event    @relation(fields: [eventId], references: [id])
+}
+
+model CalendarToMeeting {
+  id         String   @id @default(uuid())
+  calendarId String
+  meetingId  String
+  calendar   Calendar @relation(fields: [calendarId], references: [id])
+  meeting    Meeting  @relation(fields: [meetingId], references: [id])
+}
+
+model TaskToUser {
+  id     String @id @default(uuid())
+  taskId String
+  userId String
+  task   Task   @relation(fields: [taskId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model ProjectToUserProject {
+  id            String      @id @default(uuid())
+  projectId     String
+  userProjectId String
+  project       Project     @relation(fields: [projectId], references: [id])
+  userProject   UserProject @relation(fields: [userProjectId], references: [id])
+}
+
+model RoleToUserProject {
+  id            String      @id @default(uuid())
+  roleId        String
+  userProjectId String
+  role          Role        @relation(fields: [roleId], references: [id])
+  userProject   UserProject @relation(fields: [userProjectId], references: [id])
 }
