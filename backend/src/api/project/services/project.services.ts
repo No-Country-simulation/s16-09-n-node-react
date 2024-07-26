@@ -18,8 +18,7 @@ export const getProjectsBy = async (value: any) => {
     where: { ...value },
     select: {
       id: true,
-      name: true,
-      companyId: true,
+      name: true
     },
   });
   return response;
@@ -34,8 +33,7 @@ export const updateProjectBy = async (value: any, body: any) => {
     data: { ...body },
     select: {
       id: true,
-      name: true,
-      companyId: true,
+      name: true
     },
   });
   return response;
@@ -49,8 +47,7 @@ export const deleteProjectBy = async (value: any) => {
     where: { ...value },
     select: {
       id: true,
-      name: true,
-      companyId: true,
+      name: true
     },
   });
   return response;
