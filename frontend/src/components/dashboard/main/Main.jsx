@@ -30,7 +30,7 @@ useEffect
     <div className='main-container' style={{ color: theme.text }}>
       <Proyect theme={theme} />
       <Tools theme={theme} />
-      <div data-aos="fade-left">
+      <div data-aos="fade-up">
       <Collaborators  /></div>
       
       <Tasks />
