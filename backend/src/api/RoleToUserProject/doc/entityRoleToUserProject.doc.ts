@@ -2,31 +2,28 @@
  * @swagger
  * components:
  *  schemas:
- *    Role Entity:
- *      name: Role Entity
+ *    Role To User Project:
+ *      name: Role To User Project
  *      type: object
- *      description: Role entity
+ *      description: Role To User Project
  *      required:
- *        - name
+ *        - roleId
+ *        - userProjectId
  *      properties:
  *        id:
  *          type: string
  *          format: cuid
  *          example: 123e4567-e89b-12d3-a456-426655440000
- *        name:
+ *        roleId:
  *          type: string
- *          example: dame
- *        UserProjects:
- *          type: UserProjects
- *          example: []
- *        RoleToUserProject:
- *          type: RoleToUserProject
- *          example: []
+ *          example: id of the role
+ *        userProjectId:
+ *          type: string
+ *          example: Id of the user project
  *        isActive:
  *          type: boolean
  *          example: true
  *        createdAt:
- *          type: string
- *          format: dateTime
+ *          type: dateTime
  *          example: 2021-01-01 00:00:00
  */

@@ -2,10 +2,10 @@
  * @swagger
  * components:
  *  schemas:
- *    Company Entity:
- *      name: Company Entity
+ *    Task Status Entity:
+ *      name: Task Status Entity
  *      type: object
- *      description: Company entity
+ *      description: Task Status entity
  *      required:
  *        - name
  *      properties:
@@ -16,23 +16,14 @@
  *        name:
  *          type: string
  *          example: name
- *        documents:
- *          type: Document
- *          example: []
- *        CompanyToUsers:
- *          type: CompanyToUser
- *          example: []
- *        projects:
- *          type: CompanyToProject
- *          example: []
- *        CompanyToDocument:
- *          type: CompanyToDocument
+ *        Task:
+ *          type: Tasks
  *          example: []
  *        isActive:
  *          type: boolean
  *          example: true
  *        createdAt:
  *          type: string
- *          format: dateTime
- *          example: 2021-01-01 00:00:00
+ *          format: date-time
+ *          example: 2021-01-01T00:00:00Z
  */

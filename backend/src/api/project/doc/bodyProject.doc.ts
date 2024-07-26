@@ -10,7 +10,10 @@
  *        name:
  *          type: string
  *          example: api
- *        CompanyId:
+ *        description:
  *          type: string
- *          example: id de la empresa
+ *          example: api
+ *        shiftId:
+ *          type: string
+ *          example: id to shift
 */

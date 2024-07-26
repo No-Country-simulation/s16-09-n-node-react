@@ -17,15 +17,15 @@
  *          type: string
  *          example: dame
  *        events:
- *          type: Event
- *          example: []
- *        company:
- *          type: Company
- *          example: []
- *        project:
- *          type: Project
+ *          type: Calendar To Event
  *          example: []
  *        meetings:
+ *          type: Calendar to Meeting
+ *          example: []
+ *        Events:
+ *          type: Event
+ *          example: []
+ *        Meetings:
  *          type: Meeting
  *          example: []
  *        isActive:

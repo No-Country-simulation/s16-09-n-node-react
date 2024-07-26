@@ -3,8 +3,8 @@ import express, { Router } from 'express';
 import favicon from 'serve-favicon';
 
 import { projectRouter } from '@/api/project/router/project.router';
+import { roleRouter } from '@/api/role/router/role.router';
 
-import { roleRouter } from '../api/role/router/role.router';
 import { authRouter } from './auth.routes';
 import { calendarRouter } from './calendar.routes';
 import { homeRouter } from './home.routes';

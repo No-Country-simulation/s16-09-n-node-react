@@ -2,12 +2,14 @@
  * @swagger
  * components:
  *  schemas:
- *    Company Entity:
- *      name: Company Entity
+ *    Event Entity:
+ *      name: Event Entity
  *      type: object
- *      description: Company entity
+ *      description: Event entity
  *      required:
  *        - name
+ *        - date
+ *        - calendarId
  *      properties:
  *        id:
  *          type: string
@@ -15,19 +17,14 @@
  *          example: 123e4567-e89b-12d3-a456-426655440000
  *        name:
  *          type: string
- *          example: name
- *        documents:
- *          type: Document
- *          example: []
- *        CompanyToUsers:
- *          type: CompanyToUser
- *          example: []
- *        projects:
- *          type: CompanyToProject
- *          example: []
- *        CompanyToDocument:
- *          type: CompanyToDocument
- *          example: []
+ *          example: dame
+ *        date:
+ *          type: string
+ *          format: date-time
+ *          example: 2021-01-01T00:00:00Z
+ *        calendarId:
+ *          type: string
+ *          example: id del calendario
  *        isActive:
  *          type: boolean
  *          example: true

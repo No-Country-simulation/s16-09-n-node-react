@@ -1,6 +1,7 @@
-import { validateKeysInPrismaModel } from './model.validation';
 import { projectSchema } from '@/api/project/schema/project.schema';
 import { roleSchema } from '@/api/role/schema/role.schema';
+
+import { validateKeysInPrismaModel } from './model.validation';
 
 
 //=====================

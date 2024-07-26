@@ -8,7 +8,8 @@
  *      description: Project entity
  *      required:
  *        - name
- *        - companyId
+ *        - description
+ *        - shiftId
  *      properties:
  *        id:
  *          type: string
@@ -20,29 +21,29 @@
  *        description:
  *          type: string
  *          example: api para controlar el tiempo
- *        shift:
- *          type: shift
- *          example: morning
- *        companyId:
+ *        shiftId:
  *          type: string
- *          example: id de la empresa
- *        calendarId:
- *          type: string
- *          example: id de calendario
- *        userProjects:
- *          type: User Projects
- *          example: []
+ *          example: id del turno
  *        milestones:
  *          type: Milestones
  *          example: []
  *        tasks:
  *          type: Task
  *          example: []
- *        meeting:
+ *        documents:
+ *          type: Document
+ *          example: []
+ *        UserProjects:
+ *          type: User Projects
+ *          example: []
+ *        CompanyToProjects:
+ *          type: CompanyToProjects
+ *          example: []
+ *        Meeting:
  *          type: Meeting
  *          example: []
- *        document:
- *          type: Document
+ *        ProjectToUserProject:
+ *          type: ProjectToUserProject
  *          example: []
  *        isActive:
  *          type: boolean

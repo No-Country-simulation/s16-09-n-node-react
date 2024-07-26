@@ -22,16 +22,17 @@
   "contributors": [
     "(in alphabetical order)",
     "David Caycedo <dcdevtk@gmail.com>",
-    "Luis Correa <correaluisfernando00@gmail.com>",
-    "Agustin Gracia <agustingmaggi@gmail.com>",
-    "Pedro Molina <pedropemmolina@gmail.com>",
-    "Rogelio Romo <rogelioromo955@gmail.com>"
+    "Eduardo m Moreno <e.m.morenolp@gmail.com>",
+    "Jorge Trujillo <jatrujilloch1@gmail.com>",
+    "Kevin Espinoza <keivnyeff94@gmail.com>",
+    "Nicolás Enciso <enectrl@gmail.com>",
+    "Pablo Mejillones <tonyp2hoy@gmail.com>",
+    "Ricardo Huallpayunca <rickhufer@gmail.com>"
   ],
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/server.ts",
     "build": "tsup",
     "start": "node dist/server.js",
-    "postinstall": "prisma generate",
     "db:seed": "prisma db seed"
   },
   "dependencies": {

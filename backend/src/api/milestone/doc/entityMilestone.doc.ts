@@ -8,9 +8,10 @@
  *      description: Milestone entity
  *      required:
  *        - name
+ *        - description
+ *        - targetDate
  *        - completed
  *        - projectId
- *        - targetDate
  *      properties:
  *        id:
  *          type: string
