@@ -1,0 +1,14 @@
+{
+  "variables": {
+    "dev": "http://localhost:3000"
+  },
+  "variablesArray": [
+    [
+      "5a92afd3-bb2f-4896-b46d-9f89ad90066f",
+      "dev",
+      "http://localhost:3000",
+      true,
+      "STRING"
+    ]
+  ]
+}

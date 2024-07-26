@@ -67,21 +67,21 @@ model Company {
   id         String     @id @default(cuid())
   name       String
   calendar   Calendar?  @relation(fields: [calendarId], references: [id])
-  users      User[]
   calendarId String?
+  users      User[]
   documents  Document[]
-  createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
   Project    Project[]
+  createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
 model Document {
   id        String   @id @default(cuid())
   name      String
   url       String
-  projectId String?
   project   Project? @relation(fields: [projectId], references: [id])
-  companyId String?
+  projectId String?
   company   Company? @relation(fields: [companyId], references: [id])
+  companyId String?
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
@@ -89,14 +89,14 @@ model Project {
   id           String        @id @default(cuid())
   name         String
   description  String?
-  companyId    String
-  company      Company       @relation(fields: [companyId], references: [id])
   shift        Shift?
-  userProjects UserProject[]
+  company      Company       @relation(fields: [companyId], references: [id])
+  companyId    String
   calendar     Calendar?     @relation(fields: [calendarId], references: [id])
+  calendarId   String?
+  userProjects UserProject[]
   milestones   Milestone[]
   tasks        Task[]
-  calendarId   String?
   meeting      Meeting[]
   document     Document[]
   createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
@@ -104,12 +104,12 @@ model Project {
 
 model Milestone {
   id          String   @id @default(cuid())
-  projectId   String
   name        String
   description String?
   targetDate  DateTime
   completed   Boolean  @default(false)
   project     Project  @relation(fields: [projectId], references: [id])
+  projectId   String
   tasks       Task[]
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
@@ -120,12 +120,12 @@ model Task {
   description String?
   dueDate     DateTime?
   status      TaskStatus @default(TODO)
-  userId      String?
   user        User?      @relation(fields: [userId], references: [id])
-  projectId   String
+  userId      String?
   project     Project    @relation(fields: [projectId], references: [id])
-  milestoneId String?
+  projectId   String
   milestone   Milestone? @relation(fields: [milestoneId], references: [id])
+  milestoneId String?
   createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
@@ -141,10 +141,10 @@ model Calendar {
 
 model Event {
   id         String   @id @default(cuid())
-  calendarId String
   name       String
   date       DateTime
   calendar   Calendar @relation(fields: [calendarId], references: [id])
+  calendarId String
   createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
@@ -154,21 +154,21 @@ model Meeting {
   description String?
   link        String
   dateTime    DateTime
-  calendarId  String?
   calendar    Calendar? @relation(fields: [calendarId], references: [id])
-  projectId   String?
+  calendarId  String?
   project     Project?  @relation(fields: [projectId], references: [id])
+  projectId   String?
   createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
 }
 
 model UserProject {
   id        String  @id @default(cuid())
-  userId    String
-  projectId String
-  roleId    String
   user      User    @relation(fields: [userId], references: [id])
+  userId    String
   project   Project @relation(fields: [projectId], references: [id])
+  projectId String
   role      Role    @relation(fields: [roleId], references: [id])
+  roleId    String
 
   @@unique([userId, projectId])
 }

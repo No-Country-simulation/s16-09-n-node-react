@@ -72,6 +72,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Local history
+.lh/
+
 # dotenv environment variable files
 .env
 .env.development.local
