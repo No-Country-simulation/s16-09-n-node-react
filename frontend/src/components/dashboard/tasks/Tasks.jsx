@@ -8,8 +8,9 @@ import "./tasks.css";
 
 import { useTheme } from "@/context/themecontext";
 
-const Tasks = (props) => {
+const Tasks = () => {
   const { theme } = useTheme();
+
   const getFilterStyle = () => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
@@ -21,7 +22,7 @@ const Tasks = (props) => {
     >
       <span
         className='tasks-title Heading1'
-        tyle={{ color: theme.titulos, backgroundColor: theme.background }}
+        style={{ color: theme.titulos, backgroundColor: theme.background }}
       >
         <span>Tareas</span>
       </span>
