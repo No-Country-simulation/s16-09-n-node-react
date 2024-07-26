@@ -7,8 +7,16 @@ import { Outlet } from "react-router-dom";
 import SearchNotifications from "../../components/dashboard/searchnotifications/SearchNotifications";
 import Sidebar from "../../components/dashboard/sidebar/Sidebar";
 import User from "../../components/dashboard/user/User";
+import Aos from "aos";
+import "aos/dist/aos.css"; 
+import { useEffect } from "react";
 
 const Dashboard = () => {
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
   const { theme } = useTheme();
 
   return (
@@ -24,10 +32,15 @@ const Dashboard = () => {
           backgroundColor: theme.backgroundSecondary,
         }}
       >
-        <User />
-        <SearchNotifications />
-        <Sidebar />
-        <Outlet />
+        <div data-aos="fade-down">
+          <User />
+        </div>
+        <div data-aos="fade-up">
+          <SearchNotifications />
+        </div>
+          <Sidebar />
+
+          <Outlet />
       </div>
     </>
   );

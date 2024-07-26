@@ -3,9 +3,16 @@ import "./searchnotifications.css";
 import { useTheme } from "@/context/themecontext";
 import PropTypes from "prop-types";
 
-const SearchNotifications = (props) => {
+const SearchNotifications = () => {
   const { theme } = useTheme();
   console.log(theme, "theme");
+
+
+  const getStyle = () =>{
+
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+
+  }
   return (
     <div
       className={`search-notifications-search-notifications`}
@@ -31,7 +38,9 @@ const SearchNotifications = (props) => {
           <img
             alt='pastedImage'
             src='/external/alert-icon.svg'
-            className='search-notifications-alert-icon'
+            className='search-notifications-alert-icon cursor-pointer'
+            style={{filter: getStyle()}}
+            onClick={() => alert("en desarrollo")}
           />
           <div className='search-notifications-alert'></div>
         </div>
