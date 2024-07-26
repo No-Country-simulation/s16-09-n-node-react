@@ -7,7 +7,7 @@ import {
   deleteRoleByValue,
   getRoleByValue,
   updateRoleByValue,
-} from '../controller/Role.controller';
+} from '../controller/role.controller';
 
 export const roleRouter = Router();
 

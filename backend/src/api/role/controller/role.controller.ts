@@ -25,7 +25,7 @@ export const createRole = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const body = isBodyParamsValidate(req.body, "role");
+    const body = isBodyParamsValidate(req.body, 'Role');
     const response = await saveRole(body);
     const role = responseContentValidator(response);
     successProfiler(res, 201, 'createRole', { role });
@@ -42,7 +42,7 @@ export const getRoleByValue = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const query = isQueryParamsValidate(req.query, "get", "role");
+    const query = isQueryParamsValidate(req.query, 'get', 'Role');
     const response = await getRolesBy(query);
     const roles = responseContentValidator(response);
     successProfiler(res, 200, 'getRoleByValue', { roles });
@@ -59,8 +59,8 @@ export async function updateRoleByValue(
   res: Response,
 ): Promise<void> {
   try {
-    const query = isQueryParamsValidate(req.query, "put", "role");
-    const body = isBodyParamsValidate(req.body, "Role");
+    const query = isQueryParamsValidate(req.query, 'put', 'Role');
+    const body = isBodyParamsValidate(req.body, 'Role');
     const role = await updateRoleBy(query, body);
     successProfiler(res, 202, 'updateRoleByValue', { role });
   } catch (error) {
@@ -76,7 +76,7 @@ export async function deleteRoleByValue(
   res: Response,
 ): Promise<void> {
   try {
-    const query = isQueryParamsValidate(req.query, 'delete');
+    const query = isQueryParamsValidate(req.query, 'delete', 'Role');
     const role = await deleteRoleBy(query);
     successProfiler(res, 202, 'deleteRoleByValue', { role });
   } catch (error) {

@@ -4,6 +4,7 @@ import favicon from 'serve-favicon';
 
 import { projectRouter } from '@/api/project/router/project.router';
 
+import { roleRouter } from '../api/role/router/role.router';
 import { authRouter } from './auth.routes';
 import { calendarRouter } from './calendar.routes';
 import { homeRouter } from './home.routes';
@@ -19,6 +20,7 @@ serverRouter.use('/', homeRouter);
 serverRouter.use('/users', userRouter);
 serverRouter.use('/auth', authRouter);
 serverRouter.use('/docs', swaggerRouter);
+serverRouter.use('/roles', roleRouter);
 serverRouter.use('/projects', projectRouter);
 serverRouter.use('/calendar/v3', calendarRouter);
 serverRouter.use('/auth', authRouter);
