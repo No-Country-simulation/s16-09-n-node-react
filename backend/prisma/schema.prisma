@@ -100,7 +100,6 @@ model Milestone {
   createdAt   DateTime @default(now())
   projectId   String
   project     Project  @relation(fields: [projectId], references: [id])
-  projectId   String
   tasks       Task[]
 }
 
