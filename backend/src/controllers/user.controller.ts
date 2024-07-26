@@ -1,39 +1,11 @@
-import type { Request, Response } from 'express';
+// ./controllers/user.controller.ts
+import bcrypt from 'bcrypt';
+import { Request, Response } from 'express';
 import { z } from 'zod';
 
 import { prisma } from '@/config/prisma';
 
-import { userSchema, type UserInput } from '../schemas/userSchema';
-
-// Crear un nuevo usuario
-export const createUser = async (req: Request, res: Response) => {
-  try {
-    const validatedData: UserInput = userSchema.parse(req.body);
-    const { name, lastName, email, password } = validatedData;
-
-    const result = await prisma.user.create({
-      data: {
-        email,
-        password,
-        name,
-        lastName,
-      },
-    });
-
-    res.status(201).json({
-      id: result.id,
-      email: result.email,
-      name: result.name,
-      lastName: result.lastName,
-    });
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      res.status(400).json({ errors: error.errors });
-    } else {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-};
+import { UserInput, userSchema } from '../schemas/userSchema';
 
 // Obtener todos los usuarios
 export const getUsers = async (req: Request, res: Response) => {
@@ -41,14 +13,17 @@ export const getUsers = async (req: Request, res: Response) => {
     const users = await prisma.user.findMany({
       select: {
         id: true,
+        username: true,
         email: true,
         name: true,
         lastName: true,
         createdAt: true,
       },
     });
-    res.json(users);
+
+    res.status(200).json(users);
   } catch (error) {
+    console.error('Error fetching users:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -62,10 +37,39 @@ export const getUserById = async (req: Request, res: Response) => {
       where: { id },
       select: {
         id: true,
+        username: true,
         email: true,
         name: true,
         lastName: true,
+        isAdmin: true,
+        location: true,
+        timezone: true,
         createdAt: true,
+        UserSkills: {
+          select: {
+            skill: {
+              select: {
+                name: true,
+                level: true,
+              },
+            },
+          },
+        },
+        UserProjects: {
+          select: {
+            project: {
+              select: {
+                name: true,
+                description: true,
+              },
+            },
+            role: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
       },
     });
 
@@ -83,17 +87,44 @@ export const getUserById = async (req: Request, res: Response) => {
 export const updateUserById = async (req: Request, res: Response) => {
   const { id } = req.params;
   const validatedData: UserInput = userSchema.parse(req.body);
-  const { name, lastName, email, password } = validatedData;
+  const {
+    name,
+    lastName,
+    email,
+    password,
+    username,
+    location,
+    timezone,
+    isAdmin,
+  } = validatedData;
 
   try {
+    // Hash de la contraseña si se proporciona
+    const hashedPassword = password
+      ? await bcrypt.hash(password, 10)
+      : undefined;
+
     const updatedUser = await prisma.user.update({
       where: { id },
-      data: { name, lastName, email, password },
+      data: {
+        name,
+        lastName,
+        email,
+        username,
+        location,
+        timezone,
+        isAdmin,
+        ...(hashedPassword && { password: hashedPassword }), // Solo actualiza la contraseña si se proporciona
+      },
       select: {
         id: true,
+        username: true,
         email: true,
         name: true,
         lastName: true,
+        isAdmin: true,
+        location: true,
+        timezone: true,
       },
     });
 
