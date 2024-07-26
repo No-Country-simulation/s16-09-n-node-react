@@ -42,7 +42,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <ThemeProvider>
         <Provider store={store}>
           <GoogleOneTap />
-
           <App />
         </Provider>
       </ThemeProvider>

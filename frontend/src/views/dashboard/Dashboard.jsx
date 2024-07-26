@@ -38,7 +38,7 @@ const Dashboard = () => {
         <div data-aos="fade-up">
           <SearchNotifications />
         </div>
-        <div data-aos="fade-right">
+        <div data-aos="fade-right" style={{zIndex: "0"}}>
           <Sidebar />
         </div>
         <div data-aos="fade-left">

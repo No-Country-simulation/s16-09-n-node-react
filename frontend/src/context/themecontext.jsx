@@ -39,5 +39,6 @@ const dark = {
   backgroundSecondary: "black", // Fondo Dark :hover
   back: "rgb(0, 71, 138)",
   back1: "#004b96", // primario
-  titulos: "#ebebec", //textos (alternativo) light
+  titulos: "#ebebec",
+  subtitulos: "white", //textos (alternativo) light
 };
