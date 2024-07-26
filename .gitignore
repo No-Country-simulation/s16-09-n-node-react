@@ -81,3 +81,5 @@ $RECYCLE.BIN/
 .env.test.local
 .env.production.local
 .env.local
+
+.anima
