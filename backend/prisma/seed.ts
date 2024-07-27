@@ -199,6 +199,26 @@ async function main() {
   console.log('Seed data created successfully');
 }
 
+// async function main() {
+//   console.log('Deleting all records...');
+
+//   await prisma.userProject.deleteMany({});
+//   await prisma.task.deleteMany({});
+//   await prisma.milestone.deleteMany({});
+//   await prisma.meeting.deleteMany({});
+//   await prisma.event.deleteMany({});
+//   await prisma.calendar.deleteMany({});
+//   await prisma.document.deleteMany({});
+//   await prisma.project.deleteMany({});
+//   await prisma.role.deleteMany({});
+//   await prisma.userSkill.deleteMany({});
+//   await prisma.skill.deleteMany({});
+//   await prisma.user.deleteMany({});
+//   await prisma.company.deleteMany({});
+
+//   console.log('All records deleted successfully.');
+// }
+
 main()
   .then(async () => {
     await prisma.$disconnect();

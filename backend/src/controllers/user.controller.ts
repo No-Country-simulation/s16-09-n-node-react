@@ -1,11 +1,11 @@
 // ./controllers/user.controller.ts
 import bcrypt from 'bcrypt';
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { z } from 'zod';
 
 import { prisma } from '@/config/prisma';
 
-import { UserInput, userSchema } from '../schemas/userSchema';
+import {type UserInput, userSchema } from '../schemas/userSchema';
 
 // Obtener todos los usuarios
 export const getUsers = async (req: Request, res: Response) => {
@@ -45,7 +45,7 @@ export const getUserById = async (req: Request, res: Response) => {
         location: true,
         timezone: true,
         createdAt: true,
-        UserSkills: {
+        userSkills: {
           select: {
             skill: {
               select: {
@@ -55,7 +55,7 @@ export const getUserById = async (req: Request, res: Response) => {
             },
           },
         },
-        UserProjects: {
+        userProjects: {
           select: {
             project: {
               select: {
