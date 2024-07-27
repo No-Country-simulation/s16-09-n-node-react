@@ -12,7 +12,7 @@ import { invalidRouter } from './api/invalid/router/invalid.router';
 // Configuración de variables de entorno
 dotenv.config();
 
-// Initialization of server
+// Inicialización del servidor
 const server = express();
 const PORT = process.env.PORT ?? 3000;
 

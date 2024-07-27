@@ -1,9 +1,5 @@
-import { readFileSync } from 'fs';
-import path from 'path';
-
-
-
-
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 
 interface ValidateObject {
   [key: string]: any;
@@ -34,16 +30,19 @@ const loadModelFields = (modelName: string): Set<string> => {
   const modelString: string = readFileSync(schemaPath, 'utf8');
   const regex = new RegExp(`model ${modelName} {([\\s\\S]*?)}`, 'm');
   const modelMatch = regex.exec(modelString);
-  if (!modelMatch)
+  if (!modelMatch || !modelMatch[1]) {
     throw new FieldError('Model Error', `Model ${modelName} not found`);
+  }
 
-  return new Set(
-    modelMatch[1]
-      .split('\n')
-      .map((line) => /^(\w+)/.exec(line.trim()))
-      .filter(Boolean)
-      .map((match) => match![1]),
-  );
+  const fields = modelMatch[1]
+    .split('\n')
+    .map((line) => {
+      const match = /^(\w+)/.exec(line.trim());
+      return match ? match[1] : undefined;
+    })
+    .filter((field): field is string => field !== undefined);
+
+  return new Set(fields);
 };
 
 //==========================

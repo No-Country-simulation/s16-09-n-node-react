@@ -134,7 +134,7 @@ const swaggerOptions = {
   ],
   customCss: `${darkStyle}
     .main{
-      background-image: url("/api/v1/assets/img/logo.png");
+      background-image: url("/api/v1/img/logo.png");
       background-size: 60px 60px;
       background-repeat: no-repeat;
       padding-left: 70px;
@@ -143,7 +143,7 @@ const swaggerOptions = {
     }
     .topbar{ display: none;}
     `,
-  customfavIcon: '/api/v1/assets/ico/favicon.ico',
+  customfavIcon: '/api/v1/ico/favicon.ico',
   customJs: `
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.9.4/swagger-ui-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.9.4/swagger-ui-standalone-preset.min.js"></script>

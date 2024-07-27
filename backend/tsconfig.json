@@ -1,19 +1,16 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "module": "ESNext",
+    "target": "ESNext",
     "esModuleInterop": true,
     "strict": true,
     "moduleResolution": "node",
     "noEmit": true,
-
     "outDir": "dist",
-
     "forceConsistentCasingInFileNames": true,  
     "skipLibCheck": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitAny": true,
-
-    
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
