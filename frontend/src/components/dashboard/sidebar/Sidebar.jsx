@@ -1,14 +1,23 @@
 import { useTheme } from "@/context/themecontext";
 import { SignOutButton } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
+import Aos from "aos"
 
 import "./sidebar.css";
 
 import moon from "/assets/moon-icon.svg";
 import sun from "/assets/sun-icon.svg";
+import { useEffect } from "react";
 
 const Sidebar = () => {
   const { theme, toggleTheme } = useTheme();
+
+
+useEffect (()=> {
+
+Aos.init({duration: 1000})
+
+}, []  )
 
   const menuItems = [
     { name: "Inicio", icon: "/assets/home-icon.svg", link: "/dashboard/home" },
@@ -60,6 +69,7 @@ const Sidebar = () => {
 
   return (
     <div
+    data-aos="fade-right"
       className='sidebar'
       style={{ color: theme.text, backgroundColor: theme.background }}
     >

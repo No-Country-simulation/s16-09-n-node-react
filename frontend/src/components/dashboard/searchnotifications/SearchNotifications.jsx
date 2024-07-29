@@ -2,11 +2,19 @@ import "./searchnotifications.css";
 
 import { useTheme } from "@/context/themecontext";
 import PropTypes from "prop-types";
+import Aos from 'aos'
+import { useEffect } from "react";
+
 
 const SearchNotifications = () => {
   const { theme } = useTheme();
-  console.log(theme, "theme");
+  
 
+  useEffect (()=>{
+
+Aos.init({duration: 1000})
+
+  }, [])
 
   const getStyle = () =>{
 
@@ -14,7 +22,7 @@ const SearchNotifications = () => {
 
   }
   return (
-    <div
+    <div data-aos="fade-down"
       className={`search-notifications-search-notifications`}
       style={{ color: theme.text, backgroundColor: theme.background }}
     >

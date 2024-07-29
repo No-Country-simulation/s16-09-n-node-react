@@ -4,6 +4,9 @@ import "./collaborators.css";
 
 import { useTheme } from "@/context/themecontext";
 import { NavLink } from "react-router-dom";
+import Aos from 'aos'
+import { useEffect } from "react";
+
 
 const Collaborators = (props) => {
   const { theme } = useTheme();
@@ -11,8 +14,12 @@ const Collaborators = (props) => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
 
+  useEffect(() => {
+    Aos.init()
+  }, []);
+
   return (
-    <div
+    <div data-aos="fade-left"
       className='collaborators-collaborators'
       style={{ color: theme.primary, backgroundColor: theme.background }}
     >

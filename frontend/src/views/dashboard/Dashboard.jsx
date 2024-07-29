@@ -13,9 +13,7 @@ import { useEffect } from "react";
 
 const Dashboard = () => {
 
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
+
 
   const { theme } = useTheme();
 
@@ -32,10 +30,10 @@ const Dashboard = () => {
           backgroundColor: theme.backgroundSecondary,
         }}
       >
-        <div data-aos="fade-down">
+        <div >
           <User />
         </div>
-        <div data-aos="fade-up">
+        <div >
           <SearchNotifications />
         </div>
           <Sidebar />

@@ -18,7 +18,7 @@ const Tasks = () => {
 
   const tabs = ['UX/UI', 'Frontend', 'Backend', 'Data Analysis'];
   const statuses = ['Por realizar', 'En proceso', 'Revisiones', 'Terminadas'];
-  const URL = "https://crudcrud.com/api/aeca53532e2d4381abb08f9c88d94bf8/todos/";
+  const URL = "https://crudcrud.com/api/f56e2f4aab784ceea8fd44c448b16d32/todos/";
 
   const getFilterStyle = () => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
@@ -89,8 +89,7 @@ console.log(user, "user")
         Red social para compartir skills
       </p>
       <Button 
-        type="primary" 
-        className="flex items-center mb-4" 
+        className="absolute top-1/4 w-1/3 left-2/3 p-10 bg-transparent b-transparent " 
         onClick={() => {
           form.resetFields();
           setIsModalVisible(true);
