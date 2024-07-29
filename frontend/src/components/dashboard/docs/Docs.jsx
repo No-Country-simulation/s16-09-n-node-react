@@ -4,7 +4,7 @@ import "./docs.css";
 
 import { useTheme } from "@/context/themecontext";
 
-const Docs = (props) => {
+const Docs = () => {
   const { theme } = useTheme();
   const getFilterStyle = () => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";

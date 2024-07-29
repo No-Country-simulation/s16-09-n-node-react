@@ -1,23 +1,28 @@
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Button, Input, Modal, Select, DatePicker, Row, Col } from 'antd';
-import imag from './tasklist.svg';
-import './TodoCRUD.css'; // Estilos personalizados
+import { Button, Input, Modal, Select, DatePicker, Row, Col, Form } from 'antd';
+import { useTheme } from '@/context/themecontext';
+import { useUser } from '@clerk/clerk-react';
+import './TodoCRUD.css'; // Puedes eliminar esto si ya no es necesario
 
-const { Option } = Select;
-const URL = "https://crudcrud.com/api/1ef4750d29f6433f8d80660ec09438a7/todos/";
+const { TextArea } = Input;
 
 const Tasks = () => {
   const [activeTab, setActiveTab] = useState('UX/UI');
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
-  const [selectedHashtags, setSelectedHashtags] = useState([]);
-  const [dueDate, setDueDate] = useState(null);
-  const [editTodo, setEditTodo] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [form] = Form.useForm();
+  const { theme } = useTheme();
+  //const { user } = useUser();
+ const user = "user"
 
-  const tabs = ['UX/UI', 'Frontend', 'Backend', 'QA', 'Data Analysis'];
+  const tabs = ['UX/UI', 'Frontend', 'Backend', 'Data Analysis'];
+  const statuses = ['Por realizar', 'En proceso', 'Revisiones', 'Terminadas'];
+  const URL = "https://crudcrud.com/api/aeca53532e2d4381abb08f9c88d94bf8/todos/";
+
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+  };
 
   const fetchTodos = async () => {
     try {
@@ -28,17 +33,14 @@ const Tasks = () => {
     }
   };
 
-  const handleAddTodo = async () => {
+  const handleAddTodo = async (values) => {
     try {
       await axios.post(URL, {
-        text: newTodo,
-        hashtags: selectedHashtags,
-        dueDate: dueDate ? dueDate.format('YYYY-MM-DD') : null,
-        category: activeTab,
+        ...values,
+        dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : null,
       });
-      setNewTodo('');
-      setSelectedHashtags([]);
-      setDueDate(null);
+      form.resetFields();
+      setIsModalVisible(false);
       fetchTodos();
     } catch (error) {
       console.error('Error adding todo:', error);
@@ -55,19 +57,21 @@ const Tasks = () => {
   };
 
   const handleEditTodo = (todo) => {
-    setEditTodo(todo);
+    form.setFieldsValue({
+      ...todo,
+      dueDate: todo.dueDate ? moment(todo.dueDate) : null,
+    });
     setIsModalVisible(true);
   };
 
-  const handleUpdateTodo = async () => {
+  const handleUpdateTodo = async (values) => {
     try {
-      await axios.put(`${URL}${editTodo._id}`, editTodo, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      await axios.put(`${URL}${values._id}`, {
+        ...values,
+        dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : null,
       });
+      form.resetFields();
       setIsModalVisible(false);
-      setEditTodo(null);
       fetchTodos();
     } catch (error) {
       console.error('Error updating todo:', error);
@@ -77,124 +81,125 @@ const Tasks = () => {
   useEffect(() => {
     fetchTodos();
   }, []);
-
+console.log(user, "user")
   return (
-    <div>
-      <div className="text-white flex flex-col gap-0 ml-0">
-        <NavLink to={'/dashboard/add-task'}></NavLink>
-        <ul className="list-none">
-          <img src={imag} alt="tasklist" onClick={() => alert('En desarrollo')} />
-        </ul>
-      </div>
-
-      <div className="p-6 bg-gray-100 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Tareas</h2>
-        <p className="text-lg text-gray-600 mb-6">Red social para compartir skills</p>
-        <div className="mb-6">
-          <div className="flex space-x-4 border-b border-gray-300">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                className={`py-2 px-4 text-lg font-medium ${
-                  activeTab === tab
-                    ? 'text-blue-500 border-b-2 border-blue-500'
-                    : 'text-gray-700'
-                }`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <Row gutter={16} className="mb-4">
-          <Col xs={24} sm={12} md={8}>
-            <Input
-              placeholder="Enter a new todo"
-              value={newTodo}
-              onChange={(e) => setNewTodo(e.target.value)}
-            />
-          </Col>
-          <Col xs={24} sm={12} md={8}>
-            <Select
-              mode="tags"
-              placeholder="Select hashtags"
-              value={selectedHashtags}
-              onChange={(values) => setSelectedHashtags(values)}
-              style={{ width: '100%', marginBottom: '10px' }}
-            >
-              <Option key="work">Work</Option>
-              <Option key="personal">Personal</Option>
-              <Option key="urgent">Urgent</Option>
-            </Select>
-          </Col>
-          <Col xs={24} sm={12} md={4}>
-            <DatePicker
-              placeholder="Due Date"
-              value={dueDate}
-              onChange={(date) => setDueDate(date)}
-              style={{ width: '100%', marginBottom: '10px' }}
-            />
-          </Col>
-          <Col xs={24} sm={12} md={4}>
-            <Button type="primary" onClick={handleAddTodo}>
-              Add Todo
-            </Button>
-          </Col>
-        </Row>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div className="p-6 bg-gray-100 rounded-lg shadow-md" style={{ backgroundColor: theme.background }}>
+      <h2 className="text-2xl font-semibold mb-4" style={{ color: theme.text }}>Tareas</h2>
+      <p className="text-lg mb-6" style={{ color: theme.subtitulos }}>
+        Red social para compartir skills
+      </p>
+      <Button 
+        type="primary" 
+        className="flex items-center mb-4" 
+        onClick={() => {
+          form.resetFields();
+          setIsModalVisible(true);
+        }}
+        style={{ color: theme.text }}
+      >
+        <img
+          alt='plus-icon'
+          src='/assets/plus-icon.svg'
+          className='docs-plus-icon'
+          style={{ filter: getFilterStyle() }}
+        />
+        Agregar tarea
+      </Button>
+      <div className="mb-6">
+        <div className="flex space-x-4 border-b border-gray-300">
           {tabs.map((tab) => (
-            <div key={tab} className="p-4 bg-white shadow rounded-lg">
-              <h3 className="text-xl font-semibold mb-2">{tab}</h3>
-              {todos
-                .filter((todo) => todo.category === tab)
-                .map((todo) => (
-                  <div key={todo._id} className="flex items-center mb-4">
-                    <img
-                      src={todo.imgSrc || '/default.png'}
-                      alt="Collaborator"
-                      className="w-10 h-10 rounded-full mr-3"
-                    />
-                    <p>{todo.text}</p>
-                    <Button type="primary" onClick={() => handleEditTodo(todo)}>
-                      Edit
-                    </Button>
-                    <Button type="dashed" onClick={() => handleDeleteTodo(todo._id)}>
-                      Delete
-                    </Button>
-                  </div>
-                ))}
-            </div>
+            <button
+              key={tab}
+              className={`py-2 px-4 text-lg font-medium ${
+                activeTab === tab
+                  ? 'text-blue-500 border-b-2 border-blue-500'
+                  : 'text-gray-700'
+              }`}
+              onClick={() => setActiveTab(tab)}
+              style={{ color: activeTab === tab ? theme.text : 'inherit' }}
+            >
+              {tab}
+            </button>
           ))}
         </div>
       </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {statuses.map((status) => (
+          <div key={status} className="p-4 shadow rounded-lg" style={{ backgroundColor: theme.backgroundSecondary }}>
+            <h3 className="text-xl font-semibold mb-2" style={{ color: theme.text }}>{status}</h3>
+            {todos
+              .filter((todo) => todo.status === status)
+              .map((todo) => (
+                <div key={todo._id} className="flex items-center mb-4">
+                  <p>{todo.text}</p>
+                  <Button type="primary" onClick={() => handleEditTodo(todo)}>
+                    Editar
+                  </Button>
+                  <Button type="dashed" onClick={() => handleDeleteTodo(todo._id)}>
+                    Eliminar
+                  </Button>
+                </div>
+              ))}
+          </div>
+        ))}
+      </div>
 
       <Modal
-        title="Edit Todo"
+        title="Agregar/Editar tarea"
         open={isModalVisible}
-        onOk={handleUpdateTodo}
+        onOk={() => {
+          form
+            .validateFields()
+            .then((values) => {
+              if (values._id) {
+                handleUpdateTodo(values);
+              } else {
+                handleAddTodo(values);
+              }
+            })
+            .catch((info) => {
+              console.error('Validate Failed:', info);
+            });
+        }}
         onCancel={() => setIsModalVisible(false)}
       >
-        <Input
-          placeholder="Enter todo text"
-          value={editTodo?.text}
-          onChange={(e) => setEditTodo({ ...editTodo, text: e.target.value })}
-        />
-        <DatePicker
-          placeholder="Due Date"
-          value={dueDate}
-          onChange={(date) => setDueDate(date)}
-          style={{ width: '100%', marginBottom: '10px' }}
-        />
-        <Select
-          mode="tags"
-          placeholder="Select hashtags"
-          value={editTodo?.hashtags}
-          onChange={(values) => setEditTodo({ ...editTodo, hashtags: values })}
-          style={{ width: '100%', marginBottom: '10px' }}
-        />
+        <Form form={form} layout="vertical">
+          <Form.Item name="_id" hidden>
+            <Input />
+          </Form.Item>
+          <Form.Item name="text" label="Nombre de la tarea" rules={[{ required: true, message: 'Por favor ingresa el nombre de la tarea' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="project" label="Proyecto" rules={[{ required: true, message: 'Por favor ingresa el proyecto' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="role" label="Rol" rules={[{ required: true, message: 'Por favor selecciona un rol' }]}>
+            <Select>
+              {tabs.map((tab) => (
+                <Select.Option key={tab} value={tab}>{tab}</Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item name="status" label="Estado" rules={[{ required: true, message: 'Por favor selecciona un estado' }]}>
+            <Select>
+              {statuses.map((status) => (
+                <Select.Option key={status} value={status}>{status}</Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item name="participant" label="Participante" rules={[{ required: true, message: 'Por favor selecciona un participante' }]}>
+            <Select>
+              <Select.Option key={user.id} value={user}>{user}</Select.Option>
+            </Select>
+          </Form.Item>
+          <Form.Item name="dueDate" label="Fecha de vencimiento">
+            <DatePicker style={{ width: '100%' }} />
+          </Form.Item>
+          <Form.Item name="message" label="Mensaje" rules={[{ required: true, message: 'Por favor ingresa un mensaje' }]}>
+            <TextArea rows={4} />
+          </Form.Item>
+        </Form>
       </Modal>
     </div>
   );
