@@ -17,6 +17,7 @@ const Tasks = () => {
 
   return (
     <div
+    data-aos="fade-up"
       className='tasks-tasks'
       style={{ color: theme.titulos, backgroundColor: theme.background }}
     >

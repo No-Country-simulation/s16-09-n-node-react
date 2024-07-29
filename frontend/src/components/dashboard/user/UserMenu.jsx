@@ -1,10 +1,9 @@
 import './usermenu.css';
 
-// eslint-disable-next-line react/prop-types
 export default function UserMenu({handleMenu}) {
 
   return (
-    <main className={"user-menu-container"  }  >
+    <main className={"user-menu-container"}>
       <div className={"user-menu-link"} onClick={handleMenu}>
         <span className={"user-menu-label"}>Información Personal</span>
         <img

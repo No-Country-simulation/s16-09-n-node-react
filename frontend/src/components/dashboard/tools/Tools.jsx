@@ -1,17 +1,30 @@
 import { NavLink } from "react-router-dom";
+import Aos from "aos";
 
 import "./tools.css";
 
-import { useTheme } from "@/context/themecontext";
 
-const Tools = (props) => {
+
+
+import { useTheme } from "@/context/themecontext";
+import { useEffect } from "react";
+
+
+
+
+const Tools = () => {
   const { theme } = useTheme();
+
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   const getFilterStyle = () => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
   return (
-    <div
+    <div data-aos="fade-left"
       className='tools-tools'
       style={{ color: theme.primary, backgroundColor: theme.background }}
     >
