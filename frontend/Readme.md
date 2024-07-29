@@ -55,29 +55,36 @@ bash
 Copiar código
 npm install
 Configura las variables de entorno (ver env.example para más detalles).
+## Scripts 🚀
 
-Scripts 🚀
-Desarrollo: npm run dev - Inicia el servidor de desarrollo.
-Construcción: npm run build - Construye la aplicación para producción.
-Linting: npm run lint - Ejecuta el linter para el código.
-Vista previa: npm run preview - Muestra una vista previa de la aplicación construida.
-Tecnologías Utilizadas 🛠️
-React - Biblioteca de JavaScript para construir interfaces de usuario.
-Vite - Herramienta de construcción rápida y moderna.
-Tailwind CSS - Framework de CSS para diseño responsivo.
-Ant Design - Biblioteca de componentes de UI.
-Redux Toolkit - Herramienta para manejar el estado global.
-Axios - Cliente HTTP para realizar solicitudes.
-Clerk - Gestión de autenticación y autorización.
-Radix UI - Conjunto de componentes accesibles para React.
-Contribuir 🤗
-Haz un fork del repositorio.
-Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
-Realiza tus cambios y confirma (git commit -am 'Añadida nueva funcionalidad').
-Empuja tu rama (git push origin feature/nueva-funcionalidad).
-Abre un Pull Request en el repositorio original.
-Contacto 📬
-Para consultas o sugerencias, puedes contactarnos a través del correo electrónico o abrir un problema en el repositorio.
+- **Desarrollo:** `npm run dev` - Inicia el servidor de desarrollo.
+- **Construcción:** `npm run build` - Construye la aplicación para producción.
+- **Linting:** `npm run lint` - Ejecuta el linter para el código.
+- **Vista previa:** `npm run preview` - Muestra una vista previa de la aplicación construida.
 
-Licencia 📝
-Este proyecto está bajo la Licencia MIT.
+## Tecnologías Utilizadas 🛠️
+
+- **React** - Biblioteca de JavaScript para construir interfaces de usuario.
+- **Vite** - Herramienta de construcción rápida y moderna.
+- **Tailwind CSS** - Framework de CSS para diseño responsivo.
+- **Ant Design** - Biblioteca de componentes de UI.
+- **Redux Toolkit** - Herramienta para manejar el estado global.
+- **Axios** - Cliente HTTP para realizar solicitudes.
+- **Clerk** - Gestión de autenticación y autorización.
+- **Radix UI** - Conjunto de componentes accesibles para React.
+
+## Contribuir 🤗
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y confirma (`git commit -am 'Añadida nueva funcionalidad'`).
+4. Empuja tu rama (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request en el repositorio original.
+
+## Contacto 📬
+
+Para consultas o sugerencias, puedes contactarnos a través del [correo electrónico](mailto:tu_email@ejemplo.com) o abrir un problema en el repositorio.
+
+## Licencia 📝
+
+Este proyecto está bajo la [Licencia MIT](LICENSE).
