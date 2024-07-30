@@ -3,18 +3,13 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import { SwaggerTheme, SwaggerThemeNameEnum } from 'swagger-themes';
 import swaggerUI from 'swagger-ui-express';
 
-
-
-
-
 config();
 
 const env = process.env.NODE_ENV ?? 'development';
 const port = process.env.PORT ?? 3000;
 const hostDev = process.env.HOST_DEV ?? 'localhost';
 const hostProd =
-  process.env.HOST_PROD_BACK ??
-  's16-09-n-node-react-1.onrender.com';
+  process.env.HOST_PROD_BACK ?? 's16-09-n-node-react-1.onrender.com';
 const theme = new SwaggerTheme();
 const darkStyle = theme.getBuffer(SwaggerThemeNameEnum.DARK);
 const serverUrl =
