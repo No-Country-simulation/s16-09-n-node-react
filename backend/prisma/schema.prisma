@@ -23,11 +23,12 @@ model Skill {
 
 model User {
   id           String        @id @default(cuid())
+  clerkId      String?       @unique
   username     String?       @unique
   email        String        @unique
   password     String
-  name         String
-  lastName     String
+  name         String?
+  lastName     String?
   isAdmin      Boolean       @default(false)
   location     String?
   timezone     String?
@@ -95,15 +96,27 @@ model Project {
 }
 
 model Milestone {
-  id          String   @id @default(cuid())
+  id          String          @id @default(cuid())
   projectId   String
   name        String
   description String?
-  targetDate  DateTime
-  completed   Boolean  @default(false)
-  project     Project  @relation(fields: [projectId], references: [id])
+  startDate   DateTime?
+  targetDate  DateTime?
+  completed   Boolean         @default(false)
+  status      MilestoneStatus @default(OPEN)
+  project     Project         @relation(fields: [projectId], references: [id])
   tasks       Task[]
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdAt   DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([projectId, name])
+}
+
+enum MilestoneStatus {
+  OPEN
+  CLOSED
+  UPCOMING
+  EXPIRED
+  COMPLETED
 }
 
 model Task {
@@ -119,6 +132,8 @@ model Task {
   milestoneId String?
   milestone   Milestone? @relation(fields: [milestoneId], references: [id])
   createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([name, projectId])
 }
 
 model Calendar {
