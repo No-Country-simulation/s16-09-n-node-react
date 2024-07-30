@@ -1,17 +1,17 @@
 import PropTypes from "prop-types";
 
 import "./user.css";
+import Aos from 'aos'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/context/themecontext";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import UserMenu from "./UserMenu";
-
 function User({
-  userImage = "/external/user-image.png",
-  userName = "Usuario",
+  // userImage = "/external/user-image.png",
+  // userName = "Usuario",
   userRol = "Frontend",
 }) {
   const { theme } = useTheme();
@@ -24,10 +24,18 @@ function User({
   const handleMenu = () => {
     setShowMenu((prev) => !prev);
   };
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+    
+  };
 
-  let style = showMenu
-    ? { borderColor: "var(--dl-color-ours-light-over)" }
-    : {};
+
+useEffect(()=> {
+
+Aos.init( { duration: 1000})
+}, [])
+
+
 
   return !user ? (
     <p>
@@ -40,7 +48,7 @@ function User({
       />
     </p>
   ) : (
-    <div
+    <div data-aos= "fade-right"
       className={`user-user`}
       style={{ color: theme.subtitulos, backgroundColor: theme.background }}
     >
@@ -74,10 +82,14 @@ function User({
         alt='settings icon'
         src={showMenu ? close : set}
         className='user-settings-icon cursor-pointer hover:text-red-700'
-        style={{ color: theme.text, backgroundColor: theme.background }}
+   
         onClick={handleMenu}
+        style={{ filter: getFilterStyle() }}
       />
-      {showMenu && <UserMenu handleMenu={handleMenu} />}
+      {showMenu && 
+      
+      
+      <UserMenu handleMenu={handleMenu} className='user-menu' />}
     </div>
   );
 }

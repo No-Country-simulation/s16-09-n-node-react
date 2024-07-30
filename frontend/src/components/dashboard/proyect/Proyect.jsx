@@ -11,7 +11,7 @@ const Proyect = (props) => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
   return (
-    <div className='proyect-proyect' style={props.theme}>
+    <div className='proyect-proyect' style={props.theme}data-aos="fade-right" >
       <span className='proyect-title' style={props.theme}>
         {props.title}
       </span>

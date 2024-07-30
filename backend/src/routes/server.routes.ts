@@ -1,6 +1,4 @@
-import { join } from 'path';
-import express, { Router } from 'express';
-import favicon from 'serve-favicon';
+import express,{ Router } from 'express';
 
 import { projectRouter } from '@/api/project/router/project.router';
 import { roleRouter } from '@/api/role/router/role.router';
@@ -10,11 +8,17 @@ import { calendarRouter } from './calendar.routes';
 import { homeRouter } from './home.routes';
 import { swaggerRouter } from './swagger.routes';
 import { userRouter } from './user.routes';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import favicon from 'serve-favicon';
 
 export const serverRouter = Router();
 
-serverRouter.use('/assets', express.static(join(__dirname, '../assets')));
-serverRouter.use(favicon(join(__dirname, '../assets/ico/favicon.ico')));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+serverRouter.use(express.static(join(__dirname, '../../public')));
+serverRouter.use(favicon(join(__dirname, '../../public/ico/favicon.ico')));
 
 serverRouter.use('/', homeRouter);
 serverRouter.use('/users', userRouter);

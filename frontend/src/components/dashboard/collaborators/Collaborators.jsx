@@ -4,6 +4,9 @@ import "./collaborators.css";
 
 import { useTheme } from "@/context/themecontext";
 import { NavLink } from "react-router-dom";
+import Aos from 'aos'
+import { useEffect } from "react";
+
 
 const Collaborators = (props) => {
   const { theme } = useTheme();
@@ -11,8 +14,12 @@ const Collaborators = (props) => {
     return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
 
+  useEffect(() => {
+    Aos.init()
+  }, []);
+
   return (
-    <div
+    <div data-aos="fade-left"
       className='collaborators-collaborators'
       style={{ color: theme.primary, backgroundColor: theme.background }}
     >
@@ -55,12 +62,14 @@ const Collaborators = (props) => {
           className='collaborators-collaborator-image5'
         />
       </div>
+      <NavLink to='/dashboard/participants' >      
       <img
         alt='plus-icon'
         src='https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f40ee3f0-c832-430f-8738-aa2f56082371/df672044-aed4-4a0d-8a7e-c02b5e6cbde7?org_if_sml=1506&amp;force_format=original'
         className='collaborators-plus-icon'
         style={{ filter: getFilterStyle() }}
       />
+      </NavLink> 
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { roleSchema } from '@/api/role/schema/role.schema';
 
 import { validateKeysInPrismaModel } from './model.validation';
 
-
 //=====================
 // Class Param Error
 //=====================
@@ -36,7 +35,7 @@ const handleGetQueryParams = (queryParams: any, model: string): any => {
   if (Object.keys(queryParams).length === 0) {
     return '';
   } else if (Object.keys(queryParams).length !== 1) {
-    throw new ParamError('Query error','can only have one parameter.');
+    throw new ParamError('Query error', 'can only have one parameter.');
   }
   return isKeyAndValueValidate(queryParams, model);
 };
@@ -46,7 +45,7 @@ const handleGetQueryParams = (queryParams: any, model: string): any => {
 //======================================
 const handlePutOrDeleteQueryParams = (queryParams: any, model:string): any => {
   if (Object.keys(queryParams).length === 0) {
-    throw new ParamError('Query error','must have parameter');
+    throw new ParamError('Query error', 'must have parameter');
   }
   if (
     Object.keys(queryParams).length === 1 &&
@@ -54,7 +53,7 @@ const handlePutOrDeleteQueryParams = (queryParams: any, model:string): any => {
   ) {
     return isKeyAndValueValidate(queryParams, model);
   } else {
-    throw new ParamError('Query error','The query parameter only supports id.');
+    throw new ParamError('Query error', 'The query parameter only supports id.');
   }
 };
 
@@ -62,7 +61,7 @@ const handlePutOrDeleteQueryParams = (queryParams: any, model:string): any => {
 // Validate key and value
 //======================================
 const isKeyAndValueValidate = (queryParams: any, model: string) => {
-  const [key, value] = Object.entries(queryParams)[0];
+  const [key, value] = Object.entries(queryParams)[0] as [string, unknown];
   if (!key || !value)
     throw new ParamError('Query error','The wrong query parameter.');
   const query = validateKeysInPrismaModel(model, { [key]: value });
@@ -99,7 +98,8 @@ const parseBody = (validate: any, model: string) => {
 // response content validator
 //==============================
 export const responseContentValidator = (response :any) => {
-  if (response.length < 1)
+  if (response.length < 1){
     throw new ParamError('Content error', 'Search value not found');
+  }
   return response;
 }

@@ -29,9 +29,10 @@
     "Pablo Mejillones <tonyp2hoy@gmail.com>",
     "Ricardo Huallpayunca <rickhufer@gmail.com>"
   ],
+  "type": "module",
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/server.ts",
-    "build": "tsup",
+    "build": "rimraf dist && tsc --noEmit false && tsc-alias",
     "start": "node dist/server.js",
     "db:seed": "prisma db seed"
   },
@@ -70,6 +71,8 @@
     "@types/swagger-ui-express": "^4.1.6",
     "morgan": "^1.10.0",
     "prisma": "^5.16.1",
+    "rimraf": "^5.0.5",
+    "tsc-alias": "^1.8.8",
     "tsup": "^8.2.3",
     "tsx": "^4.16.2",
     "typescript": "^5.5.3"

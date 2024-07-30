@@ -4,7 +4,7 @@ import { prisma } from '@/config/prisma';
 
 export const createEvent = async (req: Request, res: Response) => {
   const { name, date } = req.body;
-  const calendarId = req.params.calendarId;
+  const calendarId: any = req.params.calendarId;
   try {
     const result = await prisma.event.create({
       data: {

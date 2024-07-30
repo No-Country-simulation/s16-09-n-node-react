@@ -2,12 +2,27 @@ import "./searchnotifications.css";
 
 import { useTheme } from "@/context/themecontext";
 import PropTypes from "prop-types";
+import Aos from 'aos'
+import { useEffect } from "react";
 
-const SearchNotifications = (props) => {
+
+const SearchNotifications = () => {
   const { theme } = useTheme();
-  console.log(theme, "theme");
+  
+
+  useEffect (()=>{
+
+Aos.init({duration: 1000})
+
+  }, [])
+
+  const getStyle = () =>{
+
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
+
+  }
   return (
-    <div
+    <div data-aos="fade-down"
       className={`search-notifications-search-notifications`}
       style={{ color: theme.text, backgroundColor: theme.background }}
     >
@@ -31,7 +46,9 @@ const SearchNotifications = (props) => {
           <img
             alt='pastedImage'
             src='/external/alert-icon.svg'
-            className='search-notifications-alert-icon'
+            className='search-notifications-alert-icon cursor-pointer'
+            style={{filter: getStyle()}}
+            onClick={() => alert("en desarrollo")}
           />
           <div className='search-notifications-alert'></div>
         </div>
