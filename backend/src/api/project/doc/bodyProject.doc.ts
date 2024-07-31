@@ -9,8 +9,8 @@
  *      properties:
  *        name:
  *          type: string
- *          example: api
- *        CompanyId:
+ *          example: name of the project
+ *        companyId:
  *          type: string
- *          example: id de la empresa
+ *          example: id of the company
 */

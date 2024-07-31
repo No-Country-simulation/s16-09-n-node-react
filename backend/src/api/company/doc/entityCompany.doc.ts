@@ -18,7 +18,7 @@
  *          example: name
  *        calendarId:
  *          type: string
- *          example: id del calendario
+ *          example: id of calendar
  *        users:
  *          type: User
  *          example: []
@@ -26,7 +26,7 @@
  *          type: Document
  *          example: []
  *        project:
- *          type: Project
+ *          type: Document
  *          example: []
  *        isActive:
  *          type: boolean

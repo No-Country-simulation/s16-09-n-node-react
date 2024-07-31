@@ -17,7 +17,7 @@
  *          example: 123e4567-e89b-12d3-a456-426655440000
  *        name:
  *          type: string
- *          example: name
+ *          example: dame
  *        date:
  *          type: string
  *          format: date-time
