@@ -1,6 +1,9 @@
+import imagen from "./image.png"
+
+
 const MeetingsDetails = () => {
   return <div className="text-white">
-    component meetingsdetails
+<img src={imagen} alt="" />
   </div>
 }
 

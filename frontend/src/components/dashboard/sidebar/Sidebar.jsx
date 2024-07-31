@@ -69,7 +69,6 @@ Aos.init({duration: 1000})
 
   return (
     <div
-    data-aos="fade-right"
       className='sidebar'
       style={{ color: theme.text, backgroundColor: theme.background }}
     >

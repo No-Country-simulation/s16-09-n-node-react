@@ -7,9 +7,8 @@ import { Outlet } from "react-router-dom";
 import SearchNotifications from "../../components/dashboard/searchnotifications/SearchNotifications";
 import Sidebar from "../../components/dashboard/sidebar/Sidebar";
 import User from "../../components/dashboard/user/User";
-import Aos from "aos";
+
 import "aos/dist/aos.css"; 
-import { useEffect } from "react";
 
 const Dashboard = () => {
 
