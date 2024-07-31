@@ -7,8 +7,7 @@ import ProyectCard from "./ProyectCard";
 import { useEffect } from "react";
 
 const Proyects = () => {
-  const { theme } = useTheme();
-
+  const { theme } = useTheme()
   const style = {
     color: theme.text,
     backgroundColor: theme.backgroundColor,
