@@ -34,7 +34,8 @@
     "dev": "tsx watch --clear-screen=false src/server.ts",
     "build": "rimraf dist && tsc --noEmit false && tsc-alias",
     "start": "node dist/server.js",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "db:delete": "tsx prisma/deleteSeed.ts"
   },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^5.0.14",
@@ -65,7 +66,7 @@
     "@types/helmet": "^4.0.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^20.14.12",
+    "@types/node": "^20.14.13",
     "@types/serve-favicon": "^2.5.7",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.6",
