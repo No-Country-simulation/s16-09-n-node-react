@@ -9,6 +9,6 @@ export const registerUserFromClerk = async (req: Request, res: Response) => {
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.log(error);
-    return res.status(400);
+    return res.status(400).json(error);
   }
 };

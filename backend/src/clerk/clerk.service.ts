@@ -24,10 +24,10 @@ export const createUserFromClerk = async (authData: LooseAuthProp) => {
       return createToken(existingUser.id);
     }
 
-    const defaultCompany = await prisma.company.findFirst({
-      where: { name: DEFAULT_COMPANY_NAME },
-      select: { id: true },
-    });
+    const defaultCompanyId = await findDefaultCompany();
+    if (!defaultCompanyId) {
+      throw { message: 'Internal server error' };
+    }
     const newUser = await prisma.user.create({
       data: {
         email: clerkUserData.emailAddresses[0]?.emailAddress as string,
@@ -35,11 +35,21 @@ export const createUserFromClerk = async (authData: LooseAuthProp) => {
         name: clerkUserData.firstName,
         lastName: clerkUserData.lastName,
         clerkId: clerkUserData.id,
-        companyId: defaultCompany?.id,
+        companyId: defaultCompanyId.id,
       },
     });
     return createToken(newUser.id);
   } catch (error) {
     throw error;
   }
+};
+
+const findDefaultCompany = async (
+  defCompanyName: string = DEFAULT_COMPANY_NAME,
+) => {
+  const defaultCompany = await prisma.company.findFirst({
+    where: { name: defCompanyName },
+    select: { id: true },
+  });
+  return defaultCompany;
 };
