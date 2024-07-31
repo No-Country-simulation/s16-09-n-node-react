@@ -15,28 +15,29 @@ const ProyectCard = ({ proyect, idx, theme }) => {
         to={`/dashboard/proyect/edit-proyect/${proyect.id}`}
         style={style}
       >
-        <div className="flex h-full flex-col justify-between p-4 overflow-auto" style={{ width: '49%' }}>
+        <div className="flex h-full flex-col justify-between p-4 overflow-auto " style={{ width: '49%' }}>
           <span>
             {proyect.name}
           </span>
-          <p>
+          <p style={{color: "white"}}>
             Projecto{proyect.status === 'pending' ? ' en curso' : 'terminado'}
           </p>
-          <img
+          <img 
+          style={{color: "white"}}
             className="max-w-fit max-h-24"
             src={proyect.image}
             alt={proyect.name}
           />
-          <div className="flex w-full justify-between text-xs m-0 p-0">
-            <p className="w-auto">Inicio: {proyect.beginning}</p>
-            <p className="w-auto">{proyect.status === 'finished' ? 'Entregado: ' : 'Entrega: '}: {proyect.deadline}</p>
+          <div className="flex w-full justify-between text-xs m-0 p-0" style={{color: "white"}}>
+            <p className="w-auto" style={{color: "white"}}>Inicio: {proyect.beginning}</p>
+            <p className="w-auto" style={{color: "white"}}>{proyect.status === 'finished' ? 'Entregado: ' : 'Entrega: '}: {proyect.deadline}</p>
           </div>
         </div>
         <div className="flex flex-col p-2 h-full" style={{ width: '49%' }}>
           <span>
             Contexto:
           </span>
-          <p className=" h-4/5 overflow-auto no-scrollbar">
+          <p className=" h-4/5 overflow-auto no-scrollbar" style={{color: "white"}}>
             {proyect.description}
           </p>
         </div>
@@ -44,13 +45,14 @@ const ProyectCard = ({ proyect, idx, theme }) => {
       :
       <NavLink
         className='flex flex-col p-4 justify-between rounded-2xl'
+       
         to={`/dashboard/proyect/edit-proyect/${proyect.id}`}
         style={{...style, height: '55dvh'}}
       >
         <span>
           {proyect.name}
         </span>
-        <p>
+        <p style={{color: "white"}}>
           Projecto{proyect.status === 'pending' ? ' en curso' : 'terminado'}
         </p>
         <img
@@ -58,9 +60,9 @@ const ProyectCard = ({ proyect, idx, theme }) => {
           src={proyect.image}
           alt={proyect.name}
         />
-        <div className="flex w-full justify-between text-xs m-0 p-0">
-          <p className="w-auto">Inicio: {proyect.beginning}</p>
-          <p className="w-auto">{proyect.status === 'finished' ? 'Entregado: ' : 'Entrega: '}: {proyect.deadline}</p>
+        <div className="flex w-full justify-between text-xs m-0 p-0" style={{color: "white"}}>
+          <p style={{color: "white"}} className="w-auto">Inicio: {proyect.beginning}</p>
+          <p  style={{color: "white"}} className="w-auto">{proyect.status === 'finished' ? 'Entregado: ' : 'Entrega: '}: {proyect.deadline}</p>
         </div>
 
         <div className="flex justify-between">
