@@ -1,15 +1,16 @@
 /**
  *  @swagger
  * paths:
- *  /projects:
- *    delete:
+ *  /userProjects:
+ *    get:
  *      tags:
- *        - Project Routes
- *      summary: Delete Project.
- *      description: Delete Project.
- *      operationId: DeleteProject
+ *        - User Project Routes
+ *      summary: search in user project.
+ *      description: search in user project.
+ *      operationId: getUserProjects
  *      parameters:
  *        - $ref: '#/components/parameters/id'
+ *        - $ref: '#/components/parameters/name'
  *      responses:
  *        200:
  *          description: Success

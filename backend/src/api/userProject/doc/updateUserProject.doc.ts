@@ -1,15 +1,22 @@
 /**
  *  @swagger
  * paths:
- *  /projects:
- *    delete:
+ *  /userProjects:
+ *    put:
  *      tags:
- *        - Project Routes
- *      summary: Delete Project.
- *      description: Delete Project.
- *      operationId: DeleteProject
+ *        - User Project Routes
+ *      summary: update User Project By Id.
+ *      description: update User Project By Id.
+ *      operationId: updateUserProject
  *      parameters:
  *        - $ref: '#/components/parameters/id'
+ *      requestBody:
+ *        description: update Project body.
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/body/project'
  *      responses:
  *        200:
  *          description: Success

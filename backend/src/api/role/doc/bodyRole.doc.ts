@@ -4,7 +4,7 @@
  *  body:
  *    role:
  *      name: Role body
- *      description: the Role Entity
+ *      description: The Role Entity
  *      type: object
  *      properties:
  *        name:

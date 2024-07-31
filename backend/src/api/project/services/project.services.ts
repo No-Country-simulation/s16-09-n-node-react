@@ -15,7 +15,7 @@ export const saveProject = async (body: any) => {
 //========================
 export const getProjectsBy = async (value: any) => {
   const response = await prisma.project.findMany({
-    where: { ...value },
+    where: { ...value, isActive: true },
     select: {
       id: true,
       name: true
@@ -29,7 +29,7 @@ export const getProjectsBy = async (value: any) => {
 //===========================
 export const updateProjectBy = async (value: any, body: any) => {
   const response = await prisma.project.update({
-    where: { ...value },
+    where: { ...value, isActive: true },
     data: { ...body },
     select: {
       id: true,
@@ -44,7 +44,7 @@ export const updateProjectBy = async (value: any, body: any) => {
 //===========================
 export const deleteProjectBy = async (value: any) => {
   const response = await prisma.project.delete({
-    where: { ...value },
+    where: { ...value, isActive: true },
     select: {
       id: true,
       name: true

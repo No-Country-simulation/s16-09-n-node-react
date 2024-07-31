@@ -167,10 +167,11 @@ async function main(): Promise<void> {
       }),
     ),
   );
-  await Promise.all(userSkillPromises.flat());
+  const createdUserSkills = await Promise.all(userSkillPromises.flat());
+  console.log('UserSkills -> ', createdUserSkills);
 
   // Asignar roles a usuarios en proyectos
-  const userProjectRoleAssignments = [
+  const userProject = [
     {
       userId: createdUsers[0].id,
       projectId: createdProjects[0].id,
@@ -203,7 +204,7 @@ async function main(): Promise<void> {
     },
   ];
 
-  const userProjectRolePromises = userProjectRoleAssignments.map(
+  const userProjectPromises = userProject.map(
     ({ userId, projectId, roleName }) => {
       const role = createdRoles.find((role) => role.name === roleName);
       if (role) {
@@ -213,8 +214,68 @@ async function main(): Promise<void> {
       }
     },
   );
+  const createdUserProject = await Promise.all(userProjectPromises);
+  console.log('UserProject -> ', createdUserProject);
 
-  await Promise.all(userProjectRolePromises);
+  const document = [
+    {
+      name: 'document1',
+      url: 'https://www.google.com/',
+    },
+    {
+      name: 'document2',
+      url: 'https://www.google.com/',
+    },
+    {
+      name: 'document3',
+      url: 'https://www.google.com/',
+    },
+    {
+      name: 'document4',
+      url: 'https://www.google.com/',
+    },
+  ];
+
+  const documentPromises = document.map((doc) =>
+    prisma.document.create({
+      data: {
+        name: doc.name,
+        url: doc.url,
+      },
+    }),
+  );
+  const createdDocuments = await Promise.all(documentPromises);
+  console.log('Documents -> ', createdDocuments);
+
+  const events = [
+    {
+      name: 'Event 1',
+      date: new Date(),
+      calendarId: createdCalendars[0].id,
+    },
+    {
+      name: 'Event 2',
+      date: new Date(),
+      calendarId: createdCalendars[1].id,
+    },
+    {
+      name: 'Event 3',
+      date: new Date(),
+      calendarId: createdCalendars[3].id,
+    },
+  ];
+
+  const eventPromises = events.map((event) =>
+    prisma.event.create({
+      data: {
+        name: event.name,
+        date: event.date,
+        calendarId: event.calendarId,
+      },
+    }),
+  );
+  const createdEvents = await Promise.all(eventPromises);
+  console.log('Events -> ', createdEvents);
 
   console.log('Seed data created successfully');
 }

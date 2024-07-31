@@ -11,6 +11,7 @@ import { userRouter } from './user.routes';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import favicon from 'serve-favicon';
+import { userProjectRouter } from '@/api/userProject/router/userProject.router';
 
 export const serverRouter = Router();
 
@@ -21,6 +22,7 @@ serverRouter.use(express.static(join(__dirname, '../../public')));
 serverRouter.use(favicon(join(__dirname, '../../public/ico/favicon.ico')));
 
 serverRouter.use('/', homeRouter);
+serverRouter.use('/userProjects', userProjectRouter);
 serverRouter.use('/users', userRouter);
 serverRouter.use('/auth', authRouter);
 serverRouter.use('/docs', swaggerRouter);

@@ -5,9 +5,9 @@
  *    delete:
  *      tags:
  *        - Role Routes
- *      summary: Delete Role By Value.
- *      description: Delete Role By Value.
- *      operationId: DeleteRoleByValue
+ *      summary: Delete Role .
+ *      description: Delete Role .
+ *      operationId: DeleteRole
  *      parameters:
  *        - $ref: '#/components/parameters/id'
  *      responses:
