@@ -1,195 +1,118 @@
-# Backend Guide
+# Backend ProJet
 
-# Endpoints de la API
+## Despliegue
 
-## URL Base: `http://localhost:3000`
+El proyecto ProJet ha sido desplegado en [Render](https://render.com). Puedes acceder a la aplicación en el siguiente enlace:
 
-### Autenticación
+- **URL de la aplicación**: [https://s16-09-n-node-react.onrender.com/api/v1/](https://s16-09-n-node-react.onrender.com/api/v1/)
 
-- **Registro de Usuario:**
-  - **POST** `/auth/register` - Crear una cuenta de usuario.
-- **Login de Usuario:**
-  - **POST** `/auth/login` - Iniciar sesión y obtener un token.
-- **Logout de Usuario:**
-  - **POST** `/auth/logout` - Cerrar sesión eliminando la cookie del token JWT.
+### Documentación de la API
 
-### Usuarios
+La documentación de la API generada con Swagger está disponible en el siguiente enlace:
 
-- **Obtener Todos los Usuarios:**
-  - **GET** `/users/getAllUsers` - Obtener una lista de todos los usuarios registrados.
-  - **POST** `/users/createUser` - Crear usuarios.
-
-### Calendario interno compartido
-
-- **POST** `/calendar` - Crear un calendario interno compartido.  
-  **Request body:**
-
-```json
-    {
-      "name": string NOT NULL
-    }
-```
-
-- **GET** `/calendar/:calendarId` - Obtener un calendario interno compartido por la id del calendario.
-- **GET** `/calendar/calendarList` - Obtener una lista de todos los calendarios internos compartidos.
-
-### Evento
-
-- **POST** `/event/:calendarId` - Crear un evento en un calendario interno compartido por la id del calendario.  
-  **Request body:**
-
-```json
-    {
-      "name": string NOT NULL,
-      "date": date NOT NULL (format: YYYY-MM-DDT00:00:00-00:00),
-    }
-```
-
-- **GET** `/event/:eventId` - Obtener un evento de un calendario interno compartido por la id del evento.
-- **GET** `/event/eventList/:calendarId` - Obtener una lista de todos los eventos de un calendario interno compartido por la id del calendario.
-- **PUT** `/event/update/:eventId` - Actualizar un evento de un calendario interno compartido por la id del evento.
-
-```json
-    {
-      "name": string,
-      "date": date (format: YYYY-MM-DDT00:00:00-00:00),
-    }
-```
-
-- **DELETE** `/event/delete/:eventId` - Eliminar un evento de un calendario interno compartido por la id del evento.
-
-### Reunión
-
-- **POST** `/meeting/:calendarId` - Crear una reunión en un calendario interno compartido por la id del calendario.  
-  **Request body:**
-
-```json
-     {
-       "name": string NOT NULL,
-       "description": string,
-       "link": string NOT NULL,
-       "dateTime": date (format: YYYY-MM-DDT00:00:00-00:00),
-       "projectId": string
-     }
-```
-
-- **GET** `/meeting/:meetingId` - Obtener una reunión de un calendario interno compartido por la id de la reunión.
-- **GET** `/meeting/meetingList/:calendarId` - Obtener una lista de todas las reuniones de un calendario interno compartido por la id del calendario.
-- **PUT** `/meeting/update/:meetingId` - Actualizar una reunión de un calendario interno compartido por la id de la reunión.  
-  **Request body:**
-
-```json
-     {
-       "name": string,
-       "description": string,
-       "link": string,
-       "dateTime": date (format: YYYY-MM-DDT00:00:00-00:00)
-     }
-```
-
-- **DELETE** `/meeting/delete/:meetingId` - Elimina una reunión de un calendario interno compartido por la id de la reunión.
-
-### Calendario (Google calendar)
-
-**Colocar el archivo .json de credenciales de google calendar en la ruta 'backend/data/secret-key.json'**
-
-- **Lista de calendarios:**
-
-  - **GET** `/calendar/v3/calendarList` - Obtener una lista de todos los calendarios de un usuario.
-
-- **Calendarios:**
-  - **GET** `/calendar/v3/calendars/:calendarId?` - Obtener un calendario de un usuario por la id del calendario.
-  - **POST** `/calendar/v3/calendars` - Crear un calendario de un usuario.  
-    **Request body:**
-    ```json
-      {
-        "summary": string NOT NULL,
-        "description": string NOT NULL,
-        "location": string NOT NULL,
-        "timeZone": string NOT NULL (format: Continent/Country/City),
-      }
-    ```
-- **Eventos:**
-  - **GET** `/calendar/v3/events/:calendarId?` - Obtener una lista de los eventos un calendario de un usuario por la id del calendario (Calendario principal por defecto).
-  - **POST** `/calendar/v3/events/:calendarId/event` - Crear un evento en un calendario de un usuario por la id del calendario (Calendario principal por defecto).  
-    **Request body:**
-    ```json
-      {
-        "summary": string NOT NULL,
-        "description": string NOT NULL,
-        "location": string NOT NULL,
-        "start": {
-          "dateTime": date NOT NULL (format: YYYY-MM-DDT00:00:00-00:00),
-          "timeZone": string NOT NULL (format: Continent/Country/City),
-        },
-        "end": {
-          "dateTime": date NOT NULL (format: YYYY-MM-DDT00:00:00-00:00),
-          "timeZone": string NOT NULL (format: Continent/Country/City),
-        },
-      }
-    ```
-  - **PUT** `/calendar/v3/events/:calendarId?/event/:eventId` - Actualizar un evento en un calendario de un usuario por la id del calendario y la id del evento (Calendario principal por defecto).  
-    **Request body:**
-    ```json
-      {
-        "summary": string NOT NULL,
-        "description": string NOT NULL,
-        "location": string NOT NULL,
-        "start": {
-          "dateTime": date NOT NULL (format: YYYY-MM-DDT00:00:00-00:00),
-          "timeZone": string NOT NULL (format: Continent/Country/City),
-        },
-        "end": {
-          "dateTime": date NOT NULL (format: YYYY-MM-DDT00:00:00-00:00),
-          "timeZone": string NOT NULL (format: Continent/Country/City),
-        },
-      }
-    ```
-  - **DELETE** `/calendar/v3/events/:calendarId?/event/:eventId` - Eliminar un evento en un calendario de un usuario por la id del calendario y la id del evento (Calendario principal por defecto).
+- **Swagger Docs**: [https://s16-09-n-node-react.onrender.com/api/v1/docs/](https://s16-09-n-node-react.onrender.com/api/v1/docs/)
 
 # Estructura del Proyecto
 
 - 📁 backend
   - 📁 prisma
-    - 📄 schema.prisma
-    - 📄 seed.js
+    - 📁 migrations
+  - 📁 public
+    - 📁 ico
+    - 📁 img
   - 📁 src
+    - 📁 api
+      - 📁 cadenlar
+      - 📁 compony
+      - 📁 dopcument
+      - 📁 event
+      - 📁 invalid
+      - 📁 meeting
+      - 📁 milestone
+      - 📁 project
+      - 📁 role
+      - 📁 skill
+      - 📁 task
+      - 📁 user
+      - 📁 userProject
+      - 📁 userSkill      
+    - 📁 config
+      - 📁 env
+      - 📁 swagger
     - 📁 controllers
-      - 📄 userController.ts
     - 📁 middlewares
-      - 📄
     - 📁 models
-      - 📄
-    - 📁 prisma
-      - 📄 prisma.ts
     - 📁 routes
-      - 📄 home.routes.ts
-      - 📄 index.ts
-      - 📄 user.routes.ts
     - 📁 schemas
-      - 📄 userSchema.ts
+    - 📁 services
+    - 📁 shared
     - 📁 utils
-      - 📄
     - 📄 server.ts
-  - 📄 .env
+  - 📄 .env.example
   - 📄 .gitignore
+  - 📄 .prettierrc
+  - 📄 Dockerfile
   - 📄 package-lock.json
   - 📄 package.json
   - 📄 README.md
+  - 📄 tsconfig.json
+  - 📄 tsup.config.ts
 
-# Tecnologías Utilizadas
-
-### Backend
+## Tecnologías Utilizadas
 
 - **Node.js**: 🌟 Entorno de ejecución para JavaScript en el servidor.
 - **Express**: 🚀 Framework web para Node.js que facilita la creación de aplicaciones y API robustas.
 - **Prisma**: 🔗 ORM (Object-Relational Mapping) para Node.js y TypeScript que simplifica las consultas a la base de datos.
 - **bcrypt**: 🔒 Biblioteca para el cifrado de contraseñas.
+- **cookie-parser**: 🍪 Middleware para analizar cookies en solicitudes HTTP.
 - **cors**: 🌐 Middleware para habilitar CORS (Cross-Origin Resource Sharing).
 - **dotenv**: 📦 Biblioteca para cargar variables de entorno desde un archivo `.env`.
+- **google-auth-library**: 🔐 Biblioteca para la autenticación y autorización de Google.
+- **googleapis**: 📊 Cliente para la API de Google.
+- **helmet**: 🛡️ Middleware para ayudar a asegurar aplicaciones Express.
 - **jsonwebtoken**: 🔑 Biblioteca para trabajar con JSON Web Tokens (JWT) para la autenticación.
+- **serve-favicon**: 🎨 Middleware para servir iconos de favicon.
+- **swagger-jsdoc**: 📜 Generador de especificaciones Swagger a partir de comentarios en el código.
+- **swagger-ui-express**: 🖥️ Middleware para servir la interfaz de usuario de Swagger.
+- **swagger-themes**: 🎨 Temas para Swagger UI.
+- **zod**: 🧩 Biblioteca para validación de esquemas en TypeScript y JavaScript.
+- **@clerk/clerk-sdk-node**: 🔐 SDK de Clerk para la autenticación y gestión de usuarios.
+
+## Dependencias de Desarrollo
+
+- **@ianvs/prettier-plugin-sort-imports**: 🛠️ Plugin de Prettier para ordenar las importaciones.
+- **@types/bcrypt**: 🛠️ Tipos de TypeScript para bcrypt.
+- **@types/cookie-parser**: 🛠️ Tipos de TypeScript para cookie-parser.
+- **@types/cors**: 🛠️ Tipos de TypeScript para cors.
+- **@types/dotenv**: 🛠️ Tipos de TypeScript para dotenv.
+- **@types/express**: 🛠️ Tipos de TypeScript para Express.
+- **@types/helmet**: 🛠️ Tipos de TypeScript para helmet.
+- **@types/jsonwebtoken**: 🛠️ Tipos de TypeScript para jsonwebtoken.
+- **@types/morgan**: 🛠️ Tipos de TypeScript para morgan.
+- **@types/node**: 🛠️ Tipos de TypeScript para Node.js.
+- **@types/serve-favicon**: 🛠️ Tipos de TypeScript para serve-favicon.
+- **@types/swagger-jsdoc**: 🛠️ Tipos de TypeScript para swagger-jsdoc.
+- **@types/swagger-ui-express**: 🛠️ Tipos de TypeScript para swagger-ui-express.
 - **morgan**: 📋 Middleware para el registro de solicitudes HTTP.
+- **prisma**: 🗄️ Herramienta de ORM para bases de datos.
+- **rimraf**: 🧹 Utilidad para eliminar archivos y carpetas.
+- **tsc-alias**: 🔄 Herramienta para transformar alias de paths en TypeScript.
+- **tsup**: 📦 Empaquetador de TypeScript.
+- **tsx**: 🏎️ Ejecutador de scripts TypeScript.
+- **typescript**: ✨ Lenguaje de programación basado en JavaScript que añade tipos estáticos.
 
 ### ECMAScript 6
 
 - **Modules**: 📦 Importación y exportación de módulos.
+
+## Cómo Empezar
+
+Instrucciones para clonar el repositorio, instalar dependencias y ejecutar el proyecto.
+
+```bash
+git clone https://github.com/No-Country-simulation/s16-09-n-node-react
+cd s16-09-n-node-react
+cd backend
+npm install
+npm start
+```
