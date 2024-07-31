@@ -20,15 +20,12 @@
  *        description:
  *          type: string
  *          example: api para controlar el tiempo
- *        shift:
- *          type: shift
- *          example: morning
  *        companyId:
  *          type: string
- *          example: id de la empresa
+ *          example: id of the company
  *        calendarId:
  *          type: string
- *          example: id de calendario
+ *          example: id of the calendar
  *        userProjects:
  *          type: User Projects
  *          example: []

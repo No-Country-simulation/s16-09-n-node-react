@@ -19,8 +19,8 @@
  *        level:
  *          type: string
  *          example: expert
- *        userSkill:
- *          type: User Skill
+ *        userSkills:
+ *          type: UserSkill
  *          example: []
  *        isActive:
  *          type: boolean

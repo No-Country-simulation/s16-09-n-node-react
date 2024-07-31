@@ -44,15 +44,15 @@
  *          example: location
  *        companyId:
  *          type: string
- *          example: default "project"
+ *          example: id of the company
  *        userProjects:
- *          type: userProjects
+ *          type: user Projects
  *          example: []
  *        userSkills:
  *          type: User Skill
  *          example: []
  *        tasks:
- *          type: Task
+ *          type: Tasks
  *          example: []
  *        isActive:
  *          type: boolean

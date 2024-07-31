@@ -14,15 +14,15 @@
  *          type: string
  *          format: cuid
  *          example: 123e4567-e89b-12d3-a456-426655440000
+ *        level:
+ *          type: string
+ *          example: nivel de habilidad
  *        userId:
  *          type: string
  *          example: id del usuario
  *        skillId:
  *          type: string
  *          example: id de la habilidad
- *        level:
- *          type: string
- *          example: nivel de habilidad
  *        isActive:
  *          type: boolean
  *          example: true

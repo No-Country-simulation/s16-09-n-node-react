@@ -18,6 +18,7 @@ export const registerUser = async (req: Request, res: Response) => {
       isAdmin,
       location,
       timezone,
+      companyId
     } = req.body;
 
     // Validar datos requeridos
@@ -39,6 +40,7 @@ export const registerUser = async (req: Request, res: Response) => {
         isAdmin: isAdmin || false,
         location: location || null,
         timezone: timezone || null,
+        companyId,
       },
     });
 
@@ -55,6 +57,7 @@ export const registerUser = async (req: Request, res: Response) => {
       lastName: user.lastName,
       location: user.location,
       timezone: user.timezone,
+      companyId: user.companyId,
       createdAt: user.createdAt,
     };
 
@@ -93,6 +96,7 @@ export const loginUser = async (req: Request, res: Response) => {
       lastName: user.lastName,
       location: user.location,
       timezone: user.timezone,
+      companyId: user.companyId,
       createdAt: user.createdAt,
     };
 

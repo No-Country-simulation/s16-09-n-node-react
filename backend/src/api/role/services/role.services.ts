@@ -3,8 +3,8 @@ import { prisma } from '@/config/prisma';
 //==================
 // Create project
 //==================
-export const saveProject = async (body: any) => {
-  const response = await prisma.project.create({
+export const saveRole = async (body: any) => {
+  const response = await prisma.role.create({
     data: body,
   });
   return response;
@@ -13,8 +13,8 @@ export const saveProject = async (body: any) => {
 //========================
 // Get project by value
 //========================
-export const getProjectsBy = async (value: any) => {
-  const response = await prisma.project.findMany({
+export const getRolesBy = async (value: any) => {
+  const response = await prisma.role.findMany({
     where: { ...value },
     select: {
       id: true,
@@ -27,13 +27,13 @@ export const getProjectsBy = async (value: any) => {
 //===========================
 // Update project by value
 //===========================
-export const updateProjectBy = async (value: any, body: any) => {
-  const response = await prisma.project.update({
+export const updateRoleBy = async (value: any, body: any) => {
+  const response = await prisma.role.update({
     where: { ...value },
     data: { ...body },
     select: {
       id: true,
-      name: true
+      name: true,
     },
   });
   return response;
@@ -42,12 +42,12 @@ export const updateProjectBy = async (value: any, body: any) => {
 //===========================
 // Delete project by value
 //===========================
-export const deleteProjectBy = async (value: any) => {
-  const response = await prisma.project.delete({
+export const deleteRoleBy = async (value: any) => {
+  const response = await prisma.role.delete({
     where: { ...value },
     select: {
       id: true,
-      name: true
+      name: true,
     },
   });
   return response;

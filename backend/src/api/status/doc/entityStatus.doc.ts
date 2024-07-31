@@ -2,14 +2,12 @@
  * @swagger
  * components:
  *  schemas:
- *    Event Entity:
- *      name: Event Entity
+ *    Task Status Entity:
+ *      name: Task Status Entity
  *      type: object
- *      description: Event entity
+ *      description: Task Status entity
  *      required:
  *        - name
- *        - date
- *        - calendarId
  *      properties:
  *        id:
  *          type: string
@@ -18,18 +16,14 @@
  *        name:
  *          type: string
  *          example: name
- *        date:
- *          type: string
- *          format: date-time
- *          example: 2021-01-01T00:00:00Z
- *        calendarId:
- *          type: string
- *          example: id del calendario
+ *        task:
+ *          type: Task
+ *          example: []
  *        isActive:
  *          type: boolean
  *          example: true
  *        createdAt:
  *          type: string
- *          format: dateTime
- *          example: 2021-01-01 00:00:00
+ *          format: date-time
+ *          example: 2021-01-01T00:00:00Z
  */
