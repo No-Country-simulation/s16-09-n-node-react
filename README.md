@@ -26,6 +26,8 @@ El proyecto ProJet ha sido desplegado en [Render](https://render.com). Puedes ac
 
 - **URL Fronend de la aplicación**: [https://s16-09-n-node-react-1.onrender.com/](https://s16-09-n-node-react-1.onrender.com/)
 
+- **URL de Figma**:  [Figma s16-09-n-node-react](https://www.figma.com/design/wBm89UzjTzL0b7z2SdEyYz/SIMULACION---NO-COUNTRY?node-id=60-1237&t=BemgiDCEim0X4oS5-1)
+
 ### Backend
 
 Para más detalles sobre el backend, consulta el [README del Backend](./backend/README.md).
