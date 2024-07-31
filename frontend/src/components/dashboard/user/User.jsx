@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 
 import "./user.css";
+import Aos from 'aos'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/context/themecontext";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -29,6 +30,12 @@ function User({
   };
 
 
+useEffect(()=> {
+
+Aos.init( { duration: 1000})
+}, [])
+
+
 
   return !user ? (
     <p>
@@ -41,7 +48,7 @@ function User({
       />
     </p>
   ) : (
-    <div
+    <div data-aos= "fade-right"
       className={`user-user`}
       style={{ color: theme.subtitulos, backgroundColor: theme.background }}
     >

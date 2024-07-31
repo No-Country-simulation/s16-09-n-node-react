@@ -1,64 +1,112 @@
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { Button, Input, Modal, Select, DatePicker, Row, Col, Form } from 'antd';
+import { useTheme } from '@/context/themecontext';
+import { useUser } from '@clerk/clerk-react';
+import './TodoCRUD.css'; // Puedes eliminar esto si ya no es necesario
 
-import { useState } from 'react';
-import { NavLink } from "react-router-dom"
-  import imag from './tasklist.svg'
-  
+const { TextArea } = Input;
+
 const Tasks = () => {
   const [activeTab, setActiveTab] = useState('UX/UI');
+  const [todos, setTodos] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [form] = Form.useForm();
+  const { theme } = useTheme();
+  //const { user } = useUser();
+ const user = "user"
 
-  const tabs = ['UX/UI', 'Frontend', 'Backend', 'QA', 'Data Analysis'];
-  
-  // Example tasks
-  const tasks = {
-    'UX/UI': [
-      { id: 1, text: 'Rediseñar la página de inicio', imgSrc: '/assets/user1.png' },
-      { id: 2, text: 'Crear wireframes para nueva funcionalidad', imgSrc: '/assets/user2.png' },
-    ],
-    'Frontend': [
-      { id: 1, text: 'Implementar diseño de página de inicio', imgSrc: '/assets/user3.png' },
-      { id: 2, text: 'Configurar ambiente de desarrollo', imgSrc: '/assets/user4.png' },
-    ],
-    'Backend': [
-      { id: 1, text: 'Desarrollar API de autenticación', imgSrc: '/assets/user5.png' },
-      { id: 2, text: 'Optimizar base de datos', imgSrc: '/assets/user6.png' },
-    ],
-    'QA': [
-      { id: 1, text: 'Crear casos de prueba', imgSrc: '/assets/user7.png' },
-      { id: 2, text: 'Realizar pruebas de integración', imgSrc: '/assets/user8.png' },
-    ],
-    'Data Analysis': [
-      { id: 1, text: 'Analizar datos de usuario', imgSrc: '/assets/user9.png' },
-      { id: 2, text: 'Generar reportes de rendimiento', imgSrc: '/assets/user10.png' },
-    ],
+  const tabs = ['UX/UI', 'Frontend', 'Backend', 'Data Analysis'];
+  const statuses = ['Por realizar', 'En proceso', 'Revisiones', 'Terminadas'];
+  const URL = "https://crudcrud.com/api/f56e2f4aab784ceea8fd44c448b16d32/todos/";
+
+  const getFilterStyle = () => {
+    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
   };
 
+  const fetchTodos = async () => {
+    try {
+      const response = await axios.get(URL);
+      setTodos(response.data);
+    } catch (error) {
+      console.error('Error fetching todos:', error);
+    }
+  };
 
+  const handleAddTodo = async (values) => {
+    try {
+      await axios.post(URL, {
+        ...values,
+        dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : null,
+      });
+      form.resetFields();
+      setIsModalVisible(false);
+      fetchTodos();
+    } catch (error) {
+      console.error('Error adding todo:', error);
+    }
+  };
 
-  
-  
-  const alerta = () => {
-  
-    alert("En desarrollo")
-  }
-  
+  const handleDeleteTodo = async (id) => {
+    try {
+      await axios.delete(`${URL}${id}`);
+      fetchTodos();
+    } catch (error) {
+      console.error('Error deleting todo:', error);
+    }
+  };
+
+  const handleEditTodo = (todo) => {
+    form.setFieldsValue({
+      ...todo,
+      dueDate: todo.dueDate ? moment(todo.dueDate) : null,
+    });
+    setIsModalVisible(true);
+  };
+
+  const handleUpdateTodo = async (values) => {
+    try {
+      await axios.put(`${URL}${values._id}`, {
+        ...values,
+        dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : null,
+      });
+      form.resetFields();
+      setIsModalVisible(false);
+      fetchTodos();
+    } catch (error) {
+      console.error('Error updating todo:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+console.log(user, "user")
   return (
-    
-    <div>
-    <div className="text-white flex flex-col gap-0 ml-0">
-
-    <NavLink to={'/dashboard/add-task'}></NavLink>
-    <ul className="list-none" >
-  <img src={imag} alt="tasklist" onClick={alerta} />
-
-    </ul>
-  </div>
-
-    <div className="p-6 bg-gray-100 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Tareas</h2>
-      <p className="text-lg text-gray-600 mb-6">Red social para compartir skills</p>
+    <div className="p-6 bg-gray-100 rounded-lg shadow-md" style={{ backgroundColor: theme.background }}>
+      <h2 className="text-2xl font-semibold mb-4" style={{ color: theme.text }}>Tareas</h2>
+      <p className="text-lg mb-6" style={{ color: theme.subtitulos }}>
+        Red social para compartir skills
+      </p>
+      <Button 
+        className="absolute top-1/4 w-1/3 left-2/3 p-10 bg-transparent b-transparent " 
+        onClick={() => {
+          form.resetFields();
+          setIsModalVisible(true);
+        }}
+        style={{ color: theme.text }}
+      >
+        <img
+          alt='plus-icon'
+          src='/assets/plus-icon.svg'
+          className='docs-plus-icon'
+          style={{ filter: getFilterStyle() }}
+        />
+        Agregar tarea
+      </Button>
       <div className="mb-6">
         <div className="flex space-x-4 border-b border-gray-300">
-          {tabs.map(tab => (
+          {tabs.map((tab) => (
             <button
               key={tab}
               className={`py-2 px-4 text-lg font-medium ${
@@ -67,51 +115,91 @@ const Tasks = () => {
                   : 'text-gray-700'
               }`}
               onClick={() => setActiveTab(tab)}
+              style={{ color: activeTab === tab ? theme.text : 'inherit' }}
             >
               {tab}
             </button>
           ))}
         </div>
       </div>
+      
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="p-4 bg-white shadow rounded-lg">
-          <h3 className="text-xl font-semibold mb-2">Por realizar</h3>
-          {tasks[activeTab].filter(task => task.status === 'Por realizar').map(task => (
-            <div key={task.id} className="flex items-center mb-4">
-              <img src={task.imgSrc} alt="Collaborator" className="w-10 h-10 rounded-full mr-3" />
-              <p>{task.text}</p>
-            </div>
-          ))}
-        </div>
-        <div className="p-4 bg-white shadow rounded-lg">
-          <h3 className="text-xl font-semibold mb-2">En proceso</h3>
-          {tasks[activeTab].filter(task => task.status === 'En proceso').map(task => (
-            <div key={task.id} className="flex items-center mb-4">
-              <img src={task.imgSrc} alt="Collaborator" className="w-10 h-10 rounded-full mr-3" />
-              <p>{task.text}</p>
-            </div>
-          ))}
-        </div>
-        <div className="p-4 bg-white shadow rounded-lg">
-          <h3 className="text-xl font-semibold mb-2">Revisiones</h3>
-          {tasks[activeTab].filter(task => task.status === 'Revisiones').map(task => (
-            <div key={task.id} className="flex items-center mb-4">
-              <img src={task.imgSrc} alt="Collaborator" className="w-10 h-10 rounded-full mr-3" />
-              <p>{task.text}</p>
-            </div>
-          ))}
-        </div>
-        <div className="p-4 bg-white shadow rounded-lg">
-          <h3 className="text-xl font-semibold mb-2">Terminadas</h3>
-          {tasks[activeTab].filter(task => task.status === 'Terminadas').map(task => (
-            <div key={task.id} className="flex items-center mb-4">
-              <img src={task.imgSrc} alt="Collaborator" className="w-10 h-10 rounded-full mr-3" />
-              <p>{task.text}</p>
-            </div>
-          ))}
-        </div>
+        {statuses.map((status) => (
+          <div key={status} className="p-4 shadow rounded-lg" style={{ backgroundColor: theme.backgroundSecondary }}>
+            <h3 className="text-xl font-semibold mb-2" style={{ color: theme.text }}>{status}</h3>
+            {todos
+              .filter((todo) => todo.status === status)
+              .map((todo) => (
+                <div key={todo._id} className="flex items-center mb-4">
+                  <p>{todo.text}</p>
+                  <Button type="primary" onClick={() => handleEditTodo(todo)}>
+                    Editar
+                  </Button>
+                  <Button type="dashed" onClick={() => handleDeleteTodo(todo._id)}>
+                    Eliminar
+                  </Button>
+                </div>
+              ))}
+          </div>
+        ))}
       </div>
-    </div>
+
+      <Modal
+        title="Agregar/Editar tarea"
+        open={isModalVisible}
+        onOk={() => {
+          form
+            .validateFields()
+            .then((values) => {
+              if (values._id) {
+                handleUpdateTodo(values);
+              } else {
+                handleAddTodo(values);
+              }
+            })
+            .catch((info) => {
+              console.error('Validate Failed:', info);
+            });
+        }}
+        onCancel={() => setIsModalVisible(false)}
+      >
+        <Form form={form} layout="vertical">
+          <Form.Item name="_id" hidden>
+            <Input />
+          </Form.Item>
+          <Form.Item name="text" label="Nombre de la tarea" rules={[{ required: true, message: 'Por favor ingresa el nombre de la tarea' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="project" label="Proyecto" rules={[{ required: true, message: 'Por favor ingresa el proyecto' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="role" label="Rol" rules={[{ required: true, message: 'Por favor selecciona un rol' }]}>
+            <Select>
+              {tabs.map((tab) => (
+                <Select.Option key={tab} value={tab}>{tab}</Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item name="status" label="Estado" rules={[{ required: true, message: 'Por favor selecciona un estado' }]}>
+            <Select>
+              {statuses.map((status) => (
+                <Select.Option key={status} value={status}>{status}</Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item name="participant" label="Participante" rules={[{ required: true, message: 'Por favor selecciona un participante' }]}>
+            <Select>
+              <Select.Option key={user.id} value={user}>{user}</Select.Option>
+            </Select>
+          </Form.Item>
+          <Form.Item name="dueDate" label="Fecha de vencimiento">
+            <DatePicker style={{ width: '100%' }} />
+          </Form.Item>
+          <Form.Item name="message" label="Mensaje" rules={[{ required: true, message: 'Por favor ingresa un mensaje' }]}>
+            <TextArea rows={4} />
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };

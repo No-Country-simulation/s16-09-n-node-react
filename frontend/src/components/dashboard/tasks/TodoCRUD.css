@@ -1,0 +1,97 @@
+.todo-container {
+    padding: 20px;
+  }
+  
+  .todo-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .todo-list span {
+    display: block;
+    font-size: 14px;
+    line-height: 14px;
+  }
+  
+  .todo-list .proyect-title {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: -0.01em;
+  }
+  
+  .todo-list .proyect-description {
+    line-height: 26px;
+  }
+  
+  .todo-list .proyect-dates {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .todo-list .proyect-beginning,
+  .todo-list .proyect-deadline {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  
+  .todo-list .proyect-proyect-image {
+    width: 293px;
+    height: 108px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  .todo-list .proyect-plus-icon {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .ant-input,
+  .ant-select,
+  .ant-picker {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .ant-btn-primary {
+    border-radius: 10px;
+  }
+  
+  .todo-edit-modal .ant-modal-content {
+    border-radius: 15px;
+  }
+  
+  .todo-edit-modal .ant-modal-header,
+  .todo-edit-modal .ant-modal-footer {
+    border-radius: 15px;
+  }
+  
+  .todo-edit-modal .ant-modal-title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .todo-edit-modal .ant-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
