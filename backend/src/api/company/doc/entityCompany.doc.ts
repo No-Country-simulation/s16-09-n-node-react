@@ -2,10 +2,10 @@
  * @swagger
  * components:
  *  schemas:
- *    Shift Entity:
- *      name: Shift Entity
+ *    Company Entity:
+ *      name: Company Entity
  *      type: object
- *      description: Shift entity
+ *      description: Company entity
  *      required:
  *        - name
  *      properties:
@@ -15,14 +15,24 @@
  *          example: 123e4567-e89b-12d3-a456-426655440000
  *        name:
  *          type: string
- *          example: Name
- *        Projects:
- *          type: Project
+ *          example: name
+ *        calendarId:
+ *          type: string
+ *          example: id of calendar
+ *        users:
+ *          type: User
+ *          example: []
+ *        documents:
+ *          type: Document
+ *          example: []
+ *        project:
+ *          type: Document
  *          example: []
  *        isActive:
  *          type: boolean
  *          example: true
  *        createdAt:
- *          type: dateTime
+ *          type: string
+ *          format: dateTime
  *          example: 2021-01-01 00:00:00
  */

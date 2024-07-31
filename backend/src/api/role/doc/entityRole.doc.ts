@@ -16,11 +16,8 @@
  *        name:
  *          type: string
  *          example: dame
- *        UserProjects:
+ *        userProjects:
  *          type: UserProjects
- *          example: []
- *        RoleToUserProject:
- *          type: RoleToUserProject
  *          example: []
  *        isActive:
  *          type: boolean

@@ -26,9 +26,6 @@
  *        companyId:
  *          type: string
  *          example: id de la empresa
- *        CompanyToDocuments:
- *          type: CompanyToDocuments
- *          example: []
  *        isActive:
  *          type: boolean
  *          example: true

@@ -8,9 +8,8 @@
  *      description: Task entity
  *      required:
  *        - name
- *        - description
- *        - duedate
  *        - statusId
+ *        - projectId
  *      properties:
  *        id:
  *          type: string
@@ -26,18 +25,18 @@
  *          type: string
  *          format: date-time
  *          example: 2021-01-01T00:00:00Z
- *        taskStatusId:
+ *        statusId:
  *          type: string
  *          example: id of task status
- *        milestoneId:
+ *        userId:
  *          type: string
- *          example: id del milestone
+ *          example: id of user
  *        projectId:
  *          type: string
  *          example: id del proyecto
- *        users:
- *          type: TaskToUser
- *          example: []
+ *        milestoneId:
+ *          type: string
+ *          example: id del milestone
  *        isActive:
  *          type: boolean
  *          example: true

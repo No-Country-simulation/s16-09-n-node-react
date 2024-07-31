@@ -24,12 +24,6 @@
  *        roleId:
  *          type: string
  *          example: id del rol
- *        ProjectToUserProject:
- *          type: ProjectToUserProject
- *          example: []
- *        RoleToUserProject:
- *          type: RoleToUserProject
- *          example: []
  *        isActive:
  *          type: boolean
  *          example: true

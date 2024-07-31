@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
-import path from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 interface ValidateObject {
   [key: string]: any;
@@ -21,12 +22,9 @@ export class FieldError extends Error {
 // Load Model Fields
 //=====================
 const loadModelFields = (modelName: string): Set<string> => {
-  const schemaPath = path.join(
-    __dirname,
-    '../../../',
-    'prisma',
-    'schema.prisma',
-  );
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const schemaPath = join(__dirname, '../../../', 'prisma', 'schema.prisma');
   const modelString: string = readFileSync(schemaPath, 'utf8');
   const regex = new RegExp(`model ${modelName} {([\\s\\S]*?)}`, 'm');
   const modelMatch = regex.exec(modelString);

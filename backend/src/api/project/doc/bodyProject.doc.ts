@@ -9,11 +9,8 @@
  *      properties:
  *        name:
  *          type: string
- *          example: api
- *        description:
+ *          example: name of the project
+ *        companyId:
  *          type: string
- *          example: api
- *        shiftId:
- *          type: string
- *          example: id to shift
+ *          example: id of the company
 */

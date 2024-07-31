@@ -7,14 +7,12 @@
  *      type: object
  *      description: User entity
  *      required:
- *        - userName
  *        - email
  *        - password
  *        - name
  *        - lastName
  *        - isAdmin
- *        - location
- *        - timeZone
+ *        - companyId
  *      properties:
  *        id:
  *          type: string
@@ -44,17 +42,17 @@
  *        timezone:
  *          type: string
  *          example: location
+ *        companyId:
+ *          type: string
+ *          example: id of the company
+ *        userProjects:
+ *          type: user Projects
+ *          example: []
  *        userSkills:
  *          type: User Skill
  *          example: []
- *        userProjects:
- *          type: userProjects
- *          example: []
- *        CompanyToUser:
- *          type: CompanyToUser
- *          example: []
- *        TaskToUser:
- *          type: TaskToUser
+ *        tasks:
+ *          type: Tasks
  *          example: []
  *        isActive:
  *          type: boolean

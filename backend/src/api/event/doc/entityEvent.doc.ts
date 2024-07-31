@@ -8,11 +8,8 @@
  *      description: Event entity
  *      required:
  *        - name
- *        - description
- *        - link
- *        - dateTime
+ *        - date
  *        - calendarId
- *        - ProjectId
  *      properties:
  *        id:
  *          type: string
@@ -21,22 +18,13 @@
  *        name:
  *          type: string
  *          example: name
- *        description:
- *          type: string
- *          example: description
- *        dateTime:
+ *        date:
  *          type: string
  *          format: date-time
  *          example: 2021-01-01T00:00:00Z
  *        calendarId:
  *          type: string
  *          example: id del calendario
- *        projectId:
- *          type: string
- *          example: id del proyecto
- *        CalendarToMeeting:
- *          type: CalendarToMeeting
- *          example: []
  *        isActive:
  *          type: boolean
  *          example: true

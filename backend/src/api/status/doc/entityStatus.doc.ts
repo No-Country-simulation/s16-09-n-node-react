@@ -2,24 +2,23 @@
  * @swagger
  * components:
  *  schemas:
- *    Task To User Entity:
- *      name: Task To User Entity
+ *    Task Status Entity:
+ *      name: Task Status Entity
  *      type: object
- *      description: Task To User entity
+ *      description: Task Status entity
  *      required:
- *        - taskId
- *        - userId
+ *        - name
  *      properties:
  *        id:
  *          type: string
  *          format: cuid
  *          example: 123e4567-e89b-12d3-a456-426655440000
- *        taskId:
+ *        name:
  *          type: string
- *          example: id of the task
- *        userId:
- *          type: string
- *          example: id of the user
+ *          example: name
+ *        task:
+ *          type: Task
+ *          example: []
  *        isActive:
  *          type: boolean
  *          example: true

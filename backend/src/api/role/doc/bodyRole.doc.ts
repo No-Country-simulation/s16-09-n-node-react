@@ -9,5 +9,5 @@
  *      properties:
  *        name:
  *          type: string
- *          example: client
+ *          example: name of the role
 */

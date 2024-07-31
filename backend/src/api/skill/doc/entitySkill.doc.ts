@@ -8,7 +8,6 @@
  *      description: Skill entity
  *      required:
  *        - name
- *        - level
  *      properties:
  *        id:
  *          type: string
@@ -20,7 +19,7 @@
  *        level:
  *          type: string
  *          example: expert
- *        UserSkills:
+ *        userSkills:
  *          type: UserSkill
  *          example: []
  *        isActive:
