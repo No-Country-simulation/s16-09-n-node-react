@@ -15,7 +15,7 @@ export const saveRole = async (body: any) => {
 //========================
 export const getRolesBy = async (value: any) => {
   const response = await prisma.role.findMany({
-    where: { ...value },
+    where: { ...value, isActive: true },
     select: {
       id: true,
       name: true
@@ -29,7 +29,7 @@ export const getRolesBy = async (value: any) => {
 //===========================
 export const updateRoleBy = async (value: any, body: any) => {
   const response = await prisma.role.update({
-    where: { ...value },
+    where: { ...value, isActive: true },
     data: { ...body },
     select: {
       id: true,
@@ -44,7 +44,7 @@ export const updateRoleBy = async (value: any, body: any) => {
 //===========================
 export const deleteRoleBy = async (value: any) => {
   const response = await prisma.role.delete({
-    where: { ...value },
+    where: { ...value, isActive: true },
     select: {
       id: true,
       name: true,

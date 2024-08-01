@@ -1,13 +1,13 @@
 /**
  *  @swagger
  * paths:
- *  /projects:
+ *  /userProjects:
  *    delete:
  *      tags:
- *        - Project Routes
- *      summary: Delete Project.
- *      description: Delete Project.
- *      operationId: DeleteProject
+ *        - User Project Routes
+ *      summary: Delete User Project.
+ *      description: Delete User Project.
+ *      operationId: DeleteUserProject
  *      parameters:
  *        - $ref: '#/components/parameters/id'
  *      responses:

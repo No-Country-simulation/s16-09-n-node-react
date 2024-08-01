@@ -5,8 +5,8 @@
  *    get:
  *      tags:
  *        - Role Routes
- *      summary: search in Role by value.
- *      description: search in Role by value.
+ *      summary: search in Role .
+ *      description: search in Role .
  *      operationId: getRoles
  *      parameters:
  *        - $ref: '#/components/parameters/id'

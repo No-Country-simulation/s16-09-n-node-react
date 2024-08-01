@@ -7,7 +7,7 @@
  *        - Project Routes
  *      summary: update Project By Id.
  *      description: update Project By Id.
- *      operationId: updateProjectByValue
+ *      operationId: updateProject
  *      parameters:
  *        - $ref: '#/components/parameters/id'
  *      requestBody:

@@ -4,14 +4,14 @@ import { requireApiKey } from '@/middleware/apiKey.middleware';
 
 import {
   createRole,
-  deleteRoleByValue,
-  getRoleByValue,
-  updateRoleByValue,
+  deleteRole,
+  getRoles,
+  updateRole,
 } from '../controller/role.controller';
 
 export const roleRouter = Router();
 
 roleRouter.post('/', requireApiKey, createRole);
-roleRouter.get('/', requireApiKey, /*requireAuth,*/ getRoleByValue);
-roleRouter.put('/', requireApiKey, /*requireAuth,*/ updateRoleByValue);
-roleRouter.delete('/', requireApiKey, /*requireAuth,*/ deleteRoleByValue);
+roleRouter.get('/', requireApiKey, /*requireAuth,*/ getRoles);
+roleRouter.put('/', requireApiKey, /*requireAuth,*/ updateRole);
+roleRouter.delete('/', requireApiKey, /*requireAuth,*/ deleteRole);

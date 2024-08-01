@@ -4,7 +4,7 @@
  *  body:
  *    project:
  *      name: Project body
- *      description: teh Project Entity
+ *      description: the Project Entity
  *      type: object
  *      properties:
  *        name:
