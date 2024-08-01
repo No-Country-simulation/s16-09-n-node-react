@@ -6,6 +6,7 @@ import favicon from 'serve-favicon';
 import { projectRouter } from '@/api/project/router/project.router';
 import { roleRouter } from '@/api/role/router/role.router';
 import clerkRoutes from '@/clerk/clerk.route';
+import milestonesRouter from '@/milestones/milestones.routes';
 
 import { authRouter } from './auth.routes';
 import { calendarRouter } from './calendar.routes';
@@ -29,4 +30,5 @@ serverRouter.use('/roles', roleRouter);
 serverRouter.use('/projects', projectRouter);
 serverRouter.use('/calendar/v3', calendarRouter);
 serverRouter.use('/auth', authRouter);
+serverRouter.use('/milestone', milestonesRouter);
 serverRouter.use('/clerk', clerkRoutes);
