@@ -2,10 +2,10 @@
  * @swagger
  * components:
  *  schemas:
- *    Task Status Entity:
- *      name: Task Status Entity
+ *    Status Entity:
+ *      name: Status Entity
  *      type: object
- *      description: Task Status entity
+ *      description: Status entity
  *      required:
  *        - name
  *      properties:

@@ -20,6 +20,7 @@ export const getUserProjectsBy = async (value: any) => {
       id: true,
       userId: true,
       roleId: true,
+      projectId: true,
     },
   });
   return response;
@@ -36,6 +37,7 @@ export const updateUserProjectBy = async (value: any, body: any) => {
       id: true,
       userId: true,
       roleId: true,
+      projectId: true,
     },
   });
   return response;
