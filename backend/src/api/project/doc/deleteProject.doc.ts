@@ -5,9 +5,9 @@
  *    delete:
  *      tags:
  *        - Project Routes
- *      summary: Delete Project By Value.
- *      description: Delete Project By Value.
- *      operationId: DeleteProjectByValue
+ *      summary: Delete Project.
+ *      description: Delete Project.
+ *      operationId: DeleteProject
  *      parameters:
  *        - $ref: '#/components/parameters/id'
  *      responses:

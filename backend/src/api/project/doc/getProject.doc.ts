@@ -5,8 +5,8 @@
  *    get:
  *      tags:
  *        - Project Routes
- *      summary: search in project by value.
- *      description: search in project by value.
+ *      summary: search in project.
+ *      description: search in project.
  *      operationId: getProjects
  *      parameters:
  *        - $ref: '#/components/parameters/id'
