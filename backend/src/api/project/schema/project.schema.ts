@@ -5,6 +5,7 @@ export const projectSchema = z.object({
   description: z.string().min(1).optional(),
   companyId: z.string().min(1, 'CompanyId is required'),
   calendarId: z.string().min(1).optional(),
+  isActive: z.boolean().optional()
 });
 
 export type ProjectInput = z.infer<typeof projectSchema>;
