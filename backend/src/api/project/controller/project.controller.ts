@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { errorProfiler, successProfiler } from '@/shared/apiRespond/responseProfiler';
 import { isBodyParamsValidate, isQueryParamsValidate, responseContentValidator } from '@/shared/validations/params.validation';
 
-import { deleteProjectBy, getProjectsBy, saveProject, updateProjectBy } from '../services/project.services';
+import { getProjectsBy, saveProject, updateProjectBy } from '../services/project.services';
 
 //===================
 // Create project
@@ -25,7 +25,7 @@ export const createProject = async (
 //==========================
 // Get project by value
 //==========================
-export const getProjectByValue = async (
+export const getProjects = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
@@ -42,7 +42,7 @@ export const getProjectByValue = async (
 //============================
 // Update project by value
 //============================
-export async function updateProjectByValue(
+export async function updateProject(
   req: Request,
   res: Response,
 ): Promise<void> {
@@ -59,13 +59,13 @@ export async function updateProjectByValue(
 //=============================
 // Delete project by value
 //=============================
-export async function deleteProjectByValue(
+export async function deleteProject(
   req: Request,
   res: Response,
 ): Promise<void> {
   try {
     const query = isQueryParamsValidate(req.query, 'delete', 'Project');
-    const project = await deleteProjectBy(query);
+    const project = await updateProjectBy(query, {isActive: false});
     successProfiler(res, 202, 'deleteProjectByValue', { project });
   } catch (error) {
     errorProfiler(error, res, 'deleteProjectByValue');

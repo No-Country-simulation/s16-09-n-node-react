@@ -1,5 +1,6 @@
 import { projectSchema } from '@/api/project/schema/project.schema';
 import { roleSchema } from '@/api/role/schema/role.schema';
+import { userProjectSchema } from '@/api/userProject/schema/userProject.schema';
 
 import { validateKeysInPrismaModel } from './model.validation';
 
@@ -90,6 +91,9 @@ const parseBody = (validate: any, model: string) => {
   }
   if (model === 'Role') {
     parsedBody = roleSchema.parse(validate);
+  }
+  if (model === 'UserProject') {
+    parsedBody = userProjectSchema.parse(validate);
   }
   return parsedBody;
 }

@@ -11,4 +11,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: "https://server-todo-nq9l.vercel.app/todos/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 });
