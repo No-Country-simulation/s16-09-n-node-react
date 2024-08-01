@@ -16,7 +16,7 @@
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/body/project'
+ *              $ref: '#/components/body/UserProject'
  *      responses:
  *        200:
  *          description: Success
