@@ -1,5 +1,9 @@
 import { prisma } from '@/config/prisma';
 
+
+
+
+
 //==================
 // Create project
 //==================
@@ -15,7 +19,14 @@ export const saveProject = async (body: any) => {
 //========================
 export const getProjectsBy = async (value: any) => {
   const response = await prisma.project.findMany({
-    where: { ...value, isActive: true },
+    where: {
+      AND: {
+        ...value,
+        isActive: {
+          equals: true,
+        },
+      },
+    },
     select: {
       id: true,
       name: true,
