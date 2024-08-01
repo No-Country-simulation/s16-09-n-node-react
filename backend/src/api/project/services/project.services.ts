@@ -15,7 +15,7 @@ export const saveProject = async (body: any) => {
 //========================
 export const getProjectsBy = async (value: any) => {
   const response = await prisma.project.findMany({
-    where: { ...value, isActive: true },
+    where: { AND: { ...value, isActive: true } },
     select: {
       id: true,
       name: true,
