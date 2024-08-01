@@ -10,7 +10,8 @@
  *      operationId: getUserProjects
  *      parameters:
  *        - $ref: '#/components/parameters/id'
- *        - $ref: '#/components/parameters/name'
+ *        - $ref: '#/components/parameters/userId'
+ *        - $ref: '#/components/parameters/roleId'
  *      responses:
  *        200:
  *          description: Success
