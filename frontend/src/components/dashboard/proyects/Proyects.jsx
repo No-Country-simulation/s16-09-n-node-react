@@ -5,6 +5,9 @@ import Aos from "aos";
 import { proyects } from "./data";
 import ProyectCard from "./ProyectCard";
 import { useEffect } from "react";
+import { useState } from "react";
+
+import { getProjects } from '@/utils/data'
 
 const Proyects = () => {
   const { theme } = useTheme()
@@ -13,19 +16,21 @@ const Proyects = () => {
     backgroundColor: theme.backgroundColor,
   };
 
+  const [allProjects, setAllProjects] = useState([])
+  // useEffect(() => console.log(allProjects), [allProjects])
+
   useEffect(() => {
     Aos.init({ duration: 1000 });
-  }, []);
+    getProjects()
+      .then(data => setAllProjects(data))
+  }, [])
+
   return (
-
-
-  
-      <div 
-      className='no-scrollbar flex h-screen flex-wrap justify-start gap-3 overflow-auto'
+    <div
+      className='no-scrollbar flex flex-wrap justify-start gap-3 overflow-auto'
       style={style}
-     
     >
-      <NavLink 
+      <NavLink
         className='flex w-1/3 flex-col items-center justify-center gap-4 rounded-2xl'
         to='/dashboard/proyect/add-proyect'
         style={{ backgroundColor: theme.background, height: "50dvh" }}
@@ -46,17 +51,17 @@ const Proyects = () => {
       </NavLink>
       {proyects && proyects.length > 0
         ? proyects.map((proyect, idx) => (
-            <ProyectCard 
-      
-              idx={idx}
-              proyect={proyect}
-              theme={theme}
-              key={proyect.id}
-            />
-          ))
+          <ProyectCard
+
+            idx={idx}
+            proyect={proyect}
+            theme={theme}
+            key={proyect.id}
+          />
+        ))
         : null}
     </div>
- );
+  );
 };
 
 export default Proyects;

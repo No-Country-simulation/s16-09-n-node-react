@@ -6,13 +6,14 @@ import { ClerkProvider, GoogleOneTap } from "@clerk/clerk-react";
 import { esES } from "@clerk/localizations";
 import ReactDOM from "react-dom/client";
 // import { dark } from "@clerk/themes";
-// import axios from "axios";
+import axios from "axios";
 import { Provider } from "react-redux";
 
 import App from "./App";
 import { ThemeProvider } from "./context/themecontext";
 import { store } from "./Redux/store";
 
+axios.defaults.baseURL = 'https://s16-09-n-node-react.onrender.com/api/v1'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");

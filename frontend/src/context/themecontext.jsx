@@ -8,6 +8,8 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
+    console.log(theme);
+    
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
@@ -30,6 +32,8 @@ const light = {
   back1: "#c0f5d2", // secundario light active
   titulos: "#007dfa", //textos dark
   subtitulos: "black",
+  alternative: '#121416',
+  buttonSecondary: '#C0F5D2'
 };
 
 const dark = {
@@ -41,4 +45,6 @@ const dark = {
   back1: "#004b96", // primario
   titulos: "#ebebec",
   subtitulos: "white", //textos (alternativo) light
+  alternative: '#EBEBEC',
+  buttonSecondary: '#DFE0E1'
 };

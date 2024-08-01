@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom"
 
 const ProyectCard = ({ proyect, idx, theme }) => {
@@ -7,24 +8,25 @@ const ProyectCard = ({ proyect, idx, theme }) => {
     height: '50dvh',
     backgroundColor: theme.background
   }
+  const alternative = { color: theme.alternative }
 
   return (
     idx === 0 ?
       <NavLink
-        className='flex h-2/5 p-2 rounded-2xl'
+        className='flex justify-start p-2 rounded-2xl'
         to={`/dashboard/proyect/edit-proyect/${proyect.id}`}
         style={style}
       >
-        <div className="flex h-full flex-col justify-between p-4 overflow-auto " style={{ width: '49%' }}>
-          <span>
+        <div className="flex h-full flex-col justify-between p-4 overflow-auto no-scrollbar" style={{ width: '49%' }}>
+          <span className="text-nowrap">
             {proyect.name}
           </span>
-          <p style={{color: "white"}}>
+          <p style={alternative}>
             Projecto{proyect.status === 'pending' ? ' en curso' : 'terminado'}
           </p>
           <img 
           style={{color: "white"}}
-            className="max-w-fit max-h-24"
+            className="w-full max-h-24"
             src={proyect.image}
             alt={proyect.name}
           />
@@ -37,22 +39,21 @@ const ProyectCard = ({ proyect, idx, theme }) => {
           <span>
             Contexto:
           </span>
-          <p className=" h-4/5 overflow-auto no-scrollbar" style={{color: "white"}}>
+          <p className=" h-4/5 overflow-auto no-scrollbar" style={alternative}>
             {proyect.description}
           </p>
         </div>
       </NavLink>
       :
       <NavLink
-        className='flex flex-col p-4 justify-between rounded-2xl'
-       
+        className='flex flex-col justify-start overflow-auto no-scrollbar p-4 gap-1 rounded-2xl'
         to={`/dashboard/proyect/edit-proyect/${proyect.id}`}
-        style={{...style, height: '55dvh'}}
+        style={{...style, height: '50dvh', maxHeight: '50dvh'}}
       >
         <span>
           {proyect.name}
         </span>
-        <p style={{color: "white"}}>
+        <p style={alternative}>
           Projecto{proyect.status === 'pending' ? ' en curso' : 'terminado'}
         </p>
         <img
