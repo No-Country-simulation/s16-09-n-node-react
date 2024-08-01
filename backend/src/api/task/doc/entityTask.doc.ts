@@ -8,7 +8,7 @@
  *      description: Task entity
  *      required:
  *        - name
- *        - status
+ *        - statusId
  *        - projectId
  *      properties:
  *        id:
@@ -25,13 +25,12 @@
  *          type: string
  *          format: date-time
  *          example: 2021-01-01T00:00:00Z
- *        status:
- *          type: enum
- *          enum: ["TODO","IN_PROGRESS","REVIEW","DONE"]
- *          example: TODO
+ *        statusId:
+ *          type: string
+ *          example: id of task status
  *        userId:
  *          type: string
- *          example: id del usuario
+ *          example: id of user
  *        projectId:
  *          type: string
  *          example: id del proyecto

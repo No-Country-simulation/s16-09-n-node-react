@@ -17,7 +17,7 @@
  *          type: string
  *          example: dame
  *        userProjects:
- *          type: User Projects
+ *          type: UserProjects
  *          example: []
  *        isActive:
  *          type: boolean

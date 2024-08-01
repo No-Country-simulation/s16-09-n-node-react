@@ -4,13 +4,13 @@
  *  body:
  *    project:
  *      name: Project body
- *      description: teh Project Entity
+ *      description: the Project Entity
  *      type: object
  *      properties:
  *        name:
  *          type: string
- *          example: api
- *        CompanyId:
+ *          example: name of the project
+ *        companyId:
  *          type: string
- *          example: id de la empresa
+ *          example: id of the company
 */

@@ -48,7 +48,7 @@ Aos.init( { duration: 1000})
       />
     </p>
   ) : (
-    <div data-aos= "fade-right"
+    <div 
       className={`user-user`}
       style={{ color: theme.subtitulos, backgroundColor: theme.background }}
     >

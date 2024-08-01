@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { errorProfiler, successProfiler } from '@/shared/apiRespond/responseProfiler';
 import { isBodyParamsValidate, isQueryParamsValidate, responseContentValidator } from '@/shared/validations/params.validation';
 
-import { deleteProjectsBy, getProjectsBy, saveProject, updateProjectsBy } from '../services/project.services';
+import { getProjectsBy, saveProject, updateProjectBy } from '../services/project.services';
 
 //===================
 // Create project
@@ -13,7 +13,7 @@ export const createProject = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const body = isBodyParamsValidate(req.body);
+    const body = isBodyParamsValidate(req.body, 'Project');
     const response = await saveProject(body);
     const project = responseContentValidator(response);
     successProfiler(res, 201, 'createProject', { project });
@@ -25,12 +25,12 @@ export const createProject = async (
 //==========================
 // Get project by value
 //==========================
-export const getProjectByValue = async (
+export const getProjects = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
   try {
-    const query = isQueryParamsValidate(req.query, 'get');
+    const query = isQueryParamsValidate(req.query, 'get', 'Project');
     const response = await getProjectsBy(query);
     const projects = responseContentValidator(response);
     successProfiler(res, 200, 'getProjectByValue', { projects });
@@ -42,14 +42,14 @@ export const getProjectByValue = async (
 //============================
 // Update project by value
 //============================
-export async function updateProjectByValue(
+export async function updateProject(
   req: Request,
   res: Response,
 ): Promise<void> {
   try {
-    const query = isQueryParamsValidate(req.query, 'put');
-    const body = isBodyParamsValidate(req.body);
-    const project = await updateProjectsBy(query, body);
+    const query = isQueryParamsValidate(req.query, 'put', 'Project');
+    const body = isBodyParamsValidate(req.body, 'Project');
+    const project = await updateProjectBy(query, body);
     successProfiler(res, 202, 'updateProjectByValue', { project });
   } catch (error) {
     errorProfiler(error, res, 'updateProjectByValue');
@@ -59,13 +59,13 @@ export async function updateProjectByValue(
 //=============================
 // Delete project by value
 //=============================
-export async function deleteProjectByValue(
+export async function deleteProject(
   req: Request,
   res: Response,
 ): Promise<void> {
   try {
-    const query = isQueryParamsValidate(req.query, 'delete');
-    const project = await deleteProjectsBy(query);
+    const query = isQueryParamsValidate(req.query, 'delete', 'Project');
+    const project = await updateProjectBy(query, {isActive: false});
     successProfiler(res, 202, 'deleteProjectByValue', { project });
   } catch (error) {
     errorProfiler(error, res, 'deleteProjectByValue');

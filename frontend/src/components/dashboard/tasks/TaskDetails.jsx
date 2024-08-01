@@ -1,40 +1,49 @@
-import { useState, useEffect} from 'react';
-import axios from 'axios';
-import { Button, Input, Modal, Select, DatePicker,  Form } from 'antd';
+import { useState, useEffect } from 'react';
+import { Button, Input, Modal, Select, DatePicker, Form } from 'antd';
 import { useTheme } from '@/context/themecontext';
-import './TodoCRUD.css'; // Puedes eliminar esto si ya no es necesario
+import moment from 'moment';
+import axios from 'axios';
 
 const { TextArea } = Input;
 
 const Tasks = () => {
-  const [activeTab, setActiveTab] = useState('UX/UI');
-  const [todos, setTodos] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [form] = Form.useForm();
+  // 1. Estado del componente
+  const [activeTab, setActiveTab] = useState('UX/UI'); // Tab activa
+  const [todos, setTodos] = useState([]); // Todas las tareas
+  const [isModalVisible, setIsModalVisible] = useState(false); // Modal visible
+  const [form] = Form.useForm(); // Formulario
+
+  // 2. Contexto del tema y usuario
   const { theme } = useTheme();
-  //const { user } = useUser();
- const user = "user"
+  const user = 'user';
 
-  const tabs = ['UX/UI', 'Frontend', 'Backend', 'Data Analysis'];
-  const statuses = ['Por realizar', 'En proceso', 'Revisiones', 'Terminadas'];
-  const URL = "https://crudcrud.com/api/aeca53532e2d4381abb08f9c88d94bf8/todos/";
+  // 3. Constantes
+  const tabs = ['UX/UI', 'Frontend', 'Backend', 'Data Analysis']; // Roles de tareas
+  const statuses = ['Por realizar', 'En proceso', 'Revisiones', 'Terminadas']; // Estados de tareas
+  const API_URL = 'https://crudcrud.com/api/e823e81df58e4f9fb66d1168d8b93d69/todos/'; // URL de API
 
-  const getFilterStyle = () => {
-    return theme.text === "#e8e8e8" ? "invert(0)" : "invert(1)";
-  };
+  // 4. Función auxiliar para ajustar filtros de acuerdo al tema
+  const getFilterStyle = () => (theme.text === '#e8e8e8' ? 'invert(0)' : 'invert(1)');
 
+  // 5. Efecto secundario para cargar tareas iniciales
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  // 6. Función para obtener tareas del servidor
   const fetchTodos = async () => {
     try {
-      const response = await axios.get(URL);
+      const response = await axios.get(API_URL);
       setTodos(response.data);
     } catch (error) {
       console.error('Error fetching todos:', error);
     }
   };
 
+  // 7. Función para agregar una nueva tarea
   const handleAddTodo = async (values) => {
     try {
-      await axios.post(URL, {
+      await axios.post(API_URL, {
         ...values,
         dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : null,
       });
@@ -46,27 +55,29 @@ const Tasks = () => {
     }
   };
 
+  // 8. Función para eliminar una tarea
   const handleDeleteTodo = async (id) => {
     try {
-      await axios.delete(`${URL}${id}`);
+      await axios.delete(`${API_URL}${id}`);
       fetchTodos();
     } catch (error) {
       console.error('Error deleting todo:', error);
     }
   };
 
+  // 9. Función para editar una tarea
   const handleEditTodo = (todo) => {
     form.setFieldsValue({
       ...todo,
-      // eslint-disable-next-line no-undef
       dueDate: todo.dueDate ? moment(todo.dueDate) : null,
     });
     setIsModalVisible(true);
   };
 
+  // 10. Función para actualizar una tarea existente
   const handleUpdateTodo = async (values) => {
     try {
-      await axios.put(`${URL}${values._id}`, {
+      await axios.put(`${API_URL}${values._id}`, {
         ...values,
         dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : null,
       });
@@ -78,31 +89,31 @@ const Tasks = () => {
     }
   };
 
-  useEffect(() => {
-    fetchTodos();
-  }, []);
-console.log(user, "user")
+  // 11. Filtrar tareas según el rol activo
+  const filteredTodos = todos.filter((todo) => todo.role === activeTab);
+
+  // 12. Renderizar el componente
   return (
     <div className="p-6 bg-gray-100 rounded-lg shadow-md" style={{ backgroundColor: theme.background }}>
       <h2 className="text-2xl font-semibold mb-4" style={{ color: theme.text }}>Tareas</h2>
       <p className="text-lg mb-6" style={{ color: theme.subtitulos }}>
         Red social para compartir skills
       </p>
-      <button 
-        className=" border-0" 
+      <button
+        className="bg-black"
         onClick={() => {
           form.resetFields();
           setIsModalVisible(true);
         }}
-        style={{ color: theme.subtitulos }}
+        style={{ color: theme.text }}
       >
         <img
-          alt='plus-icon'
-          src='/assets/plus-icon.svg'
-          className='docs-plus-icon '
+          alt="plus-icon"
+          src="/assets/plus-icon.svg"
+          className="docs-plus-icon"
           style={{ filter: getFilterStyle() }}
         />
-        Agregar tarea
+        Agregar
       </button>
       <div className="mb-6">
         <div className="flex space-x-4 border-b border-gray-300">
@@ -122,13 +133,12 @@ console.log(user, "user")
           ))}
         </div>
       </div>
-      
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {statuses.map((status) => (
           <div key={status} className="p-4 shadow rounded-lg" style={{ backgroundColor: theme.backgroundSecondary }}>
             <h3 className="text-xl font-semibold mb-2" style={{ color: theme.text }}>{status}</h3>
-            {todos
-              .filter((todo) => todo.status === status && todo.role === activeTab)
+            {filteredTodos
+              .filter((todo) => todo.status === status)
               .map((todo) => (
                 <div key={todo._id} className="flex items-center mb-4">
                   <p>{todo.text}</p>
@@ -143,7 +153,6 @@ console.log(user, "user")
           </div>
         ))}
       </div>
-
       <Modal
         title="Agregar/Editar tarea"
         open={isModalVisible}
@@ -162,6 +171,8 @@ console.log(user, "user")
             });
         }}
         onCancel={() => setIsModalVisible(false)}
+        okText="Agregar"
+        cancelText="Cancelar"
       >
         <Form form={form} layout="vertical">
           <Form.Item name="_id" hidden>
@@ -189,7 +200,7 @@ console.log(user, "user")
           </Form.Item>
           <Form.Item name="participant" label="Participante" rules={[{ required: true, message: 'Por favor selecciona un participante' }]}>
             <Select>
-              <Select.Option key={user.id} value={user}>{user}</Select.Option>
+              <Select.Option key={user} value={user}>{user}</Select.Option>
             </Select>
           </Form.Item>
           <Form.Item name="dueDate" label="Fecha de vencimiento">
