@@ -9,7 +9,7 @@
  *      description: Create Project.
  *      operationId: CreateProject
  *      requestBody:
- *        description: update Project body.
+ *        description: Create Project body.
  *        required: true
  *        content:
  *          application/json:

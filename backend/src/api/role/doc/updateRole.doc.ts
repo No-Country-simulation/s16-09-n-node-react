@@ -7,7 +7,7 @@
  *        - Role Routes
  *      summary: update Role By Id.
  *      description: update Role By Id.
- *      operationId: updateProjectByValue
+ *      operationId: updateProject
  *      parameters:
  *        - $ref: '#/components/parameters/id'
  *      requestBody:
