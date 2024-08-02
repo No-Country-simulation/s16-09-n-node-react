@@ -1,11 +1,35 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from "react-router-dom"
 import { useTheme } from '@/context/themecontext'
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 
 const AddEditProyect = () => {
   const { id } = useParams()
   const { theme } = useTheme()
   const [fileName, setFileName] = useState('')
+
+  const { projectSelected } = useSelector(state => state.project)
+  const initialState = {
+    id: '',
+    name: '',
+    description: '',
+    image: '',
+    beginning: '',
+    deadline: '',
+    status: ''
+  }
+  const [data, setData] = useState(initialState)
+  useEffect(()=> {
+    if (id && Object.keys(projectSelected).length > 0) {
+      setData({
+        ...initialState,
+        ...projectSelected
+      })
+    }
+  }, [projectSelected])
+
+  useEffect(()=> console.log(data), [data])
 
   const style = {
     color: theme.alternative,

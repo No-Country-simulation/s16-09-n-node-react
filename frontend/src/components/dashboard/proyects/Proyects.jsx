@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useTheme } from "@/context/themecontext";
 import { NavLink } from "react-router-dom";
 import Aos from "aos";
@@ -5,9 +6,9 @@ import Aos from "aos";
 import { proyects } from "./data";
 import ProyectCard from "./ProyectCard";
 import { useEffect } from "react";
-import { useState } from "react";
 
-import { getProjects } from '@/utils/data'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProjects } from '@/Redux/actions/projects'
 
 const Proyects = () => {
   const { theme } = useTheme()
@@ -16,13 +17,13 @@ const Proyects = () => {
     backgroundColor: theme.backgroundColor,
   };
 
-  const [allProjects, setAllProjects] = useState([])
-  // useEffect(() => console.log(allProjects), [allProjects])
+  const dispatch = useDispatch()
+  const { allProjects } = useSelector(state => state.project)
+  useEffect(() => console.log(allProjects), [allProjects])
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
-    getProjects()
-      .then(data => setAllProjects(data))
+    dispatch(getAllProjects())
   }, [])
 
   return (
