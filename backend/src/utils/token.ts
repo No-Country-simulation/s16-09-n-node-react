@@ -6,7 +6,7 @@ export const createToken = (userId: string): string => {
     throw new Error('JWT_SECRET environment variable not set');
   }
 
-  return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: '1h',
   });
 };
