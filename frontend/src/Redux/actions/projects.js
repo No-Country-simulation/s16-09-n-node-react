@@ -32,3 +32,37 @@ export const getProject = (id) => async (dispatch) => {
     // notificar
   }
 }
+
+export const updateSelectedProject = (id, project) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/projects?id=${id}`, {
+      "headers": {
+        "accept": "application/json",
+        "apiKey": API_KEY
+      },
+      project
+    })
+    console.log(data);
+    dispatch(updateProject(data))
+  } catch (error) {
+    console.error(error);
+    // notificar
+  }
+}
+
+export const createNewProject = (project) => async (dispatch) => {
+  try {
+    const { data } = await axios.post(`/projects`, {
+      "headers": {
+        "accept": "application/json",
+        "apiKey": API_KEY
+      },
+      project
+    })
+    console.log(data);
+    dispatch(updateProject(data))
+  } catch (error) {
+    console.error(error);
+    // notificar
+  }
+}

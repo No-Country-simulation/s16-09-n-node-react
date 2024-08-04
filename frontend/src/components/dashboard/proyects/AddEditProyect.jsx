@@ -3,12 +3,21 @@ import { useParams } from "react-router-dom"
 import { useTheme } from '@/context/themecontext'
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { updateSelectedProject, createNewProject } from "@/Redux/actions/projects";
 
 const AddEditProyect = () => {
   const { id } = useParams()
   const { theme } = useTheme()
   const [fileName, setFileName] = useState('')
 
+  const style = {
+    color: theme.alternative,
+    backgroundColor: theme.background
+  }
+  const alternative = { color: theme.alternative }
+
+  const dispatch = useDispatch()
   const { projectSelected } = useSelector(state => state.project)
   const initialState = {
     id: '',
@@ -31,16 +40,26 @@ const AddEditProyect = () => {
 
   useEffect(()=> console.log(data), [data])
 
-  const style = {
-    color: theme.alternative,
-    backgroundColor: theme.background
+  const handleChange = ev => {
+    setData({
+      ...data,
+      [ev.target.name]: ev.target.value
+    })
   }
-  const alternative = { color: theme.alternative }
+
+  const handleSubmit = ev => {
+    ev.preventDefault()
+    if (id) {
+      dispatch(updateSelectedProject(id, data))
+    } else {
+      dispatch(createNewProject(data))
+    }
+  }
 
   return (
     <div className="h-full w-full flex flex-col justify-start rounded-xl py-5 px-14" style={style}>
       {/* component {id ? "edit" : 'add'} proyect */}
-      <form className="w-4/5 gap-1 p-0">
+      <form className="w-4/5 gap-1 p-0" onSubmit={handleSubmit}>
         <fieldset className="border border-solid p-3 rounded-lg" style={{ borderColor: '#007dfa' }}>
           <legend className="w-auto px-2 text-sm" style={alternative}>Nombre del Proyecto</legend>
           <input 
@@ -49,6 +68,8 @@ const AddEditProyect = () => {
             id="name" 
             className="bg-transparent outline-none px-2"
             placeholder="ProyectoX"
+            onChange={handleChange}
+            value={data.name}
           />
         </fieldset>
         <fieldset className="border border-solid p-3 rounded-lg" style={{ borderColor: '#007dfa' }}>
@@ -58,6 +79,8 @@ const AddEditProyect = () => {
             id="description" 
             className="bg-transparent outline-none px-2" 
             placeholder={'- Funcionalidad \n- Objetivo'}
+            onChange={handleChange}
+            value={data.description}
           ></textarea>
         </fieldset>
         <fieldset className="border border-solid p-3 rounded-lg" style={{ borderColor: '#007dfa' }}>
@@ -67,11 +90,25 @@ const AddEditProyect = () => {
         <div className="flex w-full justify-between">
           <fieldset className="border border-solid p-3 rounded-lg" style={{ borderColor: '#007dfa', width: '48%' }}>
             <legend className="w-auto px-2 text-sm" style={alternative}>Fecha de inicio</legend>
-            <input type='date' name="beginning" id="beginning" className="bg-transparent outline-none px-2" />
+            <input 
+              type='date' 
+              name="beginning" 
+              id="beginning" 
+              className="bg-transparent outline-none px-2"
+              onChange={handleChange}
+              value={data.beginning}
+            />
           </fieldset>
           <fieldset className="border border-solid p-3 rounded-lg" style={{ borderColor: '#007dfa', width: '48%' }}>
             <legend className="w-auto px-2 text-sm" style={alternative}>Fecha de entrega</legend>
-            <input type="date" name="deadline" id="deadline" className="bg-transparent outline-none px-2" />
+            <input 
+              type="date" 
+              name="deadline" 
+              id="deadline" 
+              className="bg-transparent outline-none px-2"
+              onChange={handleChange}
+              value={data.deadline}
+            />
           </fieldset>
         </div>
         <fieldset className="flex flex-col items-center border border-dashed p-3 rounded-lg gap-1" style={{ borderColor: '#007dfa' }}>
